@@ -21,4 +21,4 @@ https://www.figma.com/design/ZeuNnnybtR2WpXlN99WQ93/%E3%82%AA%E3%83%AA%E3%82%B8%
 ## ER図
 ![ER図](ER図02.png)
 ## 画面遷移図
-![画面遷移図](画面遷移図02.png)
+![画面遷移図](画面遷移図03.png)
