@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  category: one
+  gpt_result: one
+  title: MyString
+  location: MyString
+  ai_decision: MyString
+  user_comment: MyText
+  user_override: MyString
+  expires_at: 2025-07-27 22:53:39
+  is_deleted: false
+  deleted_at: 2025-07-27 22:53:39
+  ocr_text: MyText
+
+two:
+  user: two
+  category: two
+  gpt_result: two
+  title: MyString
+  location: MyString
+  ai_decision: MyString
+  user_comment: MyText
+  user_override: MyString
+  expires_at: 2025-07-27 22:53:39
+  is_deleted: false
+  deleted_at: 2025-07-27 22:53:39
+  ocr_text: MyText
