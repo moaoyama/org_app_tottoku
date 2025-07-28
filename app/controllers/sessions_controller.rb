@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:notice] = "ログインしました！"
+      flash[:notice] = "ログインしました"
       redirect_to root_path
     else
       flash.now[:alert] = "メールアドレスかパスワードが違います。"
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    flash[:notice] = "ログアウトしました。"
+    flash[:notice] = "ログアウトしました"
     redirect_to root_path
   end
 end

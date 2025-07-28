@@ -1,0 +1,16 @@
+<h1>とっとく？</h1>
+
+<p>ようこそ、<%= current_user.name %> さん！</p>
+
+<%= form_with model: Document.new, url: documents_path, local: true do |form| %>
+  <%= form.label :title, "書類名を入力：" %>
+  <%= form.text_field :title, required: true %>
+  <%= form.submit "入力して判定する" %>
+<% end %>
+
+<nav>
+  <%= link_to "書類を追加", home_path %> |
+  <%= link_to "書類一覧", documents_path %> |
+  <%= link_to "マイページ", mypage_path %> |
+  <%= link_to "ログアウト", logout_path, method: :delete %>
+</nav>

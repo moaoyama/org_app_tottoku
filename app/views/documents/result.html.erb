@@ -1,0 +1,13 @@
+<h1>保管方法の提案</h1>
+<p>書類名：<%= @document.title %></p>
+<p>判定結果：<%= @document.ai_decision %></p>
+<p>判定理由：<%= @document.gpt_result&.reason || "判定理由なし" %></p>
+<%= link_to '書類の詳細を見る', document_path(@document) %> |
+<%= link_to 'ホームに戻る', home_path %>
+
+<nav>
+  <%= link_to "書類を追加", home_path %> |
+  <%= link_to "書類一覧", documents_path %> |
+  <%= link_to "マイページ", mypage_path %> |
+  <%= link_to "ログアウト", logout_path, method: :delete %>
+</nav>

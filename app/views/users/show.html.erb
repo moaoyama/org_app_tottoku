@@ -1,0 +1,7 @@
+<h1>マイページ</h1>
+
+<p><strong>ユーザー名：</strong> <%= @user.name %></p>
+<p><strong>メールアドレス：</strong> <%= @user.email %></p>
+
+<%= link_to "プロファイルを編集する", edit_user_path(@user) %><br>
+<%= link_to "ホームに戻る", home_path %>

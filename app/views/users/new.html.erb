@@ -1,4 +1,4 @@
-<h1>ログイン</h1>
+<h1>アカウントを作成</h1>
 
 <%= form_with model: @user, local: true do |form| %>
   <% if @user.errors.any? %>
@@ -28,11 +28,15 @@
   </div>
 
   <div>
-    <%= form.label :password_confirmation, "パスワード確認" %><br>
+    <%= form.label :password_confirmation, "パスワード（確認）" %><br>
     <%= form.password_field :password_confirmation %>
   </div>
 
   <div>
-    <%= form.submit "ログイン" %>
+    <%= form.submit "登録してはじめる" %>
   </div>
+
+  <p>
+    <%= link_to "ログインはこちら", login_path %>
+  </p>
 <% end %>

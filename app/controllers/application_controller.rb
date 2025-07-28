@@ -3,10 +3,15 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # 今ログインしているユーザーを返す（いる場合）
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
+    # 開発中だけ強制的に User の最初の人を使う
+    User.first || User.create!(name: "仮ユーザー", email: "test@example.com", password: "password")
+  end  
+
+  # 今ログインしているユーザーを返す（いる場合）
+  # def current_user
+  #   @current_user ||= User.find_by(id: session[:user_id])
+  # end
 
   # ログインしているかどうか判定する
   def logged_in?

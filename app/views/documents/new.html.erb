@@ -1,0 +1,17 @@
+<h1>書類をアップロード</h1>
+
+<%= form_with model: @document, local: true do |form| %>
+  <div>
+    <%= form.label :title, "タイトル" %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :file, "ファイルを選択してください" %><br>
+    <%= form.file_field :file %>
+  </div>
+
+  <div>
+    <%= form.submit "アップロード" %>
+  </div>
+<% end %>

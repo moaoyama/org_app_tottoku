@@ -1,0 +1,16 @@
+<h1>書類の詳細</h1>
+
+<p><strong>書類名：</strong> <%= @document.title %></p>
+
+<h2>メモ</h2>
+<p><%= @document.memo %></p>
+
+<h2>添付画像</h2>
+<% if @document.image.attached? %>
+  <%= image_tag @document.image, style: "max-width: 300px;" %>
+<% else %>
+  <p>画像はありません。</p>
+<% end %>
+
+<%= link_to "書類一覧へ", documents_path %><br>
+<%= link_to "ホームに戻る", home_path %>

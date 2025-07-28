@@ -1,0 +1,31 @@
+<h1>登録済みの書類一覧</h1>
+
+<%# Check if documents exist %>
+<% if @documents.empty? %>
+  <%# No documents state %>
+  <div>
+    <p>まだ書類が登録されていません</p>
+    <p>書類を登録してみましょう</p>
+  </div>
+<% else %>
+  <%# Documents list state %>
+  <div>
+    <% @documents.each do |document| %>
+      <div>
+        <div>
+          <div>
+            <p>書類名：<%= document.name %></p>
+            <p>保管判定：<%= document.storage_decision %></p>
+            <p>登録日：<%= document.registration_date.strftime("%Y-%m-%d") %></p>
+          </div>
+          <%= link_to "詳細を見る", document_path(document) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "書類を追加する", home_path %><br>
+  <%= link_to "ホームに戻る", home_path %>
+</div>
