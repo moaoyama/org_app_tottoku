@@ -1,0 +1,184 @@
+@import "css/normalize";
+
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #F2F7FB;
+}
+main {
+  /* font-size: 16px; */
+  margin: 0;
+  /* text-align: center; */
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  height: 68px;
+  background-color: #7EBDE2;
+  margin-top: 0;
+}
+
+.app-title-link {
+  text-decoration: none; /* 下線をなくす */
+  color: inherit; /* 親要素の文字色を継承 */
+  display: flex; /* Flexboxで中のpタグを中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+  height: 100%; /* 親要素の高さに合わせる */
+}
+
+.app-title {
+  font-size: 20px;
+  margin: 0;
+  padding-left: 16px;
+  color: #FFFFFF;
+}
+
+.titlelg {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 80px;
+}
+
+.subtitlemd {
+  font-size: 20px;
+}
+
+.text-l {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.bodysm-s {
+  font-size: 14px;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: calc(100vh - 68px - 68px); /* ヘッダーとフッターの高さを引いた高さ */
+  padding-bottom: 88px;
+  box-sizing: border-box;
+  text-align: center; /* フォーム内のテキストは中央寄せ */
+}
+
+/* フォームグループ（ラベルと入力欄のセット） */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ラベルを左寄せに */
+  width: 320px; /* 入力欄の幅に合わせる */
+  margin-bottom: 24px; /* 各要素間の間隔 */
+}
+.form-group label {
+  font-size: 16px; /* 文字の大きさ16px */
+  margin-bottom: 8px; /* ラベルとフォームの間隔8px */
+}
+.input-field {
+  width: 320px; /* 入力欄フォームの寸法320px */
+  height: 44px; /* 入力欄フォームの寸法44px */
+  padding: 8px 12px;
+  border: 1px solid #CCCCCC; /* ボーダー色をグレーに */
+  border-radius: 8px; /* 角の半径8px */
+  box-sizing: border-box;
+  font-size: 16px; /* 入力文字のサイズ */
+}
+
+/* ==================================== */
+/* アカウント作成ページ固有のスタイル */
+/* ==================================== */
+.signup-form-container .form-group {
+    margin-bottom: 16px; /* アカウント作成フォームグループの間隔を16pxに上書き */
+}
+/* ==================================== */
+
+.btn-l{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.btn{
+  width: 280px;
+  height: 56px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #7EBDE2;
+  color: #FFFFFF;
+  border: none;
+}
+
+.app-footer {
+  height: 68px;
+  background-color: #7EBDE2;
+  text-align: center;
+  padding-top: 1vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.menu-icon {
+  color: #f8c3cd;
+  width: 48px;
+  height: 48px;
+}
+
+/* ==================================== */
+/* 書類一覧ページ固有のスタイル */
+/* ==================================== */
+.no-documents-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px; /* ある程度の高さを確保 */
+  margin-bottom: 30px; /* ボタンとの間隔 */
+}
+
+.documents-list-grid {
+  display: grid;
+  /* 理想のレイアウトに合わせて、1列表示で中央寄せ */
+  grid-template-columns: minmax(326px, 1fr); /* 最小326px、最大で利用可能な幅 */
+  gap: 20px; /* カード間の間隔 */
+  width: 100%;
+  max-width: 360px; /* カード幅326px + 左右の余白 */
+  margin-bottom: 30px; /* リストとボタンの間隔 */
+}
+
+.document-card {
+  width: 326px; /* カードの寸法 */
+  height: 120px; /* カードの寸法 */
+  background-color: #FFFFFF; /* カードの背景色 */
+  border-radius: 12px; /* 角の半径 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽い影 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* コンテンツとボタンを上下に配置 */
+  padding: 16px 12px; /* カード内のパディング */
+  box-sizing: border-box;
+  text-align: left; /* テキストを左寄せ */
+  position: relative; /* 詳細を見るボタンの配置用 */
+}
+
+.document-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 文字列どうしの間隔16px */
+}
+
+.subtitlemd04 {
+  margin-top: 8px;
+}

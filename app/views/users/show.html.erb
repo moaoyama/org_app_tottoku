@@ -1,7 +1,25 @@
-<h1>マイページ</h1>
+<header class="app-header">
+  <p class="app-title">とっとく？</p>
+  <nav>
+    <%= link_to "書類を追加", home_path %> |
+    <%= link_to "書類一覧", documents_path %> |
+    <%= link_to "マイページ", mypage_path %> |
+    <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+  </nav>
+</header>
 
-<p><strong>ユーザー名：</strong> <%= @user.name %></p>
-<p><strong>メールアドレス：</strong> <%= @user.email %></p>
+<main class="app-main">
+  <p class="subtitlemd">マイページ</p>
 
-<%= link_to "プロファイルを編集する", edit_user_path(@user) %><br>
-<%= link_to "ホームに戻る", home_path %>
+  <p>ユーザー名： <%= @user.name %></p>
+  <p>メールアドレス： <%= @user.email %></p>
+
+  <div class="btn-l">
+    <%= link_to "プロファイルを編集する", edit_user_path(@user), class: 'btn' %><br>
+    <%= link_to "ホームに戻る", home_path, class: 'btn' %>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <p>© 2025 Tottoku</p>
+</footer>

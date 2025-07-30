@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
   get 'static_pages/home'
-  get 'documents/new'
-  get 'documents/create'
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  get 'users/new'
+
   resources :users, only: [:new, :create, :show, :edit, :update]
-  resources :documents, only: [:new, :create, :show, :index]
+  resources :documents, only: [:create, :show, :index, :edit, :update] do
+    member do
+      get :result
+    end
+  end
+
   # root "users#new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -19,10 +19,15 @@ Rails.application.routes.draw do
 
   get    'login',  to: 'sessions#new'
   post   'login',  to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
-  get "/home", to: "home#index"
-  get 'documents/:id/result', to: 'documents#result', as: 'document_result'
-  get '/mypage', to: 'users#show'
+  delete 'logout', to: 'sessions#destroy', as: :logout
+  
+  get '/home', to: 'home#index', as: 'home'
+  
+  post "/result", to: "documents#result", as: "judge_result"
+  # get 'documents/:id/result', to: 'documents#result', as: 'document_result'
+  get '/mypage', to: 'users#show', as: :mypage
+  get '/signup', to: 'users#new', as: 'signup'
+  post '/signup', to: 'users#create'
 
   # Defines the root path route ("/")
   root 'static_pages#home'

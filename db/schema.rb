@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_28_103320) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_29_073430) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_28_103320) do
     t.text "ocr_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "result"
+    t.text "reason"
+    t.string "name"
+    t.text "memo"
     t.index ["category_id"], name: "index_documents_on_category_id"
     t.index ["gpt_result_id"], name: "index_documents_on_gpt_result_id"
     t.index ["user_id"], name: "index_documents_on_user_id"

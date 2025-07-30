@@ -1,6 +1,18 @@
+<header class="app-header">
+  <p class="app-title">とっとく？</p>
+  <nav>
+    <%= link_to "書類を追加", home_path %> |
+    <%= link_to "書類一覧", documents_path %> |
+    <%= link_to "マイページ", mypage_path %> |
+    <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+  </nav>
+</header>
+
 <h1>書類の詳細</h1>
 
-<p><strong>書類名：</strong> <%= @document.title %></p>
+<p><strong>書類名：</strong> <%= @document.name || @document.title %></p>
+<p><strong>保管判定：</strong> <%= @document.ai_decision || @document.storage_decision %></p>
+<p><strong>判定理由：</strong> <%= @document.reason %></p>
 
 <h2>メモ</h2>
 <p><%= @document.memo %></p>
@@ -12,5 +24,21 @@
   <p>画像はありません。</p>
 <% end %>
 
+<h3>画像アップロード</h3>
+<%= form_with model: @document, url: document_path(@document), method: :patch, local: true, html: { multipart: true } do |form| %>
+  <div>
+    <%= form.label :image, "画像ファイル" %><br>
+    <%= form.file_field :image %><br>
+  </div>
+  <%= form.submit "画像をアップロード" %>
+<% end %>
+
 <%= link_to "書類一覧へ", documents_path %><br>
 <%= link_to "ホームに戻る", home_path %>
+
+<nav>
+  <%= link_to "書類を追加", home_path %> |
+  <%= link_to "書類一覧", documents_path %> |
+  <%= link_to "マイページ", mypage_path %> |
+  <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+</nav>

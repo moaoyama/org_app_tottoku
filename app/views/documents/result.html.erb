@@ -1,13 +1,25 @@
-<h1>保管方法の提案</h1>
-<p>書類名：<%= @document.title %></p>
-<p>判定結果：<%= @document.ai_decision %></p>
-<p>判定理由：<%= @document.gpt_result&.reason || "判定理由なし" %></p>
-<%= link_to '書類の詳細を見る', document_path(@document) %> |
-<%= link_to 'ホームに戻る', home_path %>
+<header class="app-header">
+  <p class="app-title">とっとく？</p>
+  <nav>
+    <%= link_to "書類を追加", home_path %> |
+    <%= link_to "書類一覧", documents_path %> |
+    <%= link_to "マイページ", mypage_path %> |
+    <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+  </nav>
+</header>
 
-<nav>
-  <%= link_to "書類を追加", home_path %> |
-  <%= link_to "書類一覧", documents_path %> |
-  <%= link_to "マイページ", mypage_path %> |
-  <%= link_to "ログアウト", logout_path, method: :delete %>
-</nav>
+<main class="app-main">
+  <p class="subtitlemd">保管方法の提案</p>
+  <p>書類名：<%= @document.title %></p>
+  <p>判定結果：<%= @document.ai_decision %></p>
+  <p>判定理由：<%= @document.reason %></p>
+
+  <div class="btn-l">
+    <%= link_to '書類の詳細を見る', document_path(@document), class: 'btn' %> 
+    <%= link_to 'ホームに戻る', home_path, class: 'btn' %>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <p>© 2025 Tottoku</p>
+</footer>

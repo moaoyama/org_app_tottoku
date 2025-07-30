@@ -1,31 +1,47 @@
-<h1>登録済みの書類一覧</h1>
+<header class="app-header">
+  <p class="app-title">とっとく？</p>
+  <nav>
+    <%= link_to "書類を追加", home_path %> |
+    <%= link_to "書類一覧", documents_path %> |
+    <%= link_to "マイページ", mypage_path %> |
+    <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+  </nav>
+</header>
 
-<%# Check if documents exist %>
-<% if @documents.empty? %>
-  <%# No documents state %>
-  <div>
-    <p>まだ書類が登録されていません</p>
-    <p>書類を登録してみましょう</p>
-  </div>
-<% else %>
-  <%# Documents list state %>
-  <div>
-    <% @documents.each do |document| %>
-      <div>
-        <div>
-          <div>
-            <p>書類名：<%= document.name %></p>
-            <p>保管判定：<%= document.storage_decision %></p>
-            <p>登録日：<%= document.registration_date.strftime("%Y-%m-%d") %></p>
-          </div>
-          <%= link_to "詳細を見る", document_path(document) %>
-        </div>
+<main class="app-main">
+  <p class="subtitlemd">登録済みの書類一覧</p>
+
+  <% if @documents.empty? %>
+    <!-- 書類がない場合の表示 -->
+    <div class="no-documents-state">
+      <p>まだ書類が登録されていません</p>
+      <p>書類を登録してみましょう</p>
+      <div class="btn-l">
+        <%= link_to "書類を追加する", home_path, class: 'btn' %>
       </div>
-    <% end %>
-  </div>
-<% end %>
+    </div>
 
-<div>
-  <%= link_to "書類を追加する", home_path %><br>
-  <%= link_to "ホームに戻る", home_path %>
-</div>
+  <% else %>
+    <!-- 書類がある場合のリスト表示 -->
+    <div class="documents-list-grid">
+      <% @documents.each do |document| %>
+        <div class="document-card">
+          <div class="document-info-content">
+            <p class="text-l">書類名：<%= document.name %></p>
+            <p class="bodysm-s">保管判定：<%= document.ai_decision %></p>
+            <p class="bodysm-s">登録日：<%= document.created_at.strftime('%Y-%m-%d') %></p>
+          </div>
+            <%= link_to "詳細を見る", document_path(document) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="btn-l">
+      <%= link_to "書類を追加する", home_path, class: 'btn' %>
+    </div>
+  <% end %>
+</main>
+
+<footer class="app-footer">
+  <p>© 2025 Tottoku</p>
+</footer>

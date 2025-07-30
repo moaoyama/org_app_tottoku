@@ -1,16 +1,33 @@
-<h1>とっとく？</h1>
+<header class="app-header">
+  <p class="app-title">とっとく？</p>
+  <nav>
+    <%= link_to "書類を追加", home_path %> |
+    <%= link_to "書類一覧", documents_path %> |
+    <%= link_to "マイページ", mypage_path %> |
+    <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+  </nav>
+  <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
+</header>
 
-<p>ようこそ、<%= current_user.name %> さん！</p>
+<main class="app-main">
+  <p class="titlelg">とっとく？</p>
 
-<%= form_with model: Document.new, url: documents_path, local: true do |form| %>
-  <%= form.label :title, "書類名を入力：" %>
-  <%= form.text_field :title, required: true %>
-  <%= form.submit "入力して判定する" %>
-<% end %>
+  <p class="subtitlemd subtitlemd04">ようこそ、<%= current_user.name %> さん！</p>
+  <p class="bodysm">書類の名前を入力すると、保管が必要かどうかをAIが判断します</p>
 
-<nav>
-  <%= link_to "書類を追加", home_path %> |
-  <%= link_to "書類一覧", documents_path %> |
-  <%= link_to "マイページ", mypage_path %> |
-  <%= link_to "ログアウト", logout_path, method: :delete %>
-</nav>
+  <%= form_with model: Document.new, url: documents_path, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :name, "書類名を入力：" %>
+      <%= form.text_field :name, required: true, class: 'input-field' %>
+      <p class="bodysm-s">できるだけ具体的に記入してください</p>
+    </div>
+
+    <div class="btn-l">
+      <%= form.submit "入力して判定する", class: 'btn' %>
+    </div>
+  <% end %>
+</main>
+
+<footer class="app-footer">
+  <p>© 2025 Tottoku</p>
+</footer>

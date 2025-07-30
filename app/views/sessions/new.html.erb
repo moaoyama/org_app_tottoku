@@ -1,17 +1,33 @@
-<h1>アカウントにログイン</h1>
+<header class="app-header">
+  <a href="<%= root_path %>" class="app-title-link">
+    <p class="app-title">とっとく？</p>
+  </a>
+</header>
 
-<%= form_with url: login_path, local: true do |form| %>
-  <div>
-    <%= form.label :email, "メールアドレス" %><br>
-    <%= form.email_field :email %>
-  </div>
+<main class="app-main">
+  <p class="subtitlemd">アカウントにログイン</p>
 
-  <div>
-    <%= form.label :password, "パスワード" %><br>
-    <%= form.password_field :password %>
-  </div>
+  <%= form_with url: login_path, method: :post, local: true, data: { turbo: false } do |form| %>
+    <div class="form-group">
+      <%= form.label :email, "メールアドレス：" %>
+      <%= form.email_field :email, class: 'input-field', placeholder: 'メールアドレスを入力' %>
+    </div>
 
-  <div>
-    <%= form.submit "ログインしてはじめる" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= form.label :password, "パスワード：" %>
+      <%= form.password_field :password, class: 'input-field', placeholder: 'パスワードを入力' %>
+    </div>
+
+    <div class="btn-l">
+      <%= form.submit "ログインしてはじめる", class: 'btn' %>
+    </div>
+
+    <p>
+      <%= link_to "アカウントをつくる", signup_path %>
+    </p>
+  <% end %>
+</main>
+
+<footer class="app-footer">
+  <p>© 2025 Tottoku</p>
+</footer>
