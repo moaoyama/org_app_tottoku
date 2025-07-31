@@ -2,11 +2,12 @@ class Document < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
   belongs_to :gpt_result, optional: true
+  belongs_to :document
 
   # app/models/document.rb
   has_one_attached :file
-  # 画像1枚を添付する場合
-  has_one_attached :image
+  
+  has_many :image, dependent: :destroy
   # 名前は好きなように変えられる
 
   before_save :set_judgement

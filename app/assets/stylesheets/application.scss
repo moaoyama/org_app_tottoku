@@ -20,6 +20,33 @@ main {
   margin-top: 0;
 }
 
+/* メニュー本体 */
+.hamburger-menu {
+  position: absolute;
+  top: 64px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  z-index: 100;
+}
+
+.hamburger-menu a {
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #1F1F1F;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+/* 非表示 */
+.hidden {
+  display: none;
+}
+
 .app-title-link {
   text-decoration: none; /* 下線をなくす */
   color: inherit; /* 親要素の文字色を継承 */
@@ -152,10 +179,10 @@ main {
   display: grid;
   /* 理想のレイアウトに合わせて、1列表示で中央寄せ */
   grid-template-columns: minmax(326px, 1fr); /* 最小326px、最大で利用可能な幅 */
-  gap: 20px; /* カード間の間隔 */
+  gap: 16px; /* カード間の間隔 */
   width: 100%;
   max-width: 360px; /* カード幅326px + 左右の余白 */
-  margin-bottom: 30px; /* リストとボタンの間隔 */
+  margin: 0 auto 100px auto;
 }
 
 .document-card {
@@ -166,19 +193,155 @@ main {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽い影 */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* コンテンツとボタンを上下に配置 */
-  padding: 16px 12px; /* カード内のパディング */
   box-sizing: border-box;
   text-align: left; /* テキストを左寄せ */
   position: relative; /* 詳細を見るボタンの配置用 */
+  align-items: flex-start;
 }
 
 .document-info-content {
   display: flex;
   flex-direction: column;
   gap: 16px; /* 文字列どうしの間隔16px */
+  padding: 12px;
+  flex-grow: 1;
 }
 
-.subtitlemd04 {
-  margin-top: 8px;
+/* 「書類を追加する」固定ボタンのコンテナ */
+.fixed-add-button-container {
+    position: fixed; /* 画面に固定 */
+    bottom: 84px; /* 下からの位置 */
+    left: 50%; /* 水平中央寄せの基準 */
+    transform: translateX(-50%); /* 自身の幅の半分だけ左にずらして完全に中央寄せ */
+    width: 100%; /* 親要素の幅に合わせる */
+    display: flex;
+    justify-content: center; /* ボタンを中央に配置 */
+    padding: 0 20px; /* 左右のパディング */
+    box-sizing: border-box;
+    z-index: 100; /* 他のコンテンツの上に表示 */
 }
+
+.fixed-add-button {
+    /* main-action-buttonのスタイルを継承 */
+    /* 必要であれば、ここで固定ボタンに特有のスタイルを上書き */
+    width: 280px; /* 固定ボタンの幅 */
+    height: 56px; /* 固定ボタンの高さ */
+}
+
+.document-info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* 文字列どうしの間隔16px */
+}
+
+.document-card-actions {
+    position: absolute; /* ボタンをカード内に絶対配置 */
+    bottom: 16px; /* 下からの位置を調整 */
+    right: 12px; /* 右からの位置を調整 */
+}
+
+.detail-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px; /* 詳細を見るボタンの寸法 */
+    height: 32px; /* 詳細を見るボタンの寸法 */
+    background-color: #7EBDE2; /* ボタンの色 */
+    color: #FFFFFF; /* 文字色 */
+    border-radius: 6px; /* 角の半径 */
+    text-decoration: none;
+    font-size: 14px; /* ボタンの文字サイズ */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* ==================================== */
+/* タブ切りかえ */
+/* ==================================== */
+/* タブ全体のスタイル */
+.tabs {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* ラジオボタンは非表示に */
+.tabs > input[type="radio"] {
+  display: none;
+}
+
+/* ラベルの見た目 */
+.tabs label {
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  margin-right: -1px;
+  font-weight: 600;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+/* 選択されていないタブのラベルは淡い色 */
+.tabs label:hover {
+  background-color: #ddd;
+}
+
+/* チェックされたラジオボタンに対応するラベルのスタイル */
+.tabs input[type="radio"]:checked + label {
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+  position: relative;
+  top: 1px;
+}
+
+/* タブコンテンツは全て非表示に */
+.tab-content {
+  display: none;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  clear: both;
+}
+
+/* チェックされたラジオボタンに対応するタブコンテンツのみ表示 */
+/* ここでは id="tab1" のinputがチェックされたら #content1 を表示、と紐付け */
+/* input#tab1:checked ~ .content #content1 という形で兄弟要素を指定 */
+.tabs #tab1:checked ~ .content #content1,
+.tabs #tab2:checked ~ .content #content2,
+.tabs #tab3:checked ~ .content #content3,
+.tabs #tab4:checked ~ .content #content4 {
+  display: block;
+}
+
+.tab-content .btn {
+  height: 44px;
+}
+
+.btn-irreg {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.btn-irreg .btn {
+  width: 128px;
+  height: 44px;
+  margin-top: 16px;
+}
+
+.btn-danger {
+  width: 280px;
+  height: 44px;
+  background-color: #f8c3cd; 
+  color: #1f1f1f;
+  margin-top: 16px;
+  display: flex; /* ブロック要素かつFlexboxコンテナにする */
+  align-items: center; /* 垂直方向の中央寄せ */
+  justify-content: center; /* 水平方向の中央寄せ (テキスト用) */
+  margin-left: auto; /* ボタン自体を水平中央寄せ */
+  margin-right: auto; /* ボタン自体を水平中央寄せ */
+  }

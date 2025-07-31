@@ -47,6 +47,7 @@ gem "bootsnap", require: false
 gem 'rails_admin'
 gem 'sassc-rails'
 gem 'inline_svg'
+gem 'ruby-openai'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

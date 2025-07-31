@@ -1,9 +1,16 @@
 <header class="app-header">
   <p class="app-title">とっとく？</p>
-  <nav>
-    <%= link_to "書類を追加", home_path %> |
-    <%= link_to "書類一覧", documents_path %> |
-    <%= link_to "マイページ", mypage_path %> |
+
+  <!-- ハンバーガーアイコン -->
+  <div id="menu-toggle">
+    <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
+  </div>
+
+  <!-- ドロップダウンメニュー -->
+  <nav id="hamburger-menu" class="hamburger-menu hidden">
+    <%= link_to "書類を追加", home_path %>
+    <%= link_to "書類一覧", documents_path %>
+    <%= link_to "マイページ", mypage_path %>
     <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
   </nav>
 </header>
@@ -31,17 +38,22 @@
             <p class="bodysm-s">保管判定：<%= document.ai_decision %></p>
             <p class="bodysm-s">登録日：<%= document.created_at.strftime('%Y-%m-%d') %></p>
           </div>
-            <%= link_to "詳細を見る", document_path(document) %>
+          <div class="document-card-actions">
+            <%= link_to "詳細を見る", document_path(document), class: 'detail-button' %>
           </div>
         </div>
       <% end %>
     </div>
-    <div class="btn-l">
-      <%= link_to "書類を追加する", home_path, class: 'btn' %>
-    </div>
+    <!-- <div class="btn-l"> -->
+      <!-- <%# link_to "書類を追加する", home_path, class: 'btn' %> -->
+    <!-- </div> -->
   <% end %>
 </main>
 
 <footer class="app-footer">
   <p>© 2025 Tottoku</p>
 </footer>
+
+<div class="fixed-add-button-container">
+  <%= link_to "書類を追加する", home_path, class: 'btn fixed-add-button' %>
+</div>

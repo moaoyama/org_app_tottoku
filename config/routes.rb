@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   resources :documents, only: [:create, :show, :index, :edit, :update] do
     member do
       get :result
+      patch :update_location
+      patch :update_note
+      patch :update_judgement
+      post :upload_image
+      get  :edit_image
+      delete :delete_image
     end
   end
 

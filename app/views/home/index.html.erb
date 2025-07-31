@@ -1,12 +1,18 @@
 <header class="app-header">
   <p class="app-title">とっとく？</p>
-  <nav>
-    <%= link_to "書類を追加", home_path %> |
-    <%= link_to "書類一覧", documents_path %> |
-    <%= link_to "マイページ", mypage_path %> |
+
+  <!-- ハンバーガーアイコン -->
+  <div id="menu-toggle">
+    <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
+  </div>
+
+  <!-- ドロップダウンメニュー -->
+  <nav id="hamburger-menu" class="hamburger-menu hidden">
+    <%= link_to "書類を追加", home_path %>
+    <%= link_to "書類一覧", documents_path %>
+    <%= link_to "マイページ", mypage_path %>
     <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' } %>
   </nav>
-  <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
 </header>
 
 <main class="app-main">
