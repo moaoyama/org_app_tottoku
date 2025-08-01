@@ -18,8 +18,8 @@
 <main class="app-main">
   <p class="subtitlemd">保管方法の提案</p>
   <p>書類名：<%= @document.title %></p>
-  <p>判定結果：<%= @document.ai_decision %></p>
-  <p>判定理由：<%= @document.reason %></p>
+  <p>判定結果：<%= document_decision_badge(@document.ai_decision) %></p>
+  <p>AIからのアドバイス：<%= @document.reason %></p>
 
   <div class="btn-l">
     <%= link_to '書類の詳細を見る', document_path(@document), class: 'btn' %> 

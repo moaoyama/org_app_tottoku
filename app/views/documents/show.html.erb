@@ -97,10 +97,10 @@
       <p class="bodysm-s">※変更しない場合はAIの判定がそのまま使われます</p>
     
       <%= form_with model: @document, url: update_judgement_document_path(@document), method: :patch do |form| %>
-        <%= form.radio_button :judgement, "そのまま使う" %> 提案をそのまま使う<br>
-        <%= form.radio_button :judgement, "保存する" %> 保管する<br>
-        <%= form.radio_button :judgement, "破棄する" %> 破棄する<br>
-        <%= form.radio_button :judgement, "あとで決める" %> あとで決める<br>
+        <%= form.radio_button :judgement, "そのまま使う" %>提案をそのまま使う<br>
+        <%= form.radio_button :judgement, "紙で保管が必要" %>紙で保管が必要<br>
+        <%= form.radio_button :judgement, "データ保管でOK" %>データ保管でOK<br>
+        <%= form.radio_button :judgement, "処分してOK" %>処分してOK<br>
 
         <%= form.submit "保存する", class: "btn btn-primary" %>
       <% end %>

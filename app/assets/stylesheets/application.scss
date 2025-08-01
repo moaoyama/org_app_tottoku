@@ -345,3 +345,30 @@ main {
   margin-left: auto; /* ボタン自体を水平中央寄せ */
   margin-right: auto; /* ボタン自体を水平中央寄せ */
   }
+
+/* ==================================== */
+/* ハンバーガーメニュー */
+/* ==================================== */
+.hamburger-menu {
+  position: fixed;
+  top: 0;
+  /* right: -312px; */
+  width: 312px;
+  height: 100vh;
+  background-color: #FFFFFF;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease;
+  z-index: 1000; /* メニューを最前面に表示 */
+  padding: 1rem;
+}
+
+.hamburger-menu.active {
+  right: 0;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+}

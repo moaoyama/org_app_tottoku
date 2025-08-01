@@ -8,6 +8,9 @@
 
   <!-- ドロップダウンメニュー -->
   <nav id="hamburger-menu" class="hamburger-menu hidden">
+    <div id="menu-close" class="menu-close-btn" aria-label="メニューを閉じる">
+      <%= inline_svg_tag 'icons/close.svg', class: 'menu-icon' %>
+    </div>
     <%= link_to "書類を追加", home_path %>
     <%= link_to "書類一覧", documents_path %>
     <%= link_to "マイページ", mypage_path %>
@@ -21,10 +24,10 @@
   <p class="subtitlemd subtitlemd04">ようこそ、<%= current_user.name %> さん！</p>
   <p class="bodysm">書類の名前を入力すると、保管が必要かどうかをAIが判断します</p>
 
-  <%= form_with model: Document.new, url: documents_path, local: true do |form| %>
+  <%= form_with model: @document, url: documents_path, local: true, turbo: false do |form| %>
     <div class="form-group">
-      <%= form.label :name, "書類名を入力：" %>
-      <%= form.text_field :name, required: true, class: 'input-field' %>
+      <%= form.label :title, "書類名を入力：" %>
+      <%= form.text_field :title, required: true, class: 'input-field' %>
       <p class="bodysm-s">できるだけ具体的に記入してください</p>
     </div>
 

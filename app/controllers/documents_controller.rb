@@ -1,19 +1,29 @@
 class DocumentsController < ApplicationController
   before_action :require_login
-  before_action :set_document, only: [:show, :edit, :update, ]
+  before_action :set_document, only: [:show, :edit, :update, :result]
   
   def new
     @document = Document.new
   end
 
   def create
-    @document = current_user.documents.build(document_params)
+    @document = current_user.documents.new(document_params)
     # @document.user = current_user  # ログイン中のユーザーにひもづけ（要ログイン機能）
     if @document.save
-      redirect_to result_document_path(@document)
+      begin
+        gpt_result = OpenaiJudgementService.judge_and_save(@document)
+        @document.update(
+          gpt_result_id: gpt_result.id,
+          ai_decision: gpt_result.storage_decision,
+          reason: gpt_result.reason
+        )
+      rescue StandardError => e
+        Rails.logger.error "OpenAI判定でエラー発生: #{e.message}"
+        # 必要ならフラッシュメッセージなども追加
+      end
+      render :result
     else
-      flash[:alert] = "保存に失敗しました"
-      redirect_to home_path
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -29,12 +39,9 @@ class DocumentsController < ApplicationController
   end
 
   def result
-    @document = Document.find(params[:id])
-    # 判定結果や理由は @document の属性や関連モデルから取る想定
   end
 
   def show
-    @document = Document.find(params[:id])
   end
 
   def index
@@ -48,6 +55,6 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:name, :title, :ai_decision, :storage_decision, :reason, :memo, :image)
+    params.require(:document).permit(:title, :location, :category_id, :user_override, :expires_at, :user_comment)
   end
 end

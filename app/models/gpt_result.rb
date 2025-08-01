@@ -1,3 +1,3 @@
 class GptResult < ApplicationRecord
-  has_many :documents
+  has_one :document
 end
