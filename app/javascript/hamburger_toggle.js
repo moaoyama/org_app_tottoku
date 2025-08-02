@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("hidden");
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
+  if (menuClose) {
+    menuClose.addEventListener("click", () => {
       menu.classList.add("hidden");
     });
   }

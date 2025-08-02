@@ -1,4 +1,9 @@
 @import "css/normalize";
+@import "rails_admin";
+/*
+ *= require rails_admin
+*/
+
 
 html,body {
   height: 100%;
@@ -21,26 +26,9 @@ main {
 }
 
 /* メニュー本体 */
-.hamburger-menu {
-  position: absolute;
-  top: 64px;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  width: 180px;
-  z-index: 100;
-}
 
-.hamburger-menu a {
-  padding: 14px 16px;
-  text-decoration: none;
-  color: #1F1F1F;
-  border-bottom: 1px solid #eee;
-  font-size: 15px;
-}
+
+
 
 /* 非表示 */
 .hidden {
@@ -352,14 +340,21 @@ main {
 .hamburger-menu {
   position: fixed;
   top: 0;
-  /* right: -312px; */
+  right: 0;
   width: 312px;
   height: 100vh;
-  background-color: #FFFFFF;
+  background-color: #F2F7FB;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   transition: left 0.3s ease;
   z-index: 1000; /* メニューを最前面に表示 */
   padding: 1rem;
+}
+
+.hamburger-menu a {
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #1F1F1F;
+  border-bottom: 1px solid #1F1F1F;
 }
 
 .hamburger-menu.active {
@@ -371,4 +366,45 @@ main {
   width: 24px;
   height: 24px;
   padding: 8px;
+}
+
+.side-menu-header {
+  display: flex;
+  justify-content: space-between;
+  height: 68px;
+  box-sizing: border-box;
+  background-color: #7EBDE2;
+  color: #FFFFFF;
+  margin: -1rem;
+  padding: 1rem;
+}
+
+.side-menu-header p, .side-menu-header div {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  width: 312px;
+  height: 72px;
+  text-decoration: none;
+  padding: 0 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 32px;
+}
+
+.menu-item .menu-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  color: #1F1F1F; /* アイコンの色 */
+}
+
+.menu-text-content {
+  display: flex;
+  flex-direction: column;
+  color: #1F1F1F;
 }
