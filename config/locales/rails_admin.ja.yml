@@ -1,0 +1,16 @@
+ja:
+  admin:
+    home:
+      name: "ダッシュボード"
+  rails_admin:
+    dashboard:
+      welcome: "%{app_name}管理画面へようこそ"
+      instructions: "左のリンクを使ってモデルを操作できます。"
+    show:
+      title: '%{model_label}の詳細'
+    edit:
+      title: '%{model_label}の編集'
+    new:
+      title: '%{model_label}の新規作成'
+    list:
+      title: '%{model_label}一覧'

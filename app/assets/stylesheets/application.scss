@@ -1,9 +1,8 @@
 @import "css/normalize";
-@import "rails_admin";
+//* @import "rails_admin"; */
 /*
  *= require rails_admin
 */
-
 
 html,body {
   height: 100%;
@@ -18,17 +17,17 @@ main {
 }
 
 .app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   height: 68px;
+  width: 100%;
   background-color: #7EBDE2;
   margin-top: 0;
+  z-index: 1000; /* 他より前面に表示 */
 }
-
-/* メニュー本体 */
-
-
-
 
 /* 非表示 */
 .hidden {
@@ -73,6 +72,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 68px;
   justify-content: flex-start;
   min-height: calc(100vh - 68px - 68px); /* ヘッダーとフッターの高さを引いた高さ */
   padding-bottom: 88px;
@@ -334,6 +334,50 @@ main {
   margin-right: auto; /* ボタン自体を水平中央寄せ */
   }
 
+  .tab-content p {
+    text-align: left;
+  }
+  .tab-content .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 280px; /* 最大幅は制限 */
+  }
+  .tab-content .input-field {
+    max-width: 280px; /* 入力欄の最大幅 */
+  }
+
+  .radio-group-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto 24px auto;
+    max-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tabs .radio-option {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background-color: #FFFFFF;
+    border: none;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .radio-option .radio-button {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+  }
+  .radio-option p {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #1f1f1f;
+  }
 /* ==================================== */
 /* ハンバーガーメニュー */
 /* ==================================== */
@@ -408,3 +452,30 @@ main {
   flex-direction: column;
   color: #1F1F1F;
 }
+
+/* ==================================== */
+/* バッヂの色とアイコン */
+/* ==================================== */
+  .badge {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-left: 8px;
+  }
+  .badge-red { background-color: #D93025; }   /* 紙で保管が必要 */
+  .badge-blue { background-color: #1E88E5; }  /* データ保管でOK */
+  .badge-gray { background-color: #9E9E9E; }  /* 処分してOK */
+
+  .badge-icon {
+    width: 16px;
+    height: 16px;
+    color: #1f1f1f;
+    margin-left: 8px;
+  }
+
+  .badge-important { background-color: #F8D7DA; }
+
+  .badge-folder { background-color: 	#D0E3FC; }
+
+  .badge-trash { background-color: #E0E0E0; }

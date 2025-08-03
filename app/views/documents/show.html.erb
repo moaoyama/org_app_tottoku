@@ -77,19 +77,23 @@
         <p class="bodysm-s">※書類名はAIの判定に使われているので編集できません</p>
 
         <%= form_with model: @document, url: update_location_document_path(@document), method: :patch do |form| %>
-          <p>保管場所のメモ</p>
-          <%= form.text_field :location_memo, class: "w-full border p-2 rounded" %>
-          <p class="bodysm-s">（例）リビングの棚の引き出し1段目</p>
-          <%= form.submit "保存する", class: "btn btn-primary" %>
+          <div class="form-group">
+            <p>保管場所のメモ</p>
+            <%= form.text_field :location_memo, class: "w-full border p-2 rounded input-field" %>
+            <p class="bodysm-s">（例）リビングの棚の引き出し1段目</p>
+            <%= form.submit "保存する", class: "btn btn-primary" %>
+          </div>
         <% end %>
       </div>
 
     <!-- メモタブ -->
     <div id="content2" class="tab-content">
-      <%= form_with model: @document, url: update_note_document_path(@document), method: :patch do |form| %>
-        <p>メモ</p>
-        <%= form.text_area :note, rows: 5, class: "w-full border p-2 rounded" %>
-        <p class="bodysm-s">あとで追加・編集できます。必要に応じて記入してください</p>
+      <div class="form-group">
+        <%= form_with model: @document, url: update_note_document_path(@document), method: :patch do |form| %>
+          <p>メモ</p>
+          <%= form.text_area :note, rows: 5, class: "w-full border p-2 rounded" %>
+          <p class="bodysm-s">あとで追加・編集できます。必要に応じて記入してください</p>
+        </div>
         <%= form.submit "保存する", class: "btn btn-primary" %>
       <% end %>
     </div>
@@ -132,10 +136,33 @@
       <p class="bodysm-s">※変更しない場合はAIの判定がそのまま使われます</p>
     
       <%= form_with model: @document, url: update_judgement_document_path(@document), method: :patch do |form| %>
-        <%= form.radio_button :judgement, "そのまま使う" %>提案をそのまま使う<br>
-        <%= form.radio_button :judgement, "紙で保管が必要" %>紙で保管が必要<br>
-        <%= form.radio_button :judgement, "データ保管でOK" %>データ保管でOK<br>
-        <%= form.radio_button :judgement, "処分してOK" %>処分してOK<br>
+        <div class="radio-group-wrapper">
+          <label class="radio-option">
+            <%= form.radio_button :judgement, "そのまま使う" , class: 'radio-button'%>
+            <p>提案をそのまま使う</p>
+          </label>
+
+          <label class="radio-option">
+            <%= form.radio_button :judgement, "紙で保管が必要", class: 'radio-button' %>
+            <%= inline_svg_tag 'icons/important.svg', class: 'badge-icon' %>
+            <p>紙で保管が必要</p>
+            <span class="badge badge-red"></span>
+          </label>
+
+          <label class="radio-option">
+            <%= form.radio_button :judgement, "データ保管でOK", class: 'radio-button' %>
+            <%= inline_svg_tag 'icons/folder.svg', class: 'badge-icon' %>
+            <p>データ保管でOK</p>
+            <span class="badge badge-blue"></span>
+          </label>
+
+          <label class="radio-option">
+            <%= form.radio_button :judgement, "処分してOK", class: 'radio-button' %>
+            <%= inline_svg_tag 'icons/trash.svg', class: 'badge-icon' %>
+            <p>処分してOK</p>
+            <span class="badge badge-gray"></span>
+          </label>
+        </div>
 
         <%= form.submit "保存する", class: "btn btn-primary" %>
       <% end %>

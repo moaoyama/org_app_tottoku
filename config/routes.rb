@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'static_pages/home'
 
   resources :users, only: [:new, :create, :show, :edit, :update]
-  resources :documents, only: [:create, :show, :result, :index, :edit, :update] do
+  resources :documents, only: [:create, :show, :result, :index, :edit, :update, :destroy] do
     member do
       get :result
       patch :update_location

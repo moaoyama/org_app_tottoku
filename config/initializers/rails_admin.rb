@@ -38,4 +38,10 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+ 
+  config.asset_source = :sprockets # または :webpacker / :importmap に変更可能
+  config.main_app_name = ["とっとく？", "管理画面"]
+  config.browser_validations = false
+ 
 end

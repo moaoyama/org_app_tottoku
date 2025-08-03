@@ -9,7 +9,7 @@ class Document < ApplicationRecord
   # app/models/document.rb
   has_one_attached :file
   
-  has_many :image, dependent: :destroy
+  # has_many :image, dependent: :destroy
   # 名前は好きなように変えられる
 
   before_save :set_judgement

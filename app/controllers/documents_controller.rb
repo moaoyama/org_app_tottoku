@@ -48,6 +48,12 @@ class DocumentsController < ApplicationController
     @documents = Document.all.order(created_at: :desc)
   end
 
+  def destroy
+    @document = Document.find(params[:id])
+    @document.destroy
+    redirect_to documents_path, notice: "書類を削除しました"
+  end
+
   private
 
   def set_document
