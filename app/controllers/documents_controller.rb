@@ -12,16 +12,13 @@ class DocumentsController < ApplicationController
     if @document.save
       begin
         gpt_result = OpenaiJudgementService.judge_and_save(@document)
-        @document.update(
-          gpt_result_id: gpt_result.id,
-          ai_decision: gpt_result.storage_decision,
-          reason: gpt_result.reason
-        )
+        @document.reload
+        redirect_to result_document_path(@document)
       rescue StandardError => e
         Rails.logger.error "OpenAI判定でエラー発生: #{e.message}"
+        render :new, status: :unprocessable_entity
         # 必要ならフラッシュメッセージなども追加
       end
-      render :result
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,10 +35,42 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def update_location
+    @document = Document.find(params[:id])
+    if @document.update(location: params[:document][:location])
+      redirect_to document_path(@document), notice: "保管場所のメモを保存しました。"
+    else
+      render :show, alert: "保存に失敗しました。"
+    end
+  end
+
+  def update_user_comment
+    @document = Document.find(params[:id])
+    if @document.update(user_comment_params)
+      redirect_to @document, notice: "メモを保存しました。"
+    else
+      render :show, alert: "保存に失敗しました。"
+    end
+  end
+
+  def update_judgement
+    @document = Document.find(params[:id])
+    if @document.update(user_override: params[:document][:user_override])
+      redirect_to document_path(@document), notice: "判定を更新しました。"
+    else
+      render :show, alert: "更新に失敗しました。"
+    end
+  end
+  
   def result
+    @document = Document.find(params[:id])
+    @document.reload
+    @gpt_result = @document.gpt_result
   end
 
   def show
+    @document = Document.find(params[:id])
+    @gpt_result = @document.gpt_result
   end
 
   def index
@@ -62,5 +91,9 @@ class DocumentsController < ApplicationController
 
   def document_params
     params.require(:document).permit(:title, :location, :category_id, :user_override, :expires_at, :user_comment)
+  end
+
+  def user_comment_params
+    params.require(:document).permit(:user_comment)
   end
 end

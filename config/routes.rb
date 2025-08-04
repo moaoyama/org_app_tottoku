@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     member do
       get :result
       patch :update_location
-      patch :update_note
+      patch :update_user_comment
       patch :update_judgement
       post :upload_image
       get  :edit_image

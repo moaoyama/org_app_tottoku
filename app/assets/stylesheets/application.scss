@@ -57,6 +57,7 @@ main {
 
 .subtitlemd {
   font-size: 20px;
+  margin-top: 48px;
 }
 
 .text-l {
@@ -103,11 +104,27 @@ main {
 }
 
 /* ==================================== */
+/* 保管方法の提案ページ固有のスタイル */
+/* ==================================== */
+  .app-main .result {
+    max-width: 320px;
+  }
+  .result .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 12px; /* 丸みをつける */
+  }
+  
+  .badge-important { background-color: #F8D7DA; }
+  .badge-folder { background-color: 	#D0E3FC; }
+  .badge-trash { background-color: #E0E0E0; }
+/* ==================================== */
 /* アカウント作成ページ固有のスタイル */
 /* ==================================== */
-.signup-form-container .form-group {
+  .signup-form-container .form-group {
     margin-bottom: 16px; /* アカウント作成フォームグループの間隔を16pxに上書き */
-}
+  }
 /* ==================================== */
 
 .btn-l{
@@ -132,6 +149,10 @@ main {
   background-color: #7EBDE2;
   color: #FFFFFF;
   border: none;
+}
+
+.btn-l .btn {
+  margin-bottom: 24px;
 }
 
 .app-footer {
@@ -196,7 +217,7 @@ main {
 }
 
 /* 「書類を追加する」固定ボタンのコンテナ */
-.fixed-add-button-container {
+  .fixed-add-button-container {
     position: fixed; /* 画面に固定 */
     bottom: 84px; /* 下からの位置 */
     left: 50%; /* 水平中央寄せの基準 */
@@ -207,28 +228,28 @@ main {
     padding: 0 20px; /* 左右のパディング */
     box-sizing: border-box;
     z-index: 100; /* 他のコンテンツの上に表示 */
-}
+  }
 
-.fixed-add-button {
+  .fixed-add-button {
     /* main-action-buttonのスタイルを継承 */
     /* 必要であれば、ここで固定ボタンに特有のスタイルを上書き */
     width: 280px; /* 固定ボタンの幅 */
     height: 56px; /* 固定ボタンの高さ */
-}
+  }
 
-.document-info-content {
+  .document-info-content {
     display: flex;
     flex-direction: column;
     gap: 16px; /* 文字列どうしの間隔16px */
-}
+  }
 
-.document-card-actions {
+  .document-card-actions {
     position: absolute; /* ボタンをカード内に絶対配置 */
     bottom: 16px; /* 下からの位置を調整 */
     right: 12px; /* 右からの位置を調整 */
-}
+  }
 
-.detail-button {
+  .detail-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,7 +263,7 @@ main {
     font-weight: bold;
     transition: background-color 0.3s ease;
     box-sizing: border-box;
-}
+  }
 
 /* ==================================== */
 /* タブ切りかえ */
@@ -261,7 +282,8 @@ main {
 /* ラベルの見た目 */
 .tabs label {
   display: inline-block;
-  padding: 10px 15px;
+  padding: 10px 12px;
+  font-size: 15px;
   cursor: pointer;
   background-color: #eee;
   border: 1px solid #ccc;
@@ -337,7 +359,7 @@ main {
   .tab-content p {
     text-align: left;
   }
-  .tab-content .form-group {
+  .tab-content .form-group, .tab-content .form-group-l {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -345,6 +367,16 @@ main {
   }
   .tab-content .input-field {
     max-width: 280px; /* 入力欄の最大幅 */
+  }
+
+  .form-group-l .input-field {
+  width: 280px; /* 入力欄フォームの寸法320px */
+  height: 96px;
+  padding: 8px 12px;
+  border: 1px solid #CCCCCC; /* ボーダー色をグレーに */
+  border-radius: 8px; /* 角の半径8px */
+  box-sizing: border-box;
+  font-size: 16px; /* 入力文字のサイズ */
   }
 
   .radio-group-wrapper {
@@ -369,7 +401,7 @@ main {
   }
 
   .radio-option .radio-button {
-    margin-left: 8px;
+    margin: 0 8px;
     width: 16px;
     height: 16px;
   }
@@ -471,11 +503,4 @@ main {
     width: 16px;
     height: 16px;
     color: #1f1f1f;
-    margin-left: 8px;
   }
-
-  .badge-important { background-color: #F8D7DA; }
-
-  .badge-folder { background-color: 	#D0E3FC; }
-
-  .badge-trash { background-color: #E0E0E0; }

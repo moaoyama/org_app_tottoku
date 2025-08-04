@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("hamburger-menu");
   const menuClose = document.getElementById("menu-close");

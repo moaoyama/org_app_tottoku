@@ -9,7 +9,7 @@
   <!-- ドロップダウンメニュー -->
   <nav id="hamburger-menu" class="hamburger-menu hidden">
     <div class="side-menu-header">
-      <p class="subtitlemd">とっとく？</p>
+      <p class="app-title">とっとく？</p>
       <div id="menu-close" class="menu-close-btn" aria-label="メニューを閉じる">
         <%= inline_svg_tag 'icons/close.svg', class: 'menu-icon' %>
       </div>
@@ -69,7 +69,7 @@
       <% @documents.each do |document| %>
         <div class="document-card">
           <div class="document-info-content">
-            <p class="text-l">書類名：<%= document.name %></p>
+            <p class="text-l">書類名：<%= document.title %></p>
             <p class="bodysm-s">保管判定：<%= document.ai_decision %></p>
             <p class="bodysm-s">登録日：<%= document.created_at.strftime('%Y-%m-%d') %></p>
           </div>
