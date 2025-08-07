@@ -13,6 +13,8 @@ class DocumentsController < ApplicationController
       begin
         gpt_result = OpenaiJudgementService.judge_and_save(@document)
         @document.reload
+
+        flash[:notice] = "判定を保存しました"
         redirect_to result_document_path(@document)
       rescue StandardError => e
         Rails.logger.error "OpenAI判定でエラー発生: #{e.message}"
@@ -58,6 +60,7 @@ class DocumentsController < ApplicationController
     if @document.update(user_override: params[:document][:user_override])
       redirect_to document_path(@document), notice: "判定を更新しました。"
     else
+      logger.debug @document.errors.full_messages
       render :show, alert: "更新に失敗しました。"
     end
   end
@@ -90,7 +93,7 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:title, :location, :category_id, :user_override, :expires_at, :user_comment)
+    params.require(:document).permit(:title, :location, :category_id, :user_override, :expires_at, :user_comment, :ai_decision)
   end
 
   def user_comment_params

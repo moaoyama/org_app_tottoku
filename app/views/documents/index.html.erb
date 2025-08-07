@@ -1,94 +1,98 @@
-<header class="app-header">
-  <p class="app-title">とっとく？</p>
-
-  <!-- ハンバーガーアイコン -->
-  <div id="menu-toggle">
-    <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
-  </div>
-
-  <!-- ドロップダウンメニュー -->
-  <nav id="hamburger-menu" class="hamburger-menu hidden">
-    <div class="side-menu-header">
+<body>
+  <div class="app-container">
+    <header class="app-header">
       <p class="app-title">とっとく？</p>
-      <div id="menu-close" class="menu-close-btn" aria-label="メニューを閉じる">
-        <%= inline_svg_tag 'icons/close.svg', class: 'menu-icon' %>
+
+      <!-- ハンバーガーアイコン -->
+      <div id="menu-toggle">
+        <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
       </div>
-    </div>
-    
-    <%= link_to home_path, class: "menu-item" do %>
-      <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">書類を追加<p>
-        <p class="bodysm-s">新しい書類を追加登録します</p>
-      </div>
-    <% end %>
 
-    <%= link_to documents_path, class: "menu-item" do %>
-      <%= inline_svg_tag 'icons/list.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">書類一覧</p>
-        <p class="bodysm-s">登録した書類を確認できます</p>
-      </div>
-    <% end %>
-
-    <%= link_to mypage_path, class: "menu-item" do %>
-      <%= inline_svg_tag 'icons/mypage.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">マイページ</p>
-        <p class="bodysm-s">プロフィールを確認</p>
-      </div>
-    <% end %>
-
-    <%= link_to logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "menu-item" do %>
-      <%= inline_svg_tag 'icons/logout.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">ログアウト</p>
-        <p class="bodysm-s">ログイン状態を解除します</p>
-      </div>
-    <% end %>
-
-  </nav>
-</header>
-
-<main class="app-main">
-  <p class="subtitlemd">登録済みの書類一覧</p>
-
-  <% if @documents.empty? %>
-    <!-- 書類がない場合の表示 -->
-    <div class="no-documents-state">
-      <p>まだ書類が登録されていません</p>
-      <p>書類を登録してみましょう</p>
-      <div class="btn-l">
-        <%= link_to "書類を追加する", home_path, class: 'btn' %>
-      </div>
-    </div>
-
-  <% else %>
-    <!-- 書類がある場合のリスト表示 -->
-    <div class="documents-list-grid">
-      <% @documents.each do |document| %>
-        <div class="document-card">
-          <div class="document-info-content">
-            <p class="text-l">書類名：<%= document.title %></p>
-            <p class="bodysm-s">保管判定：<%= document.ai_decision %></p>
-            <p class="bodysm-s">登録日：<%= document.created_at.strftime('%Y-%m-%d') %></p>
-          </div>
-          <div class="document-card-actions">
-            <%= link_to "詳細を見る", document_path(document), class: 'detail-button' %>
+      <!-- ドロップダウンメニュー -->
+      <nav id="hamburger-menu" class="hamburger-menu hidden">
+        <div class="side-menu-header">
+          <p class="app-title">とっとく？</p>
+          <div id="menu-close" class="menu-close-btn" aria-label="メニューを閉じる">
+            <%= inline_svg_tag 'icons/close.svg', class: 'menu-icon' %>
           </div>
         </div>
+        
+        <%= link_to home_path, class: "menu-item" do %>
+          <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
+          <div class="menu-text-content">
+            <p class="text-l">書類を追加<p>
+            <p class="bodysm-s">新しい書類を追加登録します</p>
+          </div>
+        <% end %>
+
+        <%= link_to documents_path, class: "menu-item" do %>
+          <%= inline_svg_tag 'icons/list.svg', class: 'menu-icon' %>
+          <div class="menu-text-content">
+            <p class="text-l">書類一覧</p>
+            <p class="bodysm-s">登録した書類を確認できます</p>
+          </div>
+        <% end %>
+
+        <%= link_to mypage_path, class: "menu-item" do %>
+          <%= inline_svg_tag 'icons/mypage.svg', class: 'menu-icon' %>
+          <div class="menu-text-content">
+            <p class="text-l">マイページ</p>
+            <p class="bodysm-s">プロフィールを確認</p>
+          </div>
+        <% end %>
+
+        <%= link_to logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "menu-item" do %>
+          <%= inline_svg_tag 'icons/logout.svg', class: 'menu-icon' %>
+          <div class="menu-text-content">
+            <p class="text-l">ログアウト</p>
+            <p class="bodysm-s">ログイン状態を解除します</p>
+          </div>
+        <% end %>
+
+      </nav>
+    </header>
+
+    <main class="app-main">
+      <p class="subtitlemd">登録済みの書類一覧</p>
+
+      <% if @documents.empty? %>
+        <!-- 書類がない場合の表示 -->
+        <div class="no-documents-state">
+          <p>まだ書類が登録されていません</p>
+          <p>書類を登録してみましょう</p>
+          <div class="btn-l">
+            <%= link_to "書類を追加する", home_path, class: 'btn' %>
+          </div>
+        </div>
+
+      <% else %>
+        <!-- 書類がある場合のリスト表示 -->
+        <div class="documents-list-grid">
+          <% @documents.each do |document| %>
+            <div class="document-card">
+              <div class="document-info-content">
+                <p class="text-l">書類名：<%= document.title %></p>
+                <p class="bodysm-s">保管判定：<%= document.user_override.present? ? document.user_override : document.ai_decision %></p>
+                <p class="bodysm-s">登録日：<%= document.created_at.strftime('%Y-%m-%d') %></p>
+              </div>
+              <div class="document-card-actions">
+                <%= link_to "詳細を見る", document_path(document), class: 'detail-button' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <!-- <div class="btn-l"> -->
+          <!-- <%# link_to "書類を追加する", home_path, class: 'btn' %> -->
+        <!-- </div> -->
       <% end %>
+    </main>
+
+    <footer class="app-footer">
+      <p>© 2025 Tottoku</p>
+    </footer>
+
+    <div class="fixed-add-button-container">
+      <%= link_to "書類を追加する", home_path, class: 'btn fixed-add-button' %>
     </div>
-    <!-- <div class="btn-l"> -->
-      <!-- <%# link_to "書類を追加する", home_path, class: 'btn' %> -->
-    <!-- </div> -->
-  <% end %>
-</main>
-
-<footer class="app-footer">
-  <p>© 2025 Tottoku</p>
-</footer>
-
-<div class="fixed-add-button-container">
-  <%= link_to "書類を追加する", home_path, class: 'btn fixed-add-button' %>
-</div>
+  </div>
+</body>

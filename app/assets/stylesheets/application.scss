@@ -4,12 +4,20 @@
  *= require rails_admin
 */
 
-html,body {
-  height: 100%;
+body {
+  height: 100vh;
   margin: 0;
   padding: 0;
   background-color: #F2F7FB;
+  overflow: hidden;
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 main {
   /* font-size: 16px; */
   margin: 0;
@@ -52,12 +60,20 @@ main {
 .titlelg {
   font-size: 24px;
   font-weight: bold;
-  margin-top: 80px;
+  margin-top: 40px;
+  margin-bottom: 16px;
 }
 
 .subtitlemd {
   font-size: 20px;
-  margin-top: 48px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.subtitlemd04 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 32px;
 }
 
 .text-l {
@@ -65,8 +81,17 @@ main {
   font-weight: bold;
 }
 
+.bodysm {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
 .bodysm-s {
   font-size: 14px;
+}
+
+.info .bodysm {
+  margin-bottom: 8px;
 }
 
 .app-main {
@@ -79,6 +104,8 @@ main {
   padding-bottom: 88px;
   box-sizing: border-box;
   text-align: center; /* フォーム内のテキストは中央寄せ */
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 /* フォームグループ（ラベルと入力欄のセット） */
@@ -241,6 +268,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: 16px; /* 文字列どうしの間隔16px */
+  }
+
+  .document-info-content .text-l {
+    font-size: 14px;
   }
 
   .document-card-actions {
@@ -504,3 +535,20 @@ main {
     height: 16px;
     color: #1f1f1f;
   }
+
+/* ==================================== */
+/* フラッシュメッセージ */
+/* ==================================== */
+.flash {
+  position: fixed;
+  top: 76px;
+  width: 100%;
+  height: 48px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2)
+}
+
+.flash.notice {
+  background-color: #D4EDF9;
+  color: #166088;
+}

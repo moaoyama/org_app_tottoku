@@ -1,190 +1,221 @@
-<header class="app-header">
-  <p class="app-title">とっとく？</p>
-
-  <!-- ハンバーガーアイコン -->
-  <div id="menu-toggle">
-    <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
-  </div>
-
-  <!-- ドロップダウンメニュー -->
-  <nav id="hamburger-menu" class="hamburger-menu hidden">
-    <div class="side-menu-header">
+<body>
+  <div class="app-container">
+    <header class="app-header">
       <p class="app-title">とっとく？</p>
-      <div id="menu-close" class="menu-close-btn" aria-label="メニューを閉じる">
-        <%= inline_svg_tag 'icons/close.svg', class: 'menu-icon' %>
+
+      <!-- ハンバーガーアイコン -->
+      <div id="menu-toggle">
+        <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
       </div>
-    </div>
-    
-    <%= link_to home_path, class: "menu-item" do %>
-      <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">書類を追加<p>
-        <p class="bodysm-s">新しい書類を追加登録します</p>
-      </div>
-    <% end %>
 
-    <%= link_to documents_path, class: "menu-item" do %>
-      <%= inline_svg_tag 'icons/list.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">書類一覧</p>
-        <p class="bodysm-s">登録した書類を確認できます</p>
-      </div>
-    <% end %>
-
-    <%= link_to mypage_path, class: "menu-item" do %>
-      <%= inline_svg_tag 'icons/mypage.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">マイページ</p>
-        <p class="bodysm-s">プロフィールを確認</p>
-      </div>
-    <% end %>
-
-    <%= link_to logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "menu-item" do %>
-      <%= inline_svg_tag 'icons/logout.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">ログアウト</p>
-        <p class="bodysm-s">ログイン状態を解除します</p>
-      </div>
-    <% end %>
-
-  </nav>
-</header>
-
-<main class="app-main">
-  <p class="subtitlemd">書類の内容を見る</p>
-
-  <p>書類名：<%= @document.title %></p>
-  <p>登録日時：<%= @document.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
-  <p>更新日時：<%= @document.updated_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
-
-  <div class="tabs">
-    <input type="radio" name="tab" id="tab1" checked>
-    <label for="tab1" class="tab-label">基本情報</label>
-
-    <input type="radio" name="tab" id="tab2">
-    <label for="tab2" class="tab-label">メモ</label>
-
-    <input type="radio" name="tab" id="tab3">
-    <label for="tab3" class="tab-label">添付画像</label>
-
-    <input type="radio" name="tab" id="tab4">
-    <label for="tab4" class="tab-label">AI判定</label>
-
-    <div class="content">
-      <!-- 概要タブ -->
-      <div id="content1" class="tab-content">
-        <p>書類名：<%= @document.title %></p>
-        <p class="bodysm-s">※書類名はAIの判定に使われているので編集できません</p>
-
-        <%= form_with model: @document, url: update_location_document_path(@document), method: :patch do |form| %>
-          <div class="form-group">
-            <p>保管場所のメモ</p>
-            <%= form.text_field :location, class: "w-full border p-2 rounded input-field" %>
-            <p class="bodysm-s">（例）リビングの棚の引き出し1段目</p>
-            <%= form.submit "保存する", class: "btn btn-primary" %>
+      <!-- ドロップダウンメニュー -->
+      <nav id="hamburger-menu" class="hamburger-menu hidden">
+        <div class="side-menu-header">
+          <p class="app-title">とっとく？</p>
+          <div id="menu-close" class="menu-close-btn" aria-label="メニューを閉じる">
+            <%= inline_svg_tag 'icons/close.svg', class: 'menu-icon' %>
+          </div>
+        </div>
+      
+        <%= link_to home_path, class: "menu-item" do %>
+          <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
+          <div class="menu-text-content">
+            <p class="text-l">書類を追加<p>
+            <p class="bodysm-s">
+              新しい書類を追加登録します
+            </p>
           </div>
         <% end %>
+
+        <%= link_to documents_path, class: "menu-item" do %>
+          <%= inline_svg_tag 'icons/list.svg', class: 'menu-icon' %>
+          <div class="menu-text-content">
+            <p class="text-l">書類一覧</p>
+            <p class="bodysm-s">
+              登録した書類を確認できます
+            </p>
+          </div>
+        <% end %>
+
+        <%= link_to mypage_path, class: "menu-item" do %>
+          <%= inline_svg_tag 'icons/mypage.svg', class: 'menu-icon' %>
+          <div class="menu-text-content">
+            <p class="text-l">マイページ</p>
+            <p class="bodysm-s">プロフィールを確認</p>
+          </div>
+        <% end %>
+
+        <%= link_to logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "menu-item" do %>
+          <%= inline_svg_tag 'icons/logout.svg', class: 'menu-icon' %>
+          <div class="menu-text-content">
+            <p class="text-l">ログアウト</p>
+            <p class="bodysm-s">
+              ログイン状態を解除します
+            </p>
+          </div>
+        <% end %>
+
+      </nav>
+    </header>
+
+    <main class="app-main">
+      <p class="subtitlemd">書類の内容を見る</p>
+      <div class="info">
+        <p class="bodysm">
+          書類名：<%= @document.title %>
+        </p>
+        <p class="bodysm">
+          登録日時：<%= @document.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
+        </p>
+      </div>
+        <p class="bodysm">
+        更新日時：<%= @document.updated_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
+        </p>
+
+      <div class="tabs">
+        <input type="radio" name="tab" id="tab1" checked>
+        <label for="tab1" class="tab-label">基本情報</label>
+
+        <input type="radio" name="tab" id="tab2">
+        <label for="tab2" class="tab-label">メモ</label>
+
+        <input type="radio" name="tab" id="tab3">
+        <label for="tab3" class="tab-label">添付画像</label>
+
+        <input type="radio" name="tab" id="tab4">
+        <label for="tab4" class="tab-label">AI判定</label>
+
+        <div class="content">
+          <!-- 概要タブ -->
+          <div id="content1" class="tab-content">
+            <p>書類名：<%= @document.title %></p>
+            <p class="bodysm-s">
+              ※書類名はAIの判定に使われているので編集できません
+            </p>
+
+            <%= form_with model: @document, url: update_location_document_path(@document), method: :patch do |form| %>
+              <div class="form-group">
+                <p>保管場所のメモ</p>
+                <%= form.text_field :location, class: "w-full border p-2 rounded input-field" %>
+                <p class="bodysm-s">
+                  （例）リビングの棚の引き出し1段目
+                </p>
+                <%= form.submit "保存する", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+
+        <!-- メモタブ -->
+        <div id="content2" class="tab-content">
+          <div class="form-group">
+            <%= form_with model: @document, url: update_user_comment_document_path(@document), method: :patch do |form| %>
+              <div class="form-group-l">
+                <p>メモ</p>
+                <%= form.text_area :user_comment, rows: 5, class: "w-full border p-2 rounded input-field" %>
+                <p class="bodysm-s">
+                  あとで追加・編集できます。必要に応じて記入してください
+                </p>
+              </div>
+            <%= form.submit "保存する", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- 添付画像タブ -->
+        <div id="content3" class="tab-content">
+        
+          <!-- カメラ機能は未実装 or 対応環境外なので一時的に無効化 -->
+          <!-- <%# link_to "カメラを起動して撮影", camera_app_path, class: "btn btn-secondary" %> -->
+          <p>カメラ機能はスマートフォンでの使用を想定しています（現在は使用できません）</p>
+          <%= link_to "ファイルを選ぶ", upload_image_document_path(@document), class: "btn btn-secondary" %>
+
+          <%# if @document.images.blank? %>
+            <p>まだ画像が登録されていません。画像を追加してみましょう！</p>
+          <!-- <%# else %> -->
+          <!-- <%#  <div class="image-list mt-4"> %> -->
+          <!-- <%#    <% @document.images.each do |image| %> %> -->
+          <!-- <%#      <div class="image-card border rounded p-2 mb-3"> %> -->
+          <!-- <%#        <%= image_tag image.variant(resize_to_fill: [80, 80]), class: "inline-block mr-3" %> %> -->
+          <!-- <%#        <p>登録日：<%= l image.created_at %></p> %> -->
+          <!-- <%#        <p>保管期限：<%= image.expiry || "無期限" %></p> %> -->
+
+          <!-- <%#        <%= link_to "編集", edit_image_document_path(@document, image_id: image.id), class: "btn btn-sm btn-outline" %> %> -->
+          <!-- <%#        <%= link_to "削除", delete_image_document_path(@document, image_id: image.id),
+                method: :delete,
+                data: { confirm: "この画像を削除しますか？" },
+                class: "btn btn-sm btn-danger" %> %> -->
+          <!-- <%#      </div> %> -->
+          <!-- <%#    <% end %> %> -->
+          <!-- <%#  </div> %> -->  
+          <!-- <%# end %> -->
+        </div>
+
+        <!-- AI判定タブ -->
+        <div id="content4" class="tab-content">
+          <p>
+            <strong>判定：</strong>
+            <%= @document.user_override.presence || @document.ai_decision %>
+          </p>
+          <p>
+            <strong>判定理由：</strong>
+            <%= @gpt_result&.reason || "判定結果がありません" %>
+          </p>
+
+          <p>AIの提案に対して、どうしますか？</p>
+          <p class="bodysm-s">
+            ※変更しない場合はAIの判定がそのまま使われます
+          </p>
+      
+          <% @document.user_override ||= "提案をそのまま使う" %>
+        
+          <%= form_with model: @document, url: update_judgement_document_path(@document), method: :patch do |form| %>
+            <div class="radio-group-wrapper">
+              <label class="radio-option">
+                <%= form.radio_button :user_override, "提案をそのまま使う" , class: 'radio-button'%>
+                <p>提案をそのまま使う</p>
+              </label>
+
+              <label class="radio-option">
+                <%= form.radio_button :user_override, "紙で保管が必要", class: 'radio-button' %>
+                <%= inline_svg_tag 'icons/important.svg', class: 'badge-icon' %>
+                <p>紙で保管が必要</p>
+                <span class="badge badge-red"></span>
+              </label>
+
+              <label class="radio-option">
+                <%= form.radio_button :user_override, "データ保管でOK", class: 'radio-button' %>
+                <%= inline_svg_tag 'icons/folder.svg', class: 'badge-icon' %>
+                <p>データ保管でOK</p>
+                <span class="badge badge-blue"></span>
+              </label>
+
+              <label class="radio-option">
+                <%= form.radio_button :user_override, "処分してOK", class: 'radio-button' %>
+                <%= inline_svg_tag 'icons/trash.svg', class: 'badge-icon' %>
+                <p>処分してOK</p>
+                <span class="badge badge-gray"></span>
+              </label>
+            </div>
+
+            <%= form.submit "保存する", class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
 
-    <!-- メモタブ -->
-    <div id="content2" class="tab-content">
-      <div class="form-group">
-        <%= form_with model: @document, url: update_user_comment_document_path(@document), method: :patch do |form| %>
-          <div class="form-group-l">
-            <p>メモ</p>
-            <%= form.text_area :user_comment, rows: 5, class: "w-full border p-2 rounded input-field" %>
-            <p class="bodysm-s">あとで追加・編集できます。必要に応じて記入してください</p>
-          </div>
-         <%= form.submit "保存する", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
+      <div class="btn-irreg">
+        <%= link_to "書類一覧へ", documents_path,
+        class: "btn" %>
+        <%= link_to "ホームに戻る", home_path,
+        class: "btn" %>
+      </div>
+      <%= link_to "削除する", document_path(@document),
+        method: :delete,
+        data: { confirm: "この書類を削除しますか？" },
+        class: "btn btn-danger" %>
+    </main>
 
-    <!-- 添付画像タブ -->
-    <div id="content3" class="tab-content">
-      
-      <!-- カメラ機能は未実装 or 対応環境外なので一時的に無効化 -->
-      <!-- <%# link_to "カメラを起動して撮影", camera_app_path, class: "btn btn-secondary" %> -->
-      <p>カメラ機能はスマートフォンでの使用を想定しています（現在は使用できません）</p>
-      <%= link_to "ファイルを選ぶ", upload_image_document_path(@document), class: "btn btn-secondary" %>
-
-      <%# if @document.images.blank? %>
-        <p>まだ画像が登録されていません。画像を追加してみましょう！</p>
-      <!-- <%# else %> -->
-      <!-- <%#  <div class="image-list mt-4"> %> -->
-      <!-- <%#    <% @document.images.each do |image| %> %> -->
-      <!-- <%#      <div class="image-card border rounded p-2 mb-3"> %> -->
-      <!-- <%#        <%= image_tag image.variant(resize_to_fill: [80, 80]), class: "inline-block mr-3" %> %> -->
-      <!-- <%#        <p>登録日：<%= l image.created_at %></p> %> -->
-      <!-- <%#        <p>保管期限：<%= image.expiry || "無期限" %></p> %> -->
-
-      <!-- <%#        <%= link_to "編集", edit_image_document_path(@document, image_id: image.id), class: "btn btn-sm btn-outline" %> %> -->
-      <!-- <%#        <%= link_to "削除", delete_image_document_path(@document, image_id: image.id),
-              method: :delete,
-              data: { confirm: "この画像を削除しますか？" },
-              class: "btn btn-sm btn-danger" %> %> -->
-      <!-- <%#      </div> %> -->
-      <!-- <%#    <% end %> %> -->
-      <!-- <%#  </div> %> -->  
-      <!-- <%# end %> -->
-    </div>
-
-    <!-- AI判定タブ -->
-    <div id="content4" class="tab-content">
-      <p><strong>判定：</strong><%= @document.ai_decision %></p>
-      <p><strong>判定理由：</strong><%= @gpt_result&.reason || "判定結果がありません" %></p>
-
-      <p>AIの提案に対して、どうしますか？</p>
-      <p class="bodysm-s">※変更しない場合はAIの判定がそのまま使われます</p>
-    
-      <% @document.user_override ||= "提案をそのまま使う" %>
-      
-      <%= form_with model: @document, url: update_judgement_document_path(@document), method: :patch do |form| %>
-        <div class="radio-group-wrapper">
-          <label class="radio-option">
-            <%= form.radio_button :user_override, "提案をそのまま使う" , class: 'radio-button'%>
-            <p>提案をそのまま使う</p>
-          </label>
-
-          <label class="radio-option">
-            <%= form.radio_button :user_override, "紙で保管が必要", class: 'radio-button' %>
-            <%= inline_svg_tag 'icons/important.svg', class: 'badge-icon' %>
-            <p>紙で保管が必要</p>
-            <span class="badge badge-red"></span>
-          </label>
-
-          <label class="radio-option">
-            <%= form.radio_button :user_override, "データ保管でOK", class: 'radio-button' %>
-            <%= inline_svg_tag 'icons/folder.svg', class: 'badge-icon' %>
-            <p>データ保管でOK</p>
-            <span class="badge badge-blue"></span>
-          </label>
-
-          <label class="radio-option">
-            <%= form.radio_button :user_override, "処分してOK", class: 'radio-button' %>
-            <%= inline_svg_tag 'icons/trash.svg', class: 'badge-icon' %>
-            <p>処分してOK</p>
-            <span class="badge badge-gray"></span>
-          </label>
-        </div>
-
-        <%= form.submit "保存する", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+    <footer class="app-footer">
+      <p>© 2025 Tottoku</p>
+    </footer>
   </div>
-
-  <div class="btn-irreg">
-    <%= link_to "書類一覧へ", documents_path,
-      class: "btn" %>
-    <%= link_to "ホームに戻る", home_path,
-      class: "btn" %>
-  </div>
-  <%= link_to "削除する", document_path(@document),
-      method: :delete,
-      data: { confirm: "この書類を削除しますか？" },
-      class: "btn btn-danger" %>
-</main>
-
-<footer class="app-footer">
-  <p>© 2025 Tottoku</p>
-</footer>
+</body>
