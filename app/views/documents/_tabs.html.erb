@@ -1,0 +1,20 @@
+<div class="tabs">
+  <input type="radio" name="tab" id="tab1" checked>
+  <label for="tab1" class="tab-label">基本情報</label>
+
+  <input type="radio" name="tab" id="tab2">
+  <label for="tab2" class="tab-label">メモ</label>
+
+  <input type="radio" name="tab" id="tab3">
+  <label for="tab3" class="tab-label">添付画像</label>
+
+  <input type="radio" name="tab" id="tab4">
+  <label for="tab4" class="tab-label">AI判定</label>
+
+  <div class="content">
+    <%= render "tab_basic_info" %>
+    <%= render "tab_memo" %>
+    <%= render "tab_images" %>
+    <%= render "tab_ai" %>
+  </div>
+</div>

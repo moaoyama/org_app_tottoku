@@ -26,6 +26,19 @@ class DocumentsController < ApplicationController
     end
   end
 
+
+  def upload_image
+    @document = Document.find(params[:id])
+  
+    if params[:image].present?
+      @image = @document.images.build
+      @image.file.attach(params[:image])
+      @image.save
+    end
+
+    redirect_to document_path(@document)
+  end
+
   def edit
   end
 
@@ -86,6 +99,13 @@ class DocumentsController < ApplicationController
     redirect_to documents_path, notice: "書類を削除しました"
   end
 
+  def delete_image
+    document = Document.find(params[:id])
+    image = document.images.find(params[:image_id])
+    image.destroy
+    redirect_to document_path(document), notice: '画像を削除しました'
+  end
+  
   private
 
   def set_document

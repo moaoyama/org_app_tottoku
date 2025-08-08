@@ -1,0 +1,17 @@
+<div id="content1" class="tab-content">
+  <p>書類名：<%= @document.title %></p>
+  <p class="bodysm-s">
+    ※書類名はAIの判定に使われているので編集できません
+  </p>
+
+  <%= form_with model: @document, url: update_location_document_path(@document), method: :patch do |form| %>
+    <div class="form-group">
+      <p>保管場所のメモ</p>
+      <%= form.text_field :location, class: "w-full border p-2 rounded input-field" %>
+      <p class="bodysm-s">
+        （例）リビングの棚の引き出し1段目
+      </p>
+      <%= form.submit "保存する", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

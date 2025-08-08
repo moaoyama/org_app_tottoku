@@ -1,0 +1,50 @@
+<!-- AI判定タブ -->
+<div id="content4" class="tab-content">
+  <p>
+    <strong>判定：</strong>
+    <%= @document.user_override.presence || @document.ai_decision %>
+  </p>
+  <p>
+    <strong>判定理由：</strong>
+    <%= @gpt_result&.reason || "判定結果がありません" %>
+  </p>
+
+  <p>AIの提案に対して、どうしますか？</p>
+  <p class="bodysm-s">
+    ※変更しない場合はAIの判定がそのまま使われます
+  </p>
+
+  <% @document.user_override ||= "提案をそのまま使う" %>
+
+  <%= form_with model: @document, url: update_judgement_document_path(@document), method: :patch do |form| %>
+    <div class="radio-group-wrapper">
+      <label class="radio-option">
+        <%= form.radio_button :user_override, "提案をそのまま使う" , class: 'radio-button'%>
+        <p>提案をそのまま使う</p>
+      </label>
+
+      <label class="radio-option">
+        <%= form.radio_button :user_override, "紙で保管が必要", class: 'radio-button' %>
+        <%= inline_svg_tag 'icons/important.svg', class: 'badge-icon' %>
+        <p>紙で保管が必要</p>
+        <span class="badge badge-red"></span>
+      </label>
+
+      <label class="radio-option">
+        <%= form.radio_button :user_override, "データ保管でOK", class: 'radio-button' %>
+        <%= inline_svg_tag 'icons/folder.svg', class: 'badge-icon' %>
+        <p>データ保管でOK</p>
+        <span class="badge badge-blue"></span>
+      </label>
+
+      <label class="radio-option">
+        <%= form.radio_button :user_override, "処分してOK", class: 'radio-button' %>
+        <%= inline_svg_tag 'icons/trash.svg', class: 'badge-icon' %>
+        <p>処分してOK</p>
+        <span class="badge badge-gray"></span>
+      </label>
+    </div>
+
+    <%= form.submit "保存する", class: "btn btn-primary" %>
+  <% end %>
+</div>

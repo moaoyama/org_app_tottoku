@@ -1,0 +1,31 @@
+<!-- 添付画像タブ -->
+<div id="content3" class="tab-content">
+  <div class="form-group btn-l">
+    <!-- カメラ起動ボタン -->
+    <div class="btn" onclick="document.getElementById('camera-input').click()">
+      カメラを起動して撮影
+    </div>
+    <input id="camera-input" type="file" accept="image/*" capture="environment" hidden>
+
+    <!-- フォルダ起動ボタン -->
+    <%= form_with url: upload_image_document_path(@document), multipart: true, id: "image-upload-form", local: true do %>
+      <input type="file" name="image" id="auto-upload-input" accept="image/*">
+      <div id="preview-area" class="thumbnail-gallery"></div>
+    <% end %>
+  </div>
+
+  <% if @document.images.blank? %>
+    <p>まだ画像が登録されていません。</p>
+    <p>画像を追加してみましょう！</p>
+  <% else %>
+    <div class="thumbnail-gallery">
+      <% @document.images.each do |image| %>
+        <%= image_tag image.file.variant(resize_to_limit: [80, 80]).processed, alt: "添付画像", class: "thumbnail" %>
+
+        <%= button_to delete_image_document_path(@document, image_id: image.id), method: :delete, data: { confirm: "この画像を削除しますか？" }, class: "delete-thumb-btn" do %>
+          削除
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

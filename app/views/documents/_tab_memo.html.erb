@@ -1,0 +1,15 @@
+<!-- メモタブ -->
+<div id="content2" class="tab-content">
+  <div class="form-group">
+    <%= form_with model: @document, url: update_user_comment_document_path(@document), method: :patch do |form| %>
+      <div class="form-group-l">
+        <p>メモ</p>
+        <%= form.text_area :user_comment, rows: 5, class: "w-full border p-2 rounded input-field" %>
+        <p class="bodysm-s">
+          あとで追加・編集できます。必要に応じて記入してください
+        </p>
+      </div>
+      <%= form.submit "保存する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

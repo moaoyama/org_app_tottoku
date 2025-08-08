@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_29_073430) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_08_062921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +88,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_29_073430) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.bigint "document_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_images_on_document_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -102,4 +109,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_29_073430) do
   add_foreign_key "documents", "categories"
   add_foreign_key "documents", "gpt_results"
   add_foreign_key "documents", "users"
+  add_foreign_key "images", "documents"
 end

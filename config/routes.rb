@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :documents do
+    post 'upload_image', on: :member
+    delete 'delete_image', on: :member
+  end
+
   # root "users#new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

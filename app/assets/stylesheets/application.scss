@@ -364,7 +364,7 @@ main {
 .btn-irreg {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 280px;
   justify-content: space-around;
 }
 
@@ -410,6 +410,10 @@ main {
   font-size: 16px; /* 入力文字のサイズ */
   }
 
+  .tab-content .bodysm-s {
+    margin-bottom: 24px;
+  }
+
   .radio-group-wrapper {
     display: flex;
     flex-direction: column;
@@ -440,6 +444,33 @@ main {
     margin-left: 8px;
     font-size: 16px;
     color: #1f1f1f;
+  }
+
+  .thumbnail-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .thumbnail-gallery img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+  }
+
+  .delete-thumb-btn {
+    width: 72px;
+    height: 36px;
+    font-size: 14px;
+    background-color: #F2F7FB;
+    color: #1F1F1F;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 36px;
   }
 /* ==================================== */
 /* ハンバーガーメニュー */
@@ -551,4 +582,9 @@ main {
 .flash.notice {
   background-color: #D4EDF9;
   color: #166088;
+}
+
+.flash {
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
