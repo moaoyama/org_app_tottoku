@@ -35,6 +35,7 @@ main {
   background-color: #7EBDE2;
   margin-top: 0;
   z-index: 1000; /* 他より前面に表示 */
+  justify-content: space-between;
 }
 
 /* 非表示 */
@@ -98,14 +99,13 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 68px;
   justify-content: flex-start;
-  min-height: calc(100vh - 68px - 68px); /* ヘッダーとフッターの高さを引いた高さ */
+  margin-top: 68px;
   padding-bottom: 88px;
   box-sizing: border-box;
   text-align: center; /* フォーム内のテキストは中央寄せ */
-  flex-grow: 1;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* フォームグループ（ラベルと入力欄のセット） */
@@ -154,11 +154,37 @@ main {
   }
 /* ==================================== */
 
+/* ==================================== */
+/* ログインページ固有のスタイル */
+/* ==================================== */
+  .checkbox-group {
+    display: flex; 
+  }
+  .checkbox-group .checkbox {
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    border: 1px solid #CCCCCC;
+  }
+  .checkbox-group bodysm {
+    align-items: center;
+  }
+/* ==================================== */
+
 .btn-l{
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+.btn-btm {
+  position: fixed;
+  bottom: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 .btn{
@@ -185,12 +211,20 @@ main {
 .app-footer {
   height: 68px;
   background-color: #7EBDE2;
+  color: #FFFFFF;
   text-align: center;
   padding-top: 1vh;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+.menu-icon-hum {
+  color: #f8c3cd;
+  width: 48px;
+  height: 48px;
+  padding-right: 16px;
 }
 
 .menu-icon {
@@ -385,7 +419,13 @@ main {
   justify-content: center; /* 水平方向の中央寄せ (テキスト用) */
   margin-left: auto; /* ボタン自体を水平中央寄せ */
   margin-right: auto; /* ボタン自体を水平中央寄せ */
-  }
+  border-radius: 8px; 
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  box-sizing: border-box;
+  line-height: 44px;
+}
 
   .tab-content p {
     text-align: left;

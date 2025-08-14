@@ -7,21 +7,22 @@
 <main class="app-main">
   <p class="subtitlemd">アカウントを作成</p>
 
-  <%= form_with model: @user, local: true, class: 'form-container signup-form-container' do |form| %>
-    <% if @user.errors.any? %>
-      <div style="color: red;">
-        <h2>エラーがあります：</h2>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <% if resource.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(resource.errors.count, "error") %> が発生しました:</h2>
+      <ul>
+        <% resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), local: true) do |form| %>
 
     <div class="form-group">
       <%= form.label :name, "ユーザー名" %>
-      <%= form.text_field :name, class: 'input-field', placeholder: 'ユーザー名を入力' %>
+      <%= form.text_field :name, class: 'input-field', placeholder: 'ユーザー名を入力', autofocus: true %>
     </div>
 
     <div class="form-group">
@@ -44,7 +45,7 @@
     </div>
 
     <p>
-      <%= link_to "ログインはこちら", login_path %>
+      <%= link_to "ログインはこちら", new_user_session_path %>
     </p>
   <% end %>
 </main>

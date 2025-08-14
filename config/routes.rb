@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  # Deviseのルート（ログイン / サインアップ / ログアウト）
+  devise_for :users
+
+  # 管理画面
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+  # 通常ページ
   get 'home/index'
   get 'static_pages/home'
 
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  # ユーザー関連（表示や編集だけ残す/n&cはDeviseが担当）
+  resources :users, only: [:show, :edit, :update]
+  
+  # Documents関連
   resources :documents, only: [:create, :show, :result, :index, :edit, :update, :destroy] do
     member do
       get :result
@@ -16,30 +25,20 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :documents do
-    post 'upload_image', on: :member
-    delete 'delete_image', on: :member
-  end
+  # resources :documents do
+  #   post 'upload_image', on: :member
+  #   delete 'delete_image', on: :member
+  # end
 
-  # root "users#new"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # 健康確認用
   get "up" => "rails/health#show", as: :rails_health_check
-
-  get    'login',  to: 'sessions#new'
-  post   'login',  to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy', as: :logout
   
+  # その他ルート
   get '/home', to: 'home#index', as: 'home'
-  
   post "/result", to: "documents#result", as: "judge_result"
   # get 'documents/:id/result', to: 'documents#result', as: 'document_result'
   get '/mypage', to: 'users#show', as: :mypage
-  get '/signup', to: 'users#new', as: 'signup'
-  post '/signup', to: 'users#create'
 
-  # Defines the root path route ("/")
+  # ルートページ ("/")
   root 'static_pages#home'
 end

@@ -182,3 +182,43 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+  hello: "こんにちは"
+
+  devise:
+    sessions:
+      signed_in: "ログインしました"
+      signed_out: "ログアウトしました"
+      invalid: "メールアドレスまたはパスワードが正しくありません"
+
+    registrations:
+      signed_up: "アカウントを作成しました"
+      updated: "アカウント情報を更新しました"
+      destroyed: "アカウントを削除しました"
+
+    passwords:
+      send_instructions: "パスワード再設定の案内を送信しました"
+      updated: "パスワードを変更しました"
+      reset_password: "パスワードを再設定してください"
+
+    confirmations:
+      send_instructions: "確認メールを送信しました"
+      confirmed: "アカウントを確認しました"
+
+    unlocks:
+      send_instructions: "アカウントロック解除の案内を送信しました"
+      unlocked: "アカウントロックを解除しました"
+
+    failure:
+      unauthenticated: "ログインが必要です"
+      unconfirmed: "アカウントが確認されていません"
+      locked: "アカウントがロックされています"
+      invalid: "認証に失敗しました"
+
+    mailer:
+      reset_password_instructions:
+        subject: "パスワード再設定の案内"
+      confirmation_instructions:
+        subject: "アカウント確認の案内"
+      unlock_instructions:
+        subject: "アカウントロック解除の案内"

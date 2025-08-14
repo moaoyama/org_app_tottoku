@@ -3,7 +3,7 @@
 
   <!-- ハンバーガーアイコン -->
   <div id="menu-toggle">
-    <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon' %>
+    <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon menu-icon-hum' %>
   </div>
 
   <!-- ドロップダウンメニュー -->
@@ -14,12 +14,14 @@
         <%= inline_svg_tag 'icons/close.svg', class: 'menu-icon' %>
       </div>
     </div>
-    
+  
     <%= link_to home_path, class: "menu-item" do %>
       <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
       <div class="menu-text-content">
-        <p class="text-l">書類を追加<p>
-        <p class="bodysm-s">新しい書類を追加登録します</p>
+        <p class="text-l">書類を追加</p>
+        <p class="bodysm-s">
+          新しい書類を追加登録します
+        </p>
       </div>
     <% end %>
 
@@ -27,7 +29,9 @@
       <%= inline_svg_tag 'icons/list.svg', class: 'menu-icon' %>
       <div class="menu-text-content">
         <p class="text-l">書類一覧</p>
-        <p class="bodysm-s">登録した書類を確認できます</p>
+        <p class="bodysm-s">
+          登録した書類を確認できます
+        </p>
       </div>
     <% end %>
 
@@ -39,13 +43,14 @@
       </div>
     <% end %>
 
-    <%= link_to logout_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "menu-item" do %>
+    <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "menu-item" do %>
       <%= inline_svg_tag 'icons/logout.svg', class: 'menu-icon' %>
       <div class="menu-text-content">
         <p class="text-l">ログアウト</p>
-        <p class="bodysm-s">ログイン状態を解除します</p>
+        <p class="bodysm-s">
+          ログイン状態を解除します
+        </p>
       </div>
     <% end %>
-
   </nav>
 </header>
