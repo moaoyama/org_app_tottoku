@@ -7,14 +7,6 @@ class Document < ApplicationRecord
   # belongs_to :document_id, optional: true
 
   # app/models/document.rb
-  has_one_attached :file
-  
-  has_many :images, dependent: :destroy
-  # 名前は好きなように変えられる
-
-
-  private
-
-
+  has_many_attached :images
   
 end

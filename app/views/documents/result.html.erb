@@ -29,7 +29,7 @@
       <% end %>  
     </p>
     <p class="bodysm">
-      AIからのアドバイス：<%= @gpt_result&.reason || "判定結果がありません" %>
+      AIからのアドバイス：<%= @gpt_result&.reason&.gsub(/^\d+\.\s*/, '') || "判定結果がありません" %>
     </p>
   </div>
 

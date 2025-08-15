@@ -2,6 +2,10 @@
 import "@hotwired/turbo-rails"
 import Rails from "@rails/ujs"
 import "controllers"
+import "./custom/expiry_modal"
+import { openModal, closeModal } from "./custom/modal.js";
+window.openModal = openModal;
+window.closeModal = closeModal;
 
 Rails.start();
 
@@ -27,42 +31,18 @@ function previewImage(event) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const fileInput = document.getElementById("auto-upload-input");
+document.addEventListener("turbo:load", () => {
+  const input = document.getElementById("auto-upload-input");
+  const form  = document.getElementById("image-upload-form");
   const previewArea = document.getElementById("preview-area");
-  const form = document.getElementById("image-upload-form");
 
-  if (fileInput) {
-    fileInput.addEventListener("change", function (event) {
-      const files = event.target.files;
+  if (!input || !form || !previewArea) return;
 
-      // プレビューエリアを一度クリア
-      previewArea.innerHTML = "";
-
-      if (files.length > 0) {
-        Array.from(files).forEach((file) => {
-          if (file.type.startsWith("image/")) {
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-              const img = document.createElement("img");
-              img.src = e.target.result;
-              img.className = "thumbnail";
-              previewArea.appendChild(img);
-            };
-
-            reader.readAsDataURL(file);
-          }
-        });
-
-        // フォーム自動送信 & ページを少し遅れてリロード
-        form.submit();
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000); // 1秒待ってからリロード（調整可）
-      }
-    });
-  }
+  input.addEventListener("change", () => {
+    if (input.files.length > 0) {
+      form.requestSubmit(); // Ajaxで送信
+    }
+  });
 });
 
 document.addEventListener("turbo:load", () => {

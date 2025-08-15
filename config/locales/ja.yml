@@ -214,6 +214,9 @@ ja:
       unconfirmed: "アカウントが確認されていません"
       locked: "アカウントがロックされています"
       invalid: "認証に失敗しました"
+      already_authenticated: "すでにログインしています"
+      user:
+        already_authenticated: "すでにログインしています"
 
     mailer:
       reset_password_instructions:

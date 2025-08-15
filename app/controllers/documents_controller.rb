@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :require_login
+  before_action :authenticate_user!
   before_action :set_document, only: [:show, :edit, :update, :result]
   
   def new
@@ -27,13 +27,12 @@ class DocumentsController < ApplicationController
   end
 
 
+  # 画像アップロード
   def upload_image
     @document = Document.find(params[:id])
   
-    if params[:image].present?
-      @image = @document.images.build
-      @image.file.attach(params[:image])
-      @image.save
+    if params[:images]
+      @document.images.attach(params[:images]) 
     end
 
     redirect_to document_path(@document)
@@ -78,6 +77,19 @@ class DocumentsController < ApplicationController
     end
   end
   
+  def update_expiry
+    @document = Document.find(params[:id])
+
+    # nilの場合は無期限としてexpires_atをNULLにする
+    new_expiry = params[:document][:expires_at].present? ? Time.parse(params[:document][:expires_at]) : nil
+
+    if @document.update(expires_at: new_expiry)
+      redirect_to document_path(@document), notice: "保管期限を更新しました"
+    else
+      redirect_to document_path(@document), alert: "保管期限の更新に失敗しました"
+    end
+  end
+
   def result
     @document = Document.find(params[:id])
     @document.reload
@@ -99,11 +111,12 @@ class DocumentsController < ApplicationController
     redirect_to documents_path, notice: "書類を削除しました"
   end
 
+  # 画像削除
   def delete_image
-    document = Document.find(params[:id])
-    image = document.images.find(params[:image_id])
-    image.destroy
-    redirect_to document_path(document), notice: '画像を削除しました'
+    @document = Document.find(params[:id])
+    image = @document.images.find(params[:image_id])
+    image.purge
+    redirect_to document_path(@document), notice: '画像を削除しました'
   end
   
   private

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       post :upload_image
       get  :edit_image
       delete :delete_image
+
+      patch :update_expiry
     end
   end
 
