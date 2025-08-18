@@ -45,6 +45,19 @@ document.addEventListener("turbo:load", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  const fileInput = document.getElementById('auto-upload-input');
+  const fileNameDisplay = document.getElementById('file-name');
+
+  fileInput.addEventListener('change', function() {
+    if (this.files.length > 0) {
+      fileNameDisplay.textContent = this.files[0].name;
+    } else {
+      fileNameDisplay.textContent = '選択されていません';
+    }
+  });
+});
+
 document.addEventListener("turbo:load", () => {
   const flashMessages = document.querySelectorAll(".flash");
 

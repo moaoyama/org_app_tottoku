@@ -8,20 +8,28 @@
     <input id="camera-input" type="file" accept="image/*" capture="environment" hidden>
 
     <!-- フォルダ起動ボタン -->
-    <%= form_with url: upload_image_document_path(@document), multipart: true, local: true do %>
-      <input type="file" name="images[]" id="auto-upload-input" accept="image/*" multiple>
-      <%= submit_tag "アップロード", class: "btn" %>
-    <% end %>
+    <%= form_with url: upload_image_document_path(@document), multipart: true, local: true, id: "upload-form" do %>
+      <div class="btn-l">
+        <div class="btn file-btn" onclick="document.getElementById('auto-upload-input').click()">
+         ファイルを選択
+        </div>
+        <span id="file-name" class="file-name">選択されていません</span>
+        <input type="file" name="images[]" id="auto-upload-input" accept="image/*" multiple hidden>
+        <%= submit_tag "アップロード", class: "btn" %>
+      <% end %>
+    </div>
   </div>
 
   <% if @document.images.attached? %>
     <div class="thumbnail-gallery">
       <% @document.images.each do |image| %>
-        <%= image_tag image.variant(resize_to_limit: [80, 80]).processed, alt: "添付画像", class: "thumbnail", onclick: "openModal('#{url_for(image)}')" %>
+        <div class="thumbnail-item">
+          <%= image_tag image.variant(resize_to_limit: [80, 80]).processed, alt: "添付画像", class: "thumbnail", onclick: "openModal('#{url_for(image)}')" %>
 
-        <%= button_to delete_image_document_path(@document, image_id: image.id), method: :delete, data: { confirm: "この画像を削除しますか？" }, class: "delete-thumb-btn" do %>
-          削除
-        <% end %>
+          <%= button_to delete_image_document_path(@document, image_id: image.id), method: :delete, data: { confirm: "この画像を削除しますか？" }, class: "delete-thumb-btn" do %>
+            削除
+          <% end %>
+        </div>
       <% end %>
     </div>
     <!-- 保管期限設定ボタン -->
@@ -43,29 +51,38 @@
 </div>
 
 <!-- 保管期限設定モーダル -->
-<div id="expiry-modal" class="modal" style="display: none;">
-  <div class="modal-content">
+<div id="expiry-modal" class="expiry-modal" style="display: none;">
+  <div class="expiry-box">
     <span id="expiry-close" class="close">&times;</span>
-    <p>保管期限を選択</p>
+    <p class="expiry-title">保管期限を変更する</p>
+
+    <!-- 現在の保管期限表示 -->
+    <p id="current-expiry">
+      現在の保管期限：
+      <%= @document.expires_at.present? ? @document.expires_at.strftime("%Y/%m/%d") : "無期限" %>
+    </p>
+    <p>保管期限を選んでください</p>
+    <p>あとから変更することも可能です</p>
 
     <%= form_with url: update_expiry_document_path(@document), method: :patch, local: true do |form| %>
-      <div>
-        <%= form.radio_button :expires_at, nil, checked: true %>
-        <%= form.label :expires_at, "無期限", value: nil %>
+      <div class="expiry-option">
+        <%= form.radio_button :expires_at, nil, checked: true, id: "expiry_radio_none", name: "expiry_option" %>
+        <p class="expiry-text" data-radio="expiry_radio_none">無期限</p>
       </div>
       
-      <div>
-        <%= form.radio_button :expires_at, 6.months.from_now %>
-        <%= form.label :expires_at, "6か月後", value: 6.months.from_now %>
+      <div class="expiry-option">
+        <%= form.radio_button :expires_at, 6.months.from_now, id: "expiry_radio_6m", name: "expiry_option" %>
+        <p class="expiry-text" data-radio="expiry_radio_6m">6か月後</p>
       </div>
       
-      <div>
-        <%= form.radio_button :expires_at, 1.year.from_now %>
-        <%= form.label :expires_at, "1年後", value: 1.year.from_now %>
+      <div class="expiry-option">
+        <%= form.radio_button :expires_at, 1.year.from_now, id: "expiry_radio_1y", name: "expiry_option" %>
+        <p class="expiry-text" data-radio="expiry_radio_1y">1年後</p>
       </div>
       
-      <div>
-        <%= form.submit "保存", class: "btn" %>
+      <div class="expiry-btns">
+        <button type="button" class="btn cancel-btn">キャンセルする</button>
+        <%= form.submit "保存する", class: "btn" %>
       </div>
     <% end %>
   </div>

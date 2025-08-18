@@ -6,7 +6,7 @@
   </p>
   <p>
     <strong>判定理由：</strong>
-    <%= @gpt_result&.reason || "判定結果がありません" %>
+    <%= @gpt_result&.clean_reason || "判定結果がありません" %>
   </p>
 
   <p>AIの提案に対して、どうしますか？</p>

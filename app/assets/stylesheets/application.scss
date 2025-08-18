@@ -427,6 +427,19 @@ main {
   line-height: 44px;
 }
 
+.file-name-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px; /* ボタンとの間に間隔を設ける */
+  text-align: center; /* 中央揃え */
+}
+.btn-l .file-btn {
+  margin-bottom: 4px;
+}
+.file-name {
+  margin-bottom: 16px;
+}
+
   .tab-content p {
     text-align: left;
   }
@@ -486,11 +499,21 @@ main {
     color: #1f1f1f;
   }
 
+  #upload-form .btn {
+    margin-bottom: 0;
+  }
+
   .thumbnail-gallery {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 1rem;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .thumbnail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* サムネイルとボタンの間の間隔 */
   }
 
   .thumbnail-gallery img {
@@ -504,7 +527,8 @@ main {
     width: 72px;
     height: 36px;
     font-size: 14px;
-    background-color: #F2F7FB;
+    font-weight: bold;
+    background-color: #AED6F1;
     color: #1F1F1F;
     border: none;
     border-radius: 4px;
@@ -655,3 +679,81 @@ main {
     font-weight: bold;
     cursor: pointer;
   }
+
+/* ==================================== */
+/* モーダル用スタイル */
+/* ==================================== */  
+.expiry-modal {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 358px;
+  height: 315px;
+  background-color: #F2F7FB;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: none;
+  padding: 16px;
+}
+
+.expiry-modal-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.expiry-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.expiry-option {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.expiry-submit {
+  margin-top: auto;
+}
+
+.expiry-modal .close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  color:#1F1F1F;
+}
+
+/* ボタン */
+.expiry-btns {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  justify-content: flex-between;
+}
+
+.expiry-btns .btn {
+  width: 136px;
+  height: 44px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  border: none;
+  border-radius: 8px;
+}
+
+.save-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
