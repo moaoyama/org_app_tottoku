@@ -28,3 +28,12 @@ window.addEventListener("click", function(event) {
     modal.style.display = "none";
   }
 });
+// ゲストログインモーダル用
+export function openGuestModal() {
+  const modal = document.getElementById('guest-modal');
+  modal.style.display = 'block';
+};
+export function closeGuestModal() {
+  const modal = document.getElementById('guest-modal');
+  modal.style.display = 'none';
+};

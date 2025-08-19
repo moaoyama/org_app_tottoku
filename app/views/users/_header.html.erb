@@ -1,5 +1,11 @@
 <header class="app-header">
-  <p class="app-title">とっとく？</p>
+  <div class="header-left">
+    <p class="app-title">とっとく？</p>
+        
+    <% if current_user&.admin? %>
+      <%= link_to "管理者ページ", rails_admin_path, class: "admin-link" %>
+    <% end %>
+  </div>
 
   <!-- ハンバーガーアイコン -->
   <div id="menu-toggle">
@@ -43,14 +49,12 @@
       </div>
     <% end %>
 
-    <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }, class: "menu-item" do %>
+    <%= link_to destroy_user_session_path, class: "menu-item", rel: "nofollow", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } do %>
       <%= inline_svg_tag 'icons/logout.svg', class: 'menu-icon' %>
-      <div class="menu-text-content">
-        <p class="text-l">ログアウト</p>
-        <p class="bodysm-s">
-          ログイン状態を解除します
-        </p>
-      </div>
+        <div class="menu-text-content">
+          <p class="text-l">ログアウト</p>
+          <p class="bodysm-s">ログイン状態を解除します</p>
+        </div>
     <% end %>
   </nav>
 </header>

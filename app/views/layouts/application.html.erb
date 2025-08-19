@@ -12,18 +12,17 @@
   </head>
 
   <body>
-    <% flash.each do |key, message| %>
-      <div class="flash <%= key %>">
-        <%= message %>
+    <% if flash[:notice] %>
+      <div class="flash flash-notice">
+        <%= flash[:notice] %>
       </div>
     <% end %>
-
-    <%= yield %>
 
     <% if flash[:alert] %>
       <div class="alert alert-danger"><%= flash[:alert] %></div>
     <% end %>
-
+    
+    <%= yield %>
 
   </body>
 </html>

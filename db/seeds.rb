@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# 一般ユーザーゲストを作成する
+User.find_or_create_by!(email: 'guest_user@example.com') do |user|
+  user.password = SecureRandom.urlsafe_base64
+  user.name = 'ゲストユーザー'
+end
+
+# 管理者ゲストを作成する
+User.find_or_create_by!(email: 'admin_guest_user@example.com') do |user|
+  user.password = SecureRandom.urlsafe_base64
+  user.name = '管理者ゲストユーザー'
+  user.admin = true # <-- 管理者であることを示す「特別な印」
+end

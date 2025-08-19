@@ -38,6 +38,16 @@ main {
   justify-content: space-between;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.admin-link {
+  color: #FFFFFF; /* 文字色を白に */
+  text-decoration: none; /* 下線をなくす */
+  padding-left: 16px; /* 「とっとく？」との間隔 */
+}
+
 /* 非表示 */
 .hidden {
   display: none;
@@ -640,19 +650,20 @@ main {
   width: 100%;
   height: 48px;
   padding: 8px 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2)
-}
-
-.flash.notice {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 1000;
   background-color: #D4EDF9;
   color: #166088;
-}
-
-.flash {
   opacity: 1;
   transition: opacity 0.5s ease;
 }
+.flash-left {
+  text-align: left;
+}
 
+.alert-danger {
+  display: none;
+}
 /* ==================================== */
 /* モーダル用スタイル */
 /* ==================================== */
@@ -681,7 +692,7 @@ main {
   }
 
 /* ==================================== */
-/* モーダル用スタイル */
+/* モーダル用（保管期限）スタイル */
 /* ==================================== */  
 .expiry-modal {
   position: fixed;
@@ -699,6 +710,7 @@ main {
 }
 
 .expiry-modal-content {
+  text-align: center;
   position: relative;
   height: 100%;
   display: flex;
@@ -710,10 +722,12 @@ main {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 16px;
+  color: #1F1F1F;
 }
 
 .expiry-option {
-  margin-bottom: 12px;
+  justify-content: center;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
 }
@@ -730,9 +744,13 @@ main {
   cursor: pointer;
   color:#1F1F1F;
 }
+.expiry-text {
+  margin-left: 8px;
+}
 
 /* ボタン */
 .expiry-btns {
+  justify-content: center;
   display: flex;
   gap: 12px;
   margin-top: 16px;
@@ -756,4 +774,48 @@ main {
   color: #fff;
   border: none;
   border-radius: 8px;
+}
+/* ==================================== */
+/* モーダル用（保管期限）スタイル */
+/* ==================================== */  
+.guest-modal {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 358px;
+  height: auto;
+  background-color: #F2F7FB;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: none;
+  padding: 16px;
+}
+.guest-box {
+  display: flex; /* Flexboxを有効にする */
+  flex-direction: column; /* 要素を縦に並べる */
+  align-items: center; /* 水平方向の中央揃え */
+  justify-content: center; /* 垂直方向の中央揃え */
+  height: 100%; /* 親要素(guest-modal)の高さいっぱいを使う */
+  position: relative; /* 子要素（閉じるボタン）の位置基準にする */
+}
+.guest-modal .close {
+  position: absolute;
+  top: -12px;
+  right: 0px;
+  font-size: 24px;
+  cursor: pointer;
+  color:#1F1F1F;
+}
+.guest-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* ボタン間の間隔 */
+}
+.guest-btn {
+  background-color: #fff;
+  color: #7EBDE2;
+  border: 1px solid #7EBDE2;
 }

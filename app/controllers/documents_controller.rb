@@ -8,24 +8,23 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.new(document_params)
-    # @document.user = current_user  # ログイン中のユーザーにひもづけ（要ログイン機能）
+    @document.is_guest_document = true if current_user.guest?
+
     if @document.save
       begin
-        gpt_result = OpenaiJudgementService.judge_and_save(@document)
+        OpenaiJudgementService.judge_and_save(@document)
         @document.reload
-
-        flash[:notice] = "判定を保存しました"
-        redirect_to result_document_path(@document)
+        flash[:notice] = current_user.guest? ? "保存は一時的です。" : "判定を保存しました。"
+        redirect_to result_document_document_path(@document)
       rescue StandardError => e
-        Rails.logger.error "OpenAI判定でエラー発生: #{e.message}"
+        Rails.logger.error "OpenAI判定でエラー発生: #{e.message}" 
+        @document.destroy # エラー時にはドキュメントを削除
         render :new, status: :unprocessable_entity
-        # 必要ならフラッシュメッセージなども追加
       end
     else
       render :new, status: :unprocessable_entity
     end
   end
-
 
   # 画像アップロード
   def upload_image

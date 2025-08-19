@@ -225,3 +225,8 @@ ja:
         subject: "アカウント確認の案内"
       unlock_instructions:
         subject: "アカウントロック解除の案内"
+  
+  admin:
+    misc:
+      navigation: "ナビゲーション"
+      navigation_static_label: "静的リンク"

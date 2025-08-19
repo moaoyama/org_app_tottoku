@@ -34,7 +34,7 @@
     </div>
     <!-- 保管期限設定ボタン -->
     <div class="btn-l">
-      <div id="expiry-button" class="btn">
+      <div id="expiry-button" class="btn" onclick="openExpiryModal()">
         保管期限を設定
       </div>
     </div>
@@ -53,7 +53,7 @@
 <!-- 保管期限設定モーダル -->
 <div id="expiry-modal" class="expiry-modal" style="display: none;">
   <div class="expiry-box">
-    <span id="expiry-close" class="close">&times;</span>
+    <span id="expiry-close" class="close" onclick="closeExpiryModal()">&times;</span>
     <p class="expiry-title">保管期限を変更する</p>
 
     <!-- 現在の保管期限表示 -->
@@ -62,7 +62,7 @@
       <%= @document.expires_at.present? ? @document.expires_at.strftime("%Y/%m/%d") : "無期限" %>
     </p>
     <p>保管期限を選んでください</p>
-    <p>あとから変更することも可能です</p>
+    <p class="bodysm-s">あとから変更することも可能です</p>
 
     <%= form_with url: update_expiry_document_path(@document), method: :patch, local: true do |form| %>
       <div class="expiry-option">
@@ -81,7 +81,7 @@
       </div>
       
       <div class="expiry-btns">
-        <button type="button" class="btn cancel-btn">キャンセルする</button>
+        <button type="button" class="btn cancel-btn" onclick="closeExpiryModal()">キャンセルする</button>
         <%= form.submit "保存する", class: "btn" %>
       </div>
     <% end %>
