@@ -4,12 +4,12 @@
   <p class="titlelg">とっとく？</p>
 
   <p class="subtitlemd subtitlemd04">ようこそ、<%= current_user.name %> さん！</p>
-  <p class="bodysm">書類の名前を入力すると、保管が必要かどうかをAIが判断します</p>
+  <p class="bodysm" style="margin: 16px">書類の名前を入力すると、保管が必要かどうかをAIが判断します</p>
 
-  <%= form_with model: @document, url: documents_path do |form| %>
+  <%= form_with model: @document, url: documents_path, local: true, data: { turbo: false }  do |form| %>
     <div class="form-group">
       <%= form.label :title, "書類名を入力：" %>
-      <%= form.text_field :title, required: true, class: 'input-field' %>
+      <%= form.text_field :title, class: 'input-field' %>
       <p class="bodysm-s">できるだけ具体的に記入してください</p>
     </div>
 
@@ -22,3 +22,14 @@
 <footer class="app-footer">
   <p>© 2025 Tottoku</p>
 </footer>
+
+<% if @document && @document.errors.any? %>
+  <div class="error-box">
+    <p class="bodysm"><%= pluralize(@document.errors.count, "エラー") %>があります:</p>
+    <ul>
+      <% @document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -163,10 +163,16 @@ main {
     margin-bottom: 16px; /* アカウント作成フォームグループの間隔を16pxに上書き */
   }
 /* ==================================== */
-
-/* ==================================== */
 /* ログインページ固有のスタイル */
 /* ==================================== */
+  .registar .subtitlemd {
+    margin-top: 32px;
+    margin-bottom: 8px;
+  }
+  .registar .bodysm-s {
+    margin-bottom: 24px;
+  }
+
   .checkbox-group {
     display: flex; 
   }
@@ -181,7 +187,6 @@ main {
     align-items: center;
   }
 /* ==================================== */
-
 .btn-l{
   display: flex;
   flex-direction: column;
@@ -257,6 +262,9 @@ main {
 
 .documents-list-grid {
   display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* 理想のレイアウトに合わせて、1列表示で中央寄せ */
   grid-template-columns: minmax(326px, 1fr); /* 最小326px、最大で利用可能な幅 */
   gap: 16px; /* カード間の間隔 */
@@ -818,4 +826,36 @@ main {
   background-color: #fff;
   color: #7EBDE2;
   border: 1px solid #7EBDE2;
+}
+
+/* ==================================== */
+/* バリデーションエラーのメッセージ */
+/* ==================================== */
+.floating-error {
+  position: fixed;       /* ページ上に固定 */
+  top: 45%;             
+  left: 50%;             /* 横中央 */
+  transform: translateX(-50%); /* 真ん中に揃える */
+  background-color: #ffdddd; 
+  color: #1f1f1f;
+  padding: 12px 20px;
+  border-radius: 8px;
+  z-index: 500;         /* 他の要素より上に */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.error-flash {
+  position: fixed;       /* 画面上に固定 */
+  top: 84px;             
+  left: 50%;             /* 横方向中央 */
+  transform: translateX(-50%); /* 中央寄せ */
+  background-color: #ffdddd; /* 背景色（赤系でエラー感） */
+  color: #1f1f1f;           /* 文字色 */
+  border: 1px solid #f00; 
+  border-radius: 6px;
+  padding: 10px 20px;
+  z-index: 500;         /* 他の要素より前面に表示 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  max-width: 90%;        /* 幅を画面に収める */
+  opacity: 1;
+  transition: opacity 1s ease-out; /* フェードアウト */
 }

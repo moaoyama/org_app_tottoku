@@ -51,4 +51,8 @@ Rails.application.routes.draw do
 
   # ルートページ ("/")
   root 'static_pages#home'
+
+  # 独自エラーページ
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
 end

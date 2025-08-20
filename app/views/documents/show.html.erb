@@ -2,6 +2,8 @@
   <%= render "header" %>
 
   <main class="app-main">
+    <%= render "shared/flash_errors", object: @document %>
+  
     <p class="subtitlemd">書類の内容を見る</p>
     <div class="info">
       <p class="bodysm">

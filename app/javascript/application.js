@@ -83,3 +83,16 @@ document.addEventListener("DOMContentLoaded", () => {
     span.replaceWith(span.textContent);
   });
 });
+
+document.addEventListener('turbo:load', () => {
+  const flash = document.getElementById('error-flash');
+  if (flash) {
+    setTimeout(() => {
+      flash.style.opacity = 0;
+      // 1秒後にDOMから削除
+      setTimeout(() => {
+        flash.remove();
+      }, 1000);
+    }, 3000); // 3秒後にフェードアウト開始
+  }
+});

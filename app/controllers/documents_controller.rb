@@ -22,7 +22,7 @@ class DocumentsController < ApplicationController
         render :new, status: :unprocessable_entity
       end
     else
-      render :new, status: :unprocessable_entity
+      render "home/index", status: :unprocessable_entity
     end
   end
 
@@ -53,7 +53,8 @@ class DocumentsController < ApplicationController
     if @document.update(location: params[:document][:location])
       redirect_to document_path(@document), notice: "保管場所のメモを保存しました。"
     else
-      render :show, alert: "保存に失敗しました。"
+      flash.now[:alert] = "保存に失敗しました"
+      render :show, status: :unprocessable_entity
     end
   end
 
@@ -62,7 +63,8 @@ class DocumentsController < ApplicationController
     if @document.update(user_comment_params)
       redirect_to @document, notice: "メモを保存しました。"
     else
-      render :show, alert: "保存に失敗しました。"
+      flash.now[:alert] = "保存に失敗しました。"
+      render :show, status: :unprocessable_entity
     end
   end
 
@@ -72,7 +74,8 @@ class DocumentsController < ApplicationController
       redirect_to document_path(@document), notice: "判定を更新しました。"
     else
       logger.debug @document.errors.full_messages
-      render :show, alert: "更新に失敗しました。"
+      flash.now[:alert] = "更新に失敗しました。"
+      render :show, status: :unprocessable_entity
     end
   end
   
