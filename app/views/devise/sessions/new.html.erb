@@ -40,13 +40,3 @@
 <footer class="app-footer">
   <p>© 2025 Tottoku</p>
 </footer>
-
-<% if resource.errors.any? %>
-  <div class="error-flash">
-    <ul>
-      <% resource.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
