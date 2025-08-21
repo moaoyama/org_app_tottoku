@@ -41,6 +41,24 @@ document.addEventListener("turbo:load", () => {
   document.querySelectorAll('.rails_admin .sidebar li a span').forEach(span => {
     span.replaceWith(span.textContent);
   });
+
+  // === ゲストモーダル関連の処理 ===
+  const openGuestButton = document.getElementById('expiry-button');
+  const closeGuestButton = document.getElementById('guest-close');
+  const guestModal = document.getElementById('guest-modal');
+  // 「ためしてみる」ボタンにクリックイベントを追加
+  if (openGuestButton && guestModal) {
+    openGuestButton.addEventListener('click', () => {
+      guestModal.style.display = 'block';
+    });
+  }
+
+  // 閉じるボタンにクリックイベントを追加
+  if (closeGuestButton && guestModal) {
+    closeGuestButton.addEventListener('click', () => {
+      guestModal.style.display = 'none';
+    });
+  }
 });
 
 function previewImage(event) {

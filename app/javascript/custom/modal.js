@@ -43,6 +43,20 @@ export function closeGuestModal() {
   }
 }
 
+// すべてのモーダルに共通するクリックイベントリスナー
+document.addEventListener('DOMContentLoaded', () => {
+  const guestModal = document.getElementById('guest-modal');
+  const openGuestButton = document.getElementById('expiry-button');
+  const closeGuestButton = document.getElementById('guest-close');
+
+  if (openGuestButton && guestModal) {
+    openGuestButton.addEventListener('click', openGuestModal);
+  }
+
+  if (closeGuestButton && guestModal) {
+    closeGuestButton.addEventListener('click', closeGuestModal);
+  }
+
   // 複数のモーダルに対応するため、モーダル外クリックイベントリスナーを分離
   window.addEventListener("click", (event) => {
     // ゲストモーダルを閉じる処理
