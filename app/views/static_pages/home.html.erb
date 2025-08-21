@@ -9,7 +9,7 @@
   </p>
 
   <div class="btn-l btn-btm">
-    <div id="expiry-button" class="guest-btn btn" onclick="openGuestModal()">
+    <div id="expiry-button" class="guest-btn btn">
       ためしてみる
     </div>
     <%= link_to '新しく登録する', new_user_registration_path, class: 'btn btn-secondary' %>
@@ -21,10 +21,9 @@
   <p>© 2025 Tottoku</p>
 </footer>
 
-<!-- 保管期限設定モーダル -->
 <div id="guest-modal" class="guest-modal" style="display: none;">
   <div class="guest-box">
-    <span id="guest-close" class="close" onclick="closeGuestModal()">&times;</span>
+    <span id="guest-close" class="close">&times;</span>
     <p class="expiry-title">どちらでログインしますか？</p>
     <div class="guest-btns">
       <%= link_to '管理者ゲストでログイン', admin_guest_sign_in_path, class: 'btn btn-secondary' %>
