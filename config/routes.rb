@@ -38,7 +38,6 @@ Rails.application.routes.draw do
   
   # その他ルート
   get '/home', to: 'home#index', as: 'home'
-  get '/mypage', to: 'users#show', as: :mypage
 
   # ルートページ ("/")
   root 'static_pages#home'
