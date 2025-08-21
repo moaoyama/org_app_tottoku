@@ -6,6 +6,7 @@ import "controllers"
 import "@rails/ujs" // @rails/ujsを読み込む
 import "custom/modal" // modal.js を読み込む
 import "hamburger_toggle" // hamburger_toggle.jsを読み込む
+import { openGuestModal, closeGuestModal } from "custom/modal";
 
 // Turboを使用しているため、turbo:loadイベントに統一
 document.addEventListener("turbo:load", () => {
@@ -47,16 +48,16 @@ document.addEventListener("turbo:load", () => {
   const closeGuestButton = document.getElementById('guest-close');
   const guestModal = document.getElementById('guest-modal');
   // 「ためしてみる」ボタンにクリックイベントを追加
-  if (openGuestButton && guestModal) {
+  if (openGuestButton) {
     openGuestButton.addEventListener('click', () => {
-      guestModal.style.display = 'block';
+      openGuestModal();
     });
   }
 
   // 閉じるボタンにクリックイベントを追加
-  if (closeGuestButton && guestModal) {
+  if (closeGuestButton) {
     closeGuestButton.addEventListener('click', () => {
-      guestModal.style.display = 'none';
+      closeGuestModal();
     });
   }
 });
