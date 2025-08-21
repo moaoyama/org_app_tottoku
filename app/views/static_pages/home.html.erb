@@ -26,8 +26,8 @@
     <span id="guest-close" class="close">&times;</span>
     <p class="expiry-title">どちらでログインしますか？</p>
     <div class="guest-btns">
-      <%= link_to '管理者ゲストでログイン', method: :post, admin_guest_sign_in_path, class: 'btn btn-secondary' %>
-      <%= link_to '一般ゲストでログイン', method: :post, guest_sign_in_path, class: 'btn btn-primary' %>
+      <%= link_to '管理者ゲストでログイン', admin_guest_sign_in_path, method: :post, class: 'btn btn-secondary' %>
+      <%= link_to '一般ゲストでログイン', guest_sign_in_path, method: :post, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
