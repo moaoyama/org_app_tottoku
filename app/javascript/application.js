@@ -1,4 +1,6 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+// app/javascript/application.js
+
+// Import mapで定義したモジュールを読み込む
 import "@hotwired/turbo-rails"
 import Rails from "@rails/ujs"
 import "controllers"
