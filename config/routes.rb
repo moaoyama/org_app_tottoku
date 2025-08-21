@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Deviseのルート
   devise_for :users, class_name: 'User', controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
 
