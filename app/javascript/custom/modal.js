@@ -33,7 +33,7 @@ export function closeExpiryModal() {
 export function openGuestModal() {
   const modal = document.getElementById('guest-modal');
   if (modal) {
-    modal.style.display = 'none';
+    modal.style.display = 'block';
   }
 }
 export function closeGuestModal() {
@@ -42,20 +42,6 @@ export function closeGuestModal() {
     modal.style.display = 'none';
   }
 }
-
-// すべてのモーダルに共通するクリックイベントリスナー
-document.addEventListener('DOMContentLoaded', () => {
-  const guestModal = document.getElementById('guest-modal');
-  const openGuestButton = document.getElementById('expiry-button');
-  const closeGuestButton = document.getElementById('guest-close');
-
-  if (openGuestButton && guestModal) {
-    openGuestButton.addEventListener('click', openGuestModal);
-  }
-
-  if (closeGuestButton && guestModal) {
-    closeGuestButton.addEventListener('click', closeGuestModal);
-  }
 
   // 複数のモーダルに対応するため、モーダル外クリックイベントリスナーを分離
   window.addEventListener("click", (event) => {
