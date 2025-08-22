@@ -52,6 +52,7 @@ gem 'dotenv-rails'
 gem 'rails-i18n'
 gem 'devise'
 gem "aws-sdk-s3", require: false
+gem 'unicorn'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -72,6 +73,7 @@ group :development do
   gem "capistrano-rails", "~> 1.6", require: false
   gem 'capistrano-safe-deploy-to'
   gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano3-unicorn'
 end
 
 group :test do
