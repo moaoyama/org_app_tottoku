@@ -26,8 +26,7 @@
       class: "btn" %>
     </div>
     <%= link_to "削除する", document_path(@document),
-      method: :delete,
-      data: { confirm: "この書類を削除しますか？" },
+      data: { turbo_method: :delete, turbo_confirm: "この書類を削除しますか？" },
       class: "btn-danger" %>
   </main>
 

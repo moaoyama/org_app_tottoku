@@ -23,6 +23,18 @@
   
     <% unless current_user.guest? %>
       <%= link_to home_path, class: "menu-item" do %>
+        <%= inline_svg_tag 'icons/home.svg', class: 'menu-icon' %>
+        <div class="menu-text-content">
+          <p class="text-l">ホームへ移動</p>
+          <p class="bodysm-s">
+            トップページへ移動します
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% unless current_user.guest? %>
+      <%= link_to home_path, class: "menu-item" do %>
         <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
         <div class="menu-text-content">
           <p class="text-l">書類を追加</p>
@@ -50,7 +62,7 @@
         <%= inline_svg_tag 'icons/mypage.svg', class: 'menu-icon' %>
         <div class="menu-text-content">
           <p class="text-l">マイページ</p>
-          <p class="bodysm-s">プロフィールを確認</p>
+          <p class="bodysm-s">プロフィールを確認できます</p>
         </div>
       <% end %>
     <% end %>

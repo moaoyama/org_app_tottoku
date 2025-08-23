@@ -1,8 +1,8 @@
 class GptResult < ApplicationRecord
-  has_many :documents
+  belongs_to :document
 
   def clean_reason
     return nil if reason.blank?
-    reason.gsub(/【判定】：\d*\.?\s*【理由】：/, "")
+    reason.gsub(/【判定】：\d*\.?\s*【理由】：/, "").gsub(/\A\d+\.\s*/, '')
   end
 end

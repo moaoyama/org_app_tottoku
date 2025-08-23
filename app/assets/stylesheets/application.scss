@@ -34,7 +34,7 @@ main {
   width: 100%;
   background-color: #7EBDE2;
   margin-top: 0;
-  z-index: 1000; /* 他より前面に表示 */
+  z-index: 3;
   justify-content: space-between;
 }
 
@@ -200,7 +200,7 @@ main {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  z-index: 1001;
+  z-index: 1;
 }
 
 .btn{
@@ -307,7 +307,7 @@ main {
     justify-content: center; /* ボタンを中央に配置 */
     padding: 0 20px; /* 左右のパディング */
     box-sizing: border-box;
-    z-index: 100; /* 他のコンテンツの上に表示 */
+    z-index: 2; /* 他のコンテンツの上に表示 */
   }
 
   .fixed-add-button {
@@ -567,7 +567,7 @@ main {
   background-color: #F2F7FB;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   transition: left 0.3s ease;
-  z-index: 1002; /* メニューを最前面に表示 */
+  z-index: 3; /* メニューを最前面に表示 */
   padding: 1rem;
 }
 
@@ -660,7 +660,7 @@ main {
   height: 48px;
   padding: 8px 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  z-index: 1000;
+  z-index: 1;
   background-color: #D4EDF9;
   color: #166088;
   opacity: 1;
@@ -678,7 +678,7 @@ main {
 /* ==================================== */
   .modal {
     position: fixed;
-    z-index: 1000;
+    z-index: 1;
     padding-top: 60px;
     left: 0; top: 0;
     width: 100%; height: 100%;
@@ -713,7 +713,7 @@ main {
   background-color: #F2F7FB;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  z-index: 1000;
+  z-index: 2;
   display: none;
   padding: 16px;
 }
@@ -797,7 +797,7 @@ main {
   background-color: #F2F7FB;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  z-index: 1002;
+  z-index: 2;
   display: none;
   padding: 16px;
 }
@@ -841,7 +841,7 @@ main {
   color: #1f1f1f;
   padding: 12px 20px;
   border-radius: 8px;
-  z-index: 500;         /* 他の要素より上に */
+  z-index: 1;         /* 他の要素より上に */
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 .error-flash {
@@ -854,7 +854,7 @@ main {
   border: 1px solid #f00; 
   border-radius: 6px;
   padding: 10px 20px;
-  z-index: 500;         /* 他の要素より前面に表示 */
+  z-index: 1;         /* 他の要素より前面に表示 */
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   max-width: 90%;        /* 幅を画面に収める */
   opacity: 1;
