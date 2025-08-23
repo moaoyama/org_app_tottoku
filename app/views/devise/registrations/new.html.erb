@@ -4,7 +4,7 @@
   </a>
 </header>
 
-<main class="app-main">
+<main class="app-main" style="height: 100vh;, overflow-y: auto;">
   <div class="registar">
     <p class="subtitlemd">アカウントを作成</p>
     <p class="bodysm-s">必要な項目はすべて記入してください</p>
@@ -47,7 +47,7 @@
       <%= form.submit "登録してはじめる", class: 'btn' %>
     </div>
 
-    <p>
+    <p style="margin-bottom: 68px">
       <%= link_to "ログインはこちら", new_user_session_path %>
     </p>
   <% end %>

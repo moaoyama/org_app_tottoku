@@ -315,6 +315,8 @@ main {
     /* 必要であれば、ここで固定ボタンに特有のスタイルを上書き */
     width: 280px; /* 固定ボタンの幅 */
     height: 56px; /* 固定ボタンの高さ */
+    background-color: #f8c3cd;
+    color: #1f1f1f;
   }
 
   .document-info-content {

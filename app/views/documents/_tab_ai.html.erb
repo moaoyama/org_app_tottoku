@@ -1,15 +1,23 @@
 <!-- AI判定タブ -->
 <div id="content4" class="tab-content">
   <p>
+    <strong>書類名：</strong>
+    <%= @document.title %>
+  </p>
+  <p class="bodysm-s">
+    ※書類名はAIの判定に使われているので編集できません
+  </p>
+  
+  <p>
     <strong>判定：</strong>
     <%= @document.user_override.presence || @document.ai_decision %>
   </p>
-  <p>
+  <p class="bodysm">
     <strong>判定理由：</strong>
     <%= @gpt_result&.clean_reason || "判定結果がありません" %>
   </p>
 
-  <p>AIの提案に対して、どうしますか？</p>
+  <p><strong>AIの提案に対して、どうしますか？</strong></p>
   <p class="bodysm-s">
     ※変更しない場合はAIの判定がそのまま使われます
   </p>

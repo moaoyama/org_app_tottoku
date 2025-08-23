@@ -12,10 +12,11 @@
       <p class="bodysm">
         登録日時：<%= @document.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
       </p>
+      <p class="bodysm">
+      更新日時：<%= @document.updated_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
+      </p>
     </div>
-    <p class="bodysm">
-     更新日時：<%= @document.updated_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
-    </p>
+
 
     <%= render "tabs" %>
 
