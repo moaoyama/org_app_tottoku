@@ -17,7 +17,7 @@ default: &default
   encoding: unicode
   host: localhost
   username: tottoku
-  password: <%= ENV['TOTTOKU_DATABASE_PASSWORD'] %>
+  password: MoQCuBqhqePck/FD+glL8Q==
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -84,6 +84,10 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: tottoku_production
+  pool: 5
   username: tottoku
-  password: <%= ENV["TOTTOKU_DATABASE_PASSWORD"] %>
+  password: MoQCuBqhqePck/FD+glL8Q==
+  host: localhost

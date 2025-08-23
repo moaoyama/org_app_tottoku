@@ -59,3 +59,4 @@ server "56.155.70.195",
     auth_methods: %w(publickey password)
     # password: "please use keys"
   }
+  set :default_env, { 'TOTTOKU_DATABASE_PASSWORD' => 'MoQCuBqhqePck/FD+glL8Q==' }
