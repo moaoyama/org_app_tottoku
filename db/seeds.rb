@@ -9,13 +9,12 @@
 #   end
 # ----------------------------------
 # Users（管理者ユーザー）
-User.find_or_create_by!(
-  name: "AdminUser",
-  email: "admin@example.com",
-  password: "password123",
-  password_confirmation: "password123",
-  admin: true
-)
+User.find_or_create_by!(email: "admin@example.com") do |user|
+  user.name: "AdminUser",
+  user.password: "password123",
+  user.password_confirmation: "password123",
+  user.admin: true
+end
 
 # 一般ユーザーゲストを作成する
 User.find_or_create_by!(email: 'guest_user@example.com') do |user|
