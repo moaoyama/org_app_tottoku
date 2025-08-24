@@ -72,8 +72,8 @@ group :development do
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-rails", "~> 1.6", require: false
   gem 'capistrano-safe-deploy-to'
-  gem 'capistrano-rbenv', '~> 2.2'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano-rbenv', '~> 2.2', require: false
+  gem 'capistrano3-unicorn', require: false
 end
 
 group :test do

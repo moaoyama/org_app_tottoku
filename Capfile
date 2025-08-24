@@ -35,6 +35,7 @@ require "capistrano/rails/migrations"
 require "capistrano/safe_deploy_to"
 # require "capistrano/passenger"
 require 'capistrano3/unicorn'
+require 'capistrano/unicorn'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
