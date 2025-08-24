@@ -9,7 +9,7 @@
 #   end
 # ----------------------------------
 # Users（管理者ユーザー）
-User.create!(
+User.find_or_create_by!(
   name: "AdminUser",
   email: "admin@example.com",
   password: "password123",
