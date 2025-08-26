@@ -77,16 +77,25 @@ class OpenaiJudgementService
     reason = reason&.strip
 
     # GPT結果を保存
-    gpt_result = GptResult.create!(
+    gpt_result = GptResult.create(
       storage_decision: decision,
       reason: reason
     )
 
-    # 書類に保存
     document.update!(
-      ai_decision: decision,
-      gpt_result_id: gpt_result.id 
+      gpt_result_id: gpt_result.id,
+      ai_decision: decision
     )
+
+    # 書類に保存
+    if gpt_result.persisted?
+      document.update(
+        ai_decision: decision,
+        gpt_result_id: gpt_result.id 
+      )
+    else
+      Rails.logger.error "GptResultの保存に失敗: #{gpt_result.errors.full_messages.join(', ')}"
+    end
 
     gpt_result
   end

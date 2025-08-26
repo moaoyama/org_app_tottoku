@@ -1,17 +1,16 @@
 class Document < ApplicationRecord
-  validates :title, presence: true
   belongs_to :user
   belongs_to :category, optional: true
   belongs_to :gpt_result, optional: true
   # belongs_to :document, optional: true
   # belongs_to :document_id, optional: true
 
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :user_id, presence: true
+
   # app/models/document.rb
   has_many_attached :images
-  
-  # 必須バリデーション
-  validates :user, presence: true
-  validates :title, presence: true, length: { maximum: 255 }
+
   # オプションで文字数制限やカスタムバリデーションも追加可能
   validates :location, length: { maximum: 255 }, allow_blank: true
   validates :ai_decision, length: { maximum: 50 }, allow_blank: true

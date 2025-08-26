@@ -15,10 +15,10 @@ class DocumentsController < ApplicationController
         OpenaiJudgementService.judge_and_save(@document)
         @document.reload
         flash[:notice] = current_user.guest? ? "保存は一時的です。" : "判定を保存しました。"
-        redirect_to result_document_path(@document)
+        redirect_to result_document_document_path(@document)
       rescue StandardError => e
         Rails.logger.error "OpenAI判定でエラー発生: #{e.message}" 
-        @document.destroy # エラー時にはドキュメントを削除
+        flash.now[:alert] = "OpenAI判定でエラーが発生しました"
         render :new, status: :unprocessable_entity
       end
     else
@@ -128,7 +128,7 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:title, :location, :category_id, :user_override, :expires_at, :user_comment, :ai_decision)
+    params.require(:document).permit(:title)
   end
 
   def user_comment_params
