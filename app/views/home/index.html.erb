@@ -6,7 +6,7 @@
   <p class="subtitlemd subtitlemd04">ようこそ、<%= current_user.name %> さん！</p>
   <p class="bodysm" style="margin: 16px">書類の名前を入力すると、保管が必要かどうかをAIが判断します</p>
 
-  <%= form_with model: @document, url: documents_path, local: true, data: { turbo: false }  do |form| %>
+  <%= form_with model: @document, url: documents_path, local: false, do |form| %>
     <div class="form-group">
       <%= form.label :title, "書類名を入力：" %>
       <%= form.text_field :title, class: 'input-field' %>
