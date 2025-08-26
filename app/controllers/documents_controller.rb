@@ -15,7 +15,7 @@ class DocumentsController < ApplicationController
         OpenaiJudgementService.judge_and_save(@document)
         @document.reload
         flash[:notice] = current_user.guest? ? "保存は一時的です。" : "判定を保存しました。"
-        redirect_to result_document_document_path(@document)
+        redirect_to result_document_path(@document)
       rescue StandardError => e
         Rails.logger.error "OpenAI判定でエラー発生: #{e.message}" 
         @document.destroy # エラー時にはドキュメントを削除
