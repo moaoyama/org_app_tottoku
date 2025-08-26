@@ -10,46 +10,51 @@
 # ----------------------------------
 # Users（管理者ユーザー）
 User.find_or_create_by!(email: "admin@example.com") do |user|
-  user.name= "AdminUser",
-  user.password= "password123",
-  user.password_confirmation= "password123",
-  user.admin= true
+  user.name = "AdminUser"
+  user.password = "password123"
+  user.password_confirmation = "password123"
+  user.admin = true
 end
 
 # 一般ユーザーゲストを作成する
 User.find_or_create_by!(email: 'guest_user@example.com') do |user|
-  user.password = SecureRandom.urlsafe_base64
+  random.password = SecureRandom.urlsafe_base64
+  user.password = random_password
+  user.password_confirmation = random_password
   user.name = 'ゲストユーザー'
 end
 
 # 管理者ゲストを作成する
 User.find_or_create_by!(email: 'admin_guest_user@example.com') do |user|
-  user.password = SecureRandom.urlsafe_base64
+  random_password = SecureRandom.urlsafe_base64
+  user.password = random_password
+  user.password_confirmation = random_password
   user.name = '管理者ゲストユーザー'
   user.admin = true # <-- 管理者であることを示す「特別な印」
 end
 
 # Categories（documents の分類）
-['仕事', 'プライベート', 'その他'].each do |name|
+categories = ['仕事', 'プライベート', 'その他'].map do |name|
   Category.find_or_create_by!(name: name)
 end
 
 # GPTResults（AI判定結果）
-[['紙で保管が必要', '紙で保管する必要があります'],
+gpt_results = [
+  ['紙で保管が必要', '紙で保管する必要があります'],
   ['データ保管でOK', 'データとして保管すればOKです'],
-   ['処分してOK', '処分して問題ありません']].each do |storage_decision, reason|
-    GptResult.find_or_create_by!(storage_decision: storage_decision) do |gr|
-      gr.reason = reason
-    end
+  ['処分してOK', '処分して問題ありません']
+].map do |storage_decision, reason|
+  GptResult.find_or_create_by!(storage_decision: storage_decision) do |gr|
+    gr.reason = reason
+  end
 end
 
 
 # サンプルドキュメント
-Document.find_or_create_by!(
-  name: 'サンプル書類',
-  category: Category.first,
-  gpt_result: GptResult.first,
-  result: '処分してOK',
-  reason: 'テスト用の初期データ',
-  memo: 'ここにメモを書けます'
-)
+Document.find_or_create_by!(name: 'サンプル書類') do |doc|
+  doc.category = Category.first
+  doc.gpt_result = GptResult.first
+  doc.result = '処分してOK'
+  doc.reason = 'テスト用の初期データ'
+  doc.memo = 'ここにメモを書けます'
+end
