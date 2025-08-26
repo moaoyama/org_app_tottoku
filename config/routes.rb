@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # Documents関連
   resources :documents do
     member do
-      get :result, as: :result_document
+      get :result
       patch :update_location, :update_user_comment, :update_judgement, :update_expiry
       post :upload_image
       get  :edit_image
