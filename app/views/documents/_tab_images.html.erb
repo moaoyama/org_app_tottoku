@@ -8,14 +8,14 @@
     <input id="camera-input" type="file" accept="image/*" capture="environment" hidden>
 
     <!-- フォルダ起動ボタン -->
-    <%= form_with url: upload_image_document_path(@document), multipart: true, local: true, id: "upload-form" do %>
+    <%= form_with url: upload_image_document_path(@document), multipart: true, local: true, id: "upload-form" do |form| %>
       <div class="btn-l">
         <div class="btn file-btn" onclick="document.getElementById('auto-upload-input').click()">
          ファイルを選択
         </div>
         <span id="file-name" class="file-name">選択されていません</span>
-        <input type="file" name="images[]" id="auto-upload-input" accept="image/*" multiple hidden>
-        <%= submit_tag "選んだファイルを保存する", class: "btn" %>
+        <%= f.file_field :images, multiple: true, accept: "image/*" %>
+        <%= f.submit "選んだファイルを保存する", class: "btn" %>
       <% end %>
     </div>
   </div>
