@@ -89,6 +89,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.logger = Logger.new(Rails.root.join("log/production.log"), "daily")
+  config.logger.level = Logger::INFO
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
