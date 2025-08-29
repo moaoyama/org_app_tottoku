@@ -7,6 +7,18 @@
   <p class="bodysm" style="margin: 16px">書類の名前を入力すると、保管が必要かどうかをAIが判断します</p>
 
   <%= form_with model: @document, url: documents_path, local: true, data: { turbo: false }  do |form| %>
+    
+    <% if flash.any? %>
+      <div class="error-flash closeable-error" id="home-flash">
+        <button type="button" id="close-home-flash" class="close-btn">×</button>
+        <ul>
+          <% flash.each do |key, message| %>
+            <li><%= flash[:alert] %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div class="form-group">
       <%= form.label :title, "書類名を入力：" %>
       <%= form.text_field :title, class: 'input-field' %>
@@ -22,14 +34,3 @@
 <footer class="app-footer">
   <p>© 2025 Tottoku</p>
 </footer>
-
-<% if @document && @document.errors.any? %>
-  <div class="error-box">
-    <p class="bodysm"><%= pluralize(@document.errors.count, "エラー") %>があります:</p>
-    <ul>
-      <% @document.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>

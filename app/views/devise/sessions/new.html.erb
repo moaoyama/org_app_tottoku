@@ -7,6 +7,17 @@
 <main class="app-main">
   <p class="subtitlemd">アカウントにログイン</p>
 
+  <% if flash.any? %>
+    <div class="error-flash closeable-error" id="error-flash">
+      <button type="button" id="close-error" class="close-btn">×</button>
+      <ul>
+        <% flash.each do |key, message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_with(model:resource, as: resource_name, url: session_path(resource_name), local: true, data: { turbo: false }) do |form| %>
     <div class="form-group">
       <%= form.label :email, "メールアドレス：" %>

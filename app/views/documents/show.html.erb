@@ -2,7 +2,7 @@
   <%= render "header" %>
 
   <main class="app-main">
-    <%= render "shared/flash_errors", object: @document %>
+    <%# render "shared/flash_errors", object: @document %>
   
     <p class="subtitlemd">書類の内容を見る</p>
     <div class="info">
@@ -17,6 +17,16 @@
       </p>
     </div>
 
+    <% if @document.errors.any? %>
+      <div class="error-flash closeable-error" id="flash-errors">
+        <button type="button" class="close-btn">×</button>
+        <ul>
+          <% @document.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <%= render "tabs" %>
 

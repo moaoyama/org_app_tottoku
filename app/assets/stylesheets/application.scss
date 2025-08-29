@@ -237,14 +237,14 @@ main {
 }
 
 .menu-icon-hum {
-  color: #f8c3cd;
+  color: #FFB6C1;
   width: 48px;
   height: 48px;
   padding-right: 16px;
 }
 
 .menu-icon {
-  color: #f8c3cd;
+  color: #FFB6C1;
   width: 48px;
   height: 48px;
 }
@@ -315,7 +315,7 @@ main {
     /* 必要であれば、ここで固定ボタンに特有のスタイルを上書き */
     width: 280px; /* 固定ボタンの幅 */
     height: 56px; /* 固定ボタンの高さ */
-    background-color: #f8c3cd;
+    background-color: #FFB6C1;
     color: #1f1f1f;
   }
 
@@ -432,7 +432,7 @@ main {
 .btn-danger {
   width: 280px;
   height: 44px;
-  background-color: #f8c3cd; 
+  background-color: #FFB6C1; 
   color: #1f1f1f;
   margin-top: 16px;
   display: flex; /* ブロック要素かつFlexboxコンテナにする */
@@ -855,10 +855,20 @@ main {
   color: #1f1f1f;           /* 文字色 */
   border: 1px solid #f00; 
   border-radius: 6px;
-  padding: 10px 20px;
+  padding: 10px 32px;
   z-index: 1;         /* 他の要素より前面に表示 */
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   max-width: 90%;        /* 幅を画面に収める */
   opacity: 1;
   transition: opacity 1s ease-out; /* フェードアウト */
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }

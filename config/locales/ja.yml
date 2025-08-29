@@ -1,7 +1,21 @@
 ---
 ja:
   activerecord:
+    attributes:
+      user:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+      document:
+        location: "保管場所のメモ"
+        user_comment: "メモ"
     errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "とパスワードが一致していません"
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
@@ -107,7 +121,7 @@ ja:
       password_too_long: が長すぎます
       present: は入力しないでください
       required: を入力してください
-      taken: はすでに存在します
+      taken: はすでに使われています
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
@@ -213,7 +227,7 @@ ja:
       unauthenticated: "ログインが必要です"
       unconfirmed: "アカウントが確認されていません"
       locked: "アカウントがロックされています"
-      invalid: "認証に失敗しました"
+      invalid: "メールアドレスまたはパスワードが正しくありません"
       already_authenticated: "すでにログインしています"
       user:
         already_authenticated: "すでにログインしています"

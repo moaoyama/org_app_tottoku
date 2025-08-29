@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       flash[:notice] = "プロフィールを更新しました"
       redirect_to mypage_path
     else
-      render :show
+      render :show, status: :unprocessable_entity
     end
   end
 

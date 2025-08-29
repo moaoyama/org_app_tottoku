@@ -11,7 +11,8 @@
   </div>
 
   <% if resource.errors.any? %>
-    <div class="error-flash">
+    <div class="error-flash closeable-error" id="error-flash">
+      <button type="button" id="close-error" class="close-btn">×</button>
       <ul>
         <% resource.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

@@ -11,20 +11,17 @@ import { openGuestModal, closeGuestModal } from "custom/modal";
 // Turboを使用しているため、turbo:loadイベントに統一
 document.addEventListener("turbo:load", () => {
   // === ファイルアップロード関連の処理 ===
-  const input = document.getElementById("auto-upload-input");
   const form = document.getElementById("upload-form");
-  const fileNameDisplay = document.getElementById("file-name");
+  const fileInput = document.getElementById("auto-upload-input");
 
-  if (input && fileNameDisplay) {
-    input.addEventListener("change", () => {
-      if (input.files.length > 0) {
-        const fileNames = Array.from(input.files).map(file => file.name).join(', ');
-        fileNameDisplay.textContent = fileNames;
-      } else {
-        fileNameDisplay.textContent = '選択されていません';
+  if (form && fileInput) {
+    form.addEventListener("submit", (event) => {
+      if (!fileInput.files || fileInput.files.length === 0) {
+        event.preventDefault();
+        alert("ファイルが選択されていません");
       }
     });
-  }
+  }  
 
   // === フラッシュメッセージ関連の処理 ===
   const flashMessages = document.querySelectorAll(".flash");
@@ -54,6 +51,14 @@ document.addEventListener("turbo:load", () => {
     });
   }
 
+  // === Devise 登録フォームのエラーフラッシュ閉じる処理 ===
+  document.addEventListener("click", (e) => {
+    if (e.target && e.target.classList.contains("close-btn")) {
+      const container = e.target.closest(".closeable-error");
+      if (container) container.remove();
+      }
+    });
+
   // 閉じるボタンにクリックイベントを追加
   if (closeGuestButton) {
     closeGuestButton.addEventListener('click', () => {
@@ -82,3 +87,4 @@ function previewImage(event) {
     reader.readAsDataURL(file);
   }
 }
+

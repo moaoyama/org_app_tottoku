@@ -22,20 +22,20 @@ class DocumentsController < ApplicationController
         render :new, status: :unprocessable_entity
       end
     else
-      render "home/index", status: :unprocessable_entity
+      flash[:alert] = "書類名を入力してください" if @document.errors[:title].present?
+      redirect_to home_path
     end
   end
 
   # 画像アップロード
   def upload_image
     @document = Document.find(params[:id])
-  
     if params[:images]
-      @document.images.attach(params[:images]) 
+      @document.images.attach(params[:images])
     end
-
     redirect_to document_path(@document)
   end
+
 
   def edit
   end
@@ -50,20 +50,22 @@ class DocumentsController < ApplicationController
 
   def update_location
     @document = Document.find(params[:id])
-    if @document.update(location: params[:document][:location])
-      redirect_to document_path(@document), notice: "保管場所のメモを保存しました。"
+    @document.assign_attributes(location_params)
+    
+    if @document.valid?(context: :location_update) && @document.save(context: :location_update)
+      redirect_to @document, notice: "保管場所を更新しました。"
     else
-      flash.now[:alert] = "保存に失敗しました"
       render :show, status: :unprocessable_entity
     end
   end
 
   def update_user_comment
     @document = Document.find(params[:id])
-    if @document.update(user_comment_params)
+    @document.assign_attributes(user_comment_params)
+
+    if @document.valid?(context: :comment_update) && @document.save(context: :comment_update)
       redirect_to @document, notice: "メモを保存しました。"
     else
-      flash.now[:alert] = "保存に失敗しました。"
       render :show, status: :unprocessable_entity
     end
   end
@@ -129,6 +131,10 @@ class DocumentsController < ApplicationController
 
   def document_params
     params.require(:document).permit(:title)
+  end
+
+  def location_params
+    params.require(:document).permit(:location)
   end
 
   def user_comment_params
