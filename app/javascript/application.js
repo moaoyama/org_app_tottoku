@@ -7,7 +7,7 @@ import "@rails/ujs" // @rails/ujsを読み込む
 import "custom/modal" // modal.js を読み込む
 import "hamburger_toggle" // hamburger_toggle.jsを読み込む
 import { openGuestModal, closeGuestModal } from "custom/modal";
-import { resizeAndUpload } from "./custom/image_upload";
+import { resizeAndUpload } from "custom/image_upload";
 
 // Turboを使用しているため、turbo:loadイベントに統一
 document.addEventListener("turbo:load", () => {

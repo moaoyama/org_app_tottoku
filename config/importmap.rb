@@ -9,3 +9,4 @@ pin "@rails/ujs", to: "@rails--ujs.js", preload: true
 pin "hamburger_toggle", to: "hamburger_toggle.js", preload: true
 pin "custom/modal", to: "custom/modal.js", preload: true
 pin "rails_admin", to: "rails_admin.js", preload: true
+pin "custom/image_upload", to: "custom/image_upload.js"
