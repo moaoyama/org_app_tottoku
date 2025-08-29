@@ -8,7 +8,7 @@
 
   <%= form_with model: @document, url: documents_path, local: true, data: { turbo: false }  do |form| %>
     
-    <% if flash.any? %>
+    <% if flash[:alert] %>
       <div class="error-flash closeable-error" id="home-flash">
         <button type="button" id="close-home-flash" class="close-btn">×</button>
         <ul>
