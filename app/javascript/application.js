@@ -7,6 +7,7 @@ import "@rails/ujs" // @rails/ujsを読み込む
 import "custom/modal" // modal.js を読み込む
 import "hamburger_toggle" // hamburger_toggle.jsを読み込む
 import { openGuestModal, closeGuestModal } from "custom/modal";
+import { resizeAndUpload } from "custom/image_upload";
 
 // Turboを使用しているため、turbo:loadイベントに統一
 document.addEventListener("turbo:load", () => {
@@ -43,15 +44,17 @@ document.addEventListener("turbo:load", () => {
 
   // === カメラ撮影 → 即アップロード ===
   const cameraInput = document.getElementById("camera-input");
-  if (cameraInput && form && fileInput) {
-    cameraInput.addEventListener("change", () => {
+  if (cameraInput && form) {
+    cameraInput.addEventListener("change", async () => {
       if (cameraInput.files.length > 0) {
-        // 撮影したファイルを auto-upload-input にコピー
-        const dataTransfer = new DataTransfer();
-        dataTransfer.items.add(cameraInput.files[0]);
-        fileInput.files = dataTransfer.files;
-        // すぐにフォーム送信
-        form.submit();
+        const file = cameraInput.files[0];
+        try {
+          await resizeAndUpload(file, form); //リサイズ後に送信
+          alert("写真をアップロードしました！");
+        } catch (err) {
+          console.error(err);
+          alert("アップロードに失敗しました");
+        }
       }
     });
   }
