@@ -41,6 +41,21 @@ document.addEventListener("turbo:load", () => {
     });
   }
 
+  // === カメラ撮影 → 即アップロード ===
+  const cameraInput = document.getElementById("camera-input");
+  if (cameraInput && form && fileInput) {
+    cameraInput.addEventListener("change", () => {
+      if (cameraInput.files.length > 0) {
+        // 撮影したファイルを auto-upload-input にコピー
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(cameraInput.files[0]);
+        fileInput.files = dataTransfer.files;
+        // すぐにフォーム送信
+        form.submit();
+      }
+    });
+  }
+    
   // === フラッシュメッセージ関連の処理 ===
   const flashMessages = document.querySelectorAll(".flash");
   flashMessages.forEach((msg) => {
