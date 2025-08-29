@@ -2,10 +2,10 @@
 <div id="content3" class="tab-content">
   <div class="form-group btn-l">
     <!-- カメラ起動ボタン -->
-    <div class="btn" onclick="document.getElementById('camera-input').click()">
-      カメラを起動して撮影
-    </div>
-    <input id="camera-input" type="file" accept="image/*" capture="environment" hidden>
+    <!-- <div class="btn" onclick="document.getElementById('camera-input').click()"> -->
+      <!-- カメラを起動して撮影 -->
+    <!-- </div> -->
+    <!-- <input id="camera-input" type="file" accept="image/*" capture="environment" hidden> -->
 
     <!-- フォルダ起動ボタン -->
     <%= form_with url: upload_image_document_path(@document), multipart: true, id: "upload-form" do %>
