@@ -22,7 +22,16 @@ document.addEventListener("turbo:load", () => {
       if (!fileInput.files || fileInput.files.length === 0) {
         event.preventDefault();
         alert("ファイルが選択されていません");
-      }
+      } else {
+        // 送信後に input をクリア
+        setTimeout(() => {
+          if (fileInput) fileInput.value = null;
+          if (fileNameSpan) fileNameSpan.textContent = "選択されていません";
+          // カメラ入力もクリア
+          const cameraInput = document.getElementById("camera-input");
+          if (cameraInput) cameraInput.value = null;
+        }, 0);
+        }
     });
   } 
 
