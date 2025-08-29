@@ -13,6 +13,8 @@ document.addEventListener("turbo:load", () => {
   // === ファイルアップロード関連の処理 ===
   const form = document.getElementById("upload-form");
   const fileInput = document.getElementById("auto-upload-input");
+  const fileBtn = document.getElementById("select-file-btn");
+  const fileNameSpan = document.getElementById("file-name");
 
   if (form && fileInput) {
     form.addEventListener("submit", (event) => {
@@ -21,7 +23,23 @@ document.addEventListener("turbo:load", () => {
         alert("ファイルが選択されていません");
       }
     });
-  }  
+  } 
+
+  // 「ファイルを選択」ボタンをクリックしたら input をクリックする
+  if (fileBtn && fileInput) {
+    fileBtn.addEventListener("click", () => {
+      fileInput.click();
+      });
+    // 選択したファイル名を表示
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        const names = Array.from(fileInput.files).map(f => f.name).join(", ");
+        fileNameSpan.textContent = names;
+      } else {
+        fileNameSpan.textContent = "選択されていません";
+      }
+    });
+  }
 
   // === フラッシュメッセージ関連の処理 ===
   const flashMessages = document.querySelectorAll(".flash");
@@ -87,4 +105,3 @@ function previewImage(event) {
     reader.readAsDataURL(file);
   }
 }
-
