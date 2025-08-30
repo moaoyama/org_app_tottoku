@@ -30,10 +30,12 @@ class DocumentsController < ApplicationController
   # 画像アップロード
   def upload_image
     @document = Document.find(params[:id])
-    if params[:images]
+    if params[:images].present?
       @document.images.attach(params[:images])
+      redirect_to document_path(@document), notice: "画像をアップロードしました"
+    else
+      redirect_to document_path(@document), alert: "アップロードに失敗しました"
     end
-    redirect_to document_path(@document)
   end
 
 
