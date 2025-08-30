@@ -544,6 +544,10 @@ main {
     object-fit: contain;
     border: 1px solid #ccc;
   }
+  
+  .tabs label .btn {
+    background-color: #7EBDE2;
+  }
 
   .delete-thumb-btn {
     width: 72px;
