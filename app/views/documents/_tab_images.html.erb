@@ -10,9 +10,9 @@
     <!-- フォルダ起動ボタン -->
     <%= form_with url: upload_image_document_path(@document), method: :post, multipart: true, local:  :true, id: "upload-form" do %>
       <div class="btn-l">
-        <label for="auto-upload-input" class="btn file-btn" id="select-file-btn">
+        <div class="btn file-btn" id="select-file-btn">
          ファイルを選択
-        </label>
+        </div>
         <span id="file-name" class="file-name">選択されていません</span>
         <input type="file" name="images[]" id="auto-upload-input" accept="image/*" multiple hidden>
         <%= submit_tag "選んだファイルを保存する", class: "btn", id: "submit-upload" %>
