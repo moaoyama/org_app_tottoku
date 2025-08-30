@@ -29,8 +29,8 @@ class DocumentsController < ApplicationController
 
   # 画像アップロード
   def upload_image
-    @document = Document.find(params[:id])
     if params[:images].present?
+      images = params[:images].is_a?(Array) ? params[:images] : [params[:images]]
       @document.images.attach(params[:images])
       redirect_to document_path(@document), notice: "画像をアップロードしました"
     else
@@ -119,7 +119,6 @@ class DocumentsController < ApplicationController
 
   # 画像削除
   def delete_image
-    @document = Document.find(params[:id])
     image = @document.images.find(params[:image_id])
     image.purge
     redirect_to document_path(@document), notice: '画像を削除しました'

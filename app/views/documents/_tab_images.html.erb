@@ -1,12 +1,6 @@
 <!-- 添付画像タブ -->
 <div id="content3" class="tab-content">
   <div class="form-group btn-l">
-    <!-- カメラ起動ボタン -->
-    <!-- <div class="btn" onclick="document.getElementById('camera-input').click()"> -->
-      <!-- カメラを起動して撮影 -->
-    <!-- </div> -->
-    <!-- <input id="camera-input" type="file" accept="image/*" capture="environment" hidden> -->
-
     <!-- フォルダ起動ボタン -->
     <%= form_with url: upload_image_document_path(@document), method: :post, multipart: true, local: true, id: "upload-form" do %>
       <div class="btn-l">
@@ -16,8 +10,8 @@
         <span id="file-name" class="file-name">選択されていません</span>
         <input type="file" name="images[]" id="auto-upload-input" accept="image/*" multiple hidden>
         <%= submit_tag "選んだファイルを保存する", class: "btn", id: "submit-upload" %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 
   <% if @document.images.attached? %>
@@ -32,12 +26,6 @@
         </div>
       <% end %>
     </div>
-    <!-- 保管期限設定ボタン -->
-    <!--<div class="btn-l">-->
-      <!--<div id="expiry-button" class="btn" onclick="openExpiryModal()">-->
-        <!--保管期限を設定-->
-      <!--</div>-->
-    <!--</div>-->
   <% else %>
     <p>まだ画像が登録されていません。</p>
     <p>画像を追加してみましょう！</p>
@@ -87,3 +75,34 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const fileInput = document.getElementById("auto-upload-input");
+    const fileBtn = document.getElementById("select-file-btn");
+    const fileNameSpan = document.getElementById("file-name");
+
+    fileBtn.addEventListener("click", () => fileInput.click());
+
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length === 0) {
+        fileNameSpan.textContent = "選択されていません";
+      } else if (fileInput.files.length === 1) {
+        fileNameSpan.textContent = fileInput.files[0].name;
+      } else {
+        fileNameSpan.textContent = `${fileInput.files.length} 個のファイルを選択`;
+      }
+    });
+  });
+
+  function openModal(src) {
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("modal-image");
+    modal.style.display = "block";
+    modalImg.src = src;
+  }
+
+  function closeModal() {
+    document.getElementById("image-modal").style.display = "none";
+  }
+</script>
