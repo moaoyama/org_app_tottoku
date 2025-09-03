@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_document, only: [:show, :edit, :update, :result]
+  before_action :set_document, only: [:show, :edit, :update, :result, :delete_image]
   
   def new
     @document = Document.new
