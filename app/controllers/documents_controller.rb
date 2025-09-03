@@ -29,14 +29,15 @@ class DocumentsController < ApplicationController
 
   # 画像アップロード
   def upload_image
+    @document = Document.find(params[:id])
     if params[:images].present?
-      images = params[:images].is_a?(Array) ? params[:images] : [params[:images]]
-      @document.images.attach(params[:images])
-      redirect_to document_path(@document), notice: "画像をアップロードしました"
-    else
-      redirect_to document_path(@document), alert: "アップロードに失敗しました"
+      params[:images].each do |image|
+        @document.images.attach(image)
+      end
     end
+    redirect_to document_path(@document)
   end
+
 
 
   def edit
