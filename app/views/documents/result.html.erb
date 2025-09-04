@@ -6,7 +6,10 @@
   <% end %>
 
   <div class="result">
-    <p class="subtitlemd">保管方法の提案</p>
+    <div class="subtitle">  
+      <p class="subtitlemd">保管方法の提案</p>
+      <p class="bodysm-s">書類名をもとに以下のように判断しました</p>
+    </div>
     <p class="bodysm">書類名：<%= @document.title %></p>
     <p class="bodysm">判定結果：
       <%= @document.ai_decision %>

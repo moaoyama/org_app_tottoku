@@ -23,6 +23,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name)
+    if current_user.guest?
+      params.require(:user).permit()
+    else
+      params.require(:user).permit(:name)
+    end
   end
+  
 end

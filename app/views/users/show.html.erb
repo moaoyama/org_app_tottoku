@@ -1,7 +1,10 @@
 <%= render "header" %>
 
 <main class="app-main">
-  <p class="subtitlemd">マイページ</p>
+  <div class="subtitle">
+    <p class="subtitlemd">マイページ</p>
+    <p class="bodysm-s">プロフィールを確認できます</p>
+  </div>
 
   <%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |form| %>
     <% if @user.errors.any? %>
@@ -17,7 +20,12 @@
 
     <div class="form-group">
       <%= form.label :name, "ユーザー名：" %>
-      <%= form.text_field :name, class: 'form-control input-field' %>
+      <% if current_user.guest? %>
+        <%= form.text_field :name, class: 'form-control input-field', disabled: true %>
+        <p class="bodysm-s">※ゲストユーザーは名前を変更できません</p>
+      <% else %>
+        <%= form.text_field :name, class: 'form-control input-field' %>
+      <% end %>  
     </div>
     
     <p class="bodysm">

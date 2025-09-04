@@ -21,51 +21,46 @@
       </div>
     </div>
   
-    <% unless current_user.guest? %>
-      <%= link_to home_path, class: "menu-item" do %>
-        <%= inline_svg_tag 'icons/home.svg', class: 'menu-icon' %>
-        <div class="menu-text-content">
-          <p class="text-l">ホームへ移動</p>
-          <p class="bodysm-s">
-            トップページへ移動します
-          </p>
-        </div>
-      <% end %>
+    <%= link_to home_path, class: "menu-item" do %>
+      <%= inline_svg_tag 'icons/home.svg', class: 'menu-icon' %>
+      <div class="menu-text-content">
+        <p class="text-l">ホームへ移動</p>
+        <p class="bodysm-s">
+          トップページへ移動します
+        </p>
+      </div>
     <% end %>
 
-    <% unless current_user.guest? %>
-      <%= link_to home_path, class: "menu-item" do %>
-        <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
-        <div class="menu-text-content">
-          <p class="text-l">書類を追加</p>
-          <p class="bodysm-s">
-            新しい書類を追加登録します
-          </p>
-        </div>
-      <% end %>
+
+   
+    <%= link_to home_path, class: "menu-item" do %>
+      <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
+      <div class="menu-text-content">
+        <p class="text-l">書類を追加</p>
+        <p class="bodysm-s">
+          新しい書類を追加登録します
+        </p>
+      </div>
+    <% end %>
+   
+    <%= link_to documents_path, class: "menu-item" do %>
+      <%= inline_svg_tag 'icons/list.svg', class: 'menu-icon' %>
+      <div class="menu-text-content">
+        <p class="text-l">書類一覧</p>
+        <p class="bodysm-s">
+          登録した書類を確認できます
+        </p>
+      </div>
+    <% end %>
+    
+    <%= link_to mypage_path, class: "menu-item" do %>
+      <%= inline_svg_tag 'icons/mypage.svg', class: 'menu-icon' %>
+      <div class="menu-text-content">
+        <p class="text-l">マイページ</p>
+        <p class="bodysm-s">プロフィールを確認できます</p>
+      </div>
     <% end %>
 
-    <% unless current_user.guest? %>
-      <%= link_to documents_path, class: "menu-item" do %>
-        <%= inline_svg_tag 'icons/list.svg', class: 'menu-icon' %>
-        <div class="menu-text-content">
-          <p class="text-l">書類一覧</p>
-          <p class="bodysm-s">
-            登録した書類を確認できます
-          </p>
-        </div>
-      <% end %>
-    <% end %>
-
-    <% unless current_user.guest? %>
-      <%= link_to mypage_path, class: "menu-item" do %>
-        <%= inline_svg_tag 'icons/mypage.svg', class: 'menu-icon' %>
-        <div class="menu-text-content">
-          <p class="text-l">マイページ</p>
-          <p class="bodysm-s">プロフィールを確認できます</p>
-        </div>
-      <% end %>
-    <% end %>
 
     <%= link_to destroy_user_session_path, class: "menu-item", rel: "nofollow", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } do %>
       <%= inline_svg_tag 'icons/logout.svg', class: 'menu-icon' %>

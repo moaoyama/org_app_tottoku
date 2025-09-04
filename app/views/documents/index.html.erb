@@ -3,7 +3,10 @@
     <%= render "header" %>
 
     <main class="app-main">
-      <p class="subtitlemd">登録済みの書類一覧</p>
+      <div class="subtitle">
+        <p class="subtitlemd">登録済みの書類一覧</p>
+        <p class="bodysm-s">登録した書類を確認できます</p>
+      </div>
 
       <% if @documents.empty? %>
         <!-- 書類がない場合の表示 -->

@@ -4,7 +4,10 @@
   <main class="app-main">
     <%# render "shared/flash_errors", object: @document %>
   
-    <p class="subtitlemd">書類の内容を見る</p>
+    <div class="subtitle">
+      <p class="subtitlemd">書類の内容を見る</p>
+      <p class="bodysm-s">書類の具体的な情報をみることができます</p>
+    </div>
     <div class="info">
       <p class="bodysm">
         書類名：<%= @document.title %>

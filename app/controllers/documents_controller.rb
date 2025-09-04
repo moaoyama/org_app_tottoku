@@ -8,13 +8,12 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.new(document_params)
-    @document.is_guest_document = true if current_user.guest?
 
     if @document.save
       begin
         OpenaiJudgementService.judge_and_save(@document)
         @document.reload
-        flash[:notice] = current_user.guest? ? "保存は一時的です。" : "判定を保存しました。"
+        flash[:notice] = "判定を保存しました。"
         redirect_to result_document_path(@document)
       rescue StandardError => e
         Rails.logger.error "OpenAI判定でエラー発生: #{e.message}" 
