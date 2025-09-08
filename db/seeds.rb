@@ -52,8 +52,6 @@ categories = category_names.map do |name|
 end
 
 # GPTResults（AI判定結果）
-Document.delete_all
-GptResult.delete_all
 gpt_results_data = [
   ["紙で保管が必要", "紙で保管する必要があります"],
   ["データ保管でOK", "データとして保管すればOKです"],
@@ -68,8 +66,8 @@ gpt_results = gpt_results_data.map do |storage_decision, reason|
 end
 
 # サンプルドキュメント
+Document.destroy_all
 5.times do |i|
-  result = gpt_results.sample
   Document.create!(
     title: "ゲスト用サンプル書類#{i + 1}",
     user: guest_user,
