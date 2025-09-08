@@ -35,6 +35,16 @@ admin_guest_user = User.find_or_create_by!(email: "admin_guest_user@example.com"
   user.admin = true
 end
 
+# サンプルユーザー（5件以上）
+5.times do |i|
+  User.find_or_create_by!(email: "sample#{i + 1}@example.com") do |user|
+    user.name = "サンプルユーザー#{i + 1}"
+    user.password = "password"
+    user.password_confirmation = "password"
+    user.admin = false
+  end
+end
+
 # Categories（documents の分類）
 category_names = ["仕事", "プライベート", "その他"]
 categories = category_names.map do |name|
