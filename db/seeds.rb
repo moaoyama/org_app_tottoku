@@ -68,6 +68,7 @@ end
 # サンプルドキュメント
 Document.destroy_all
 5.times do |i|
+  result = gpt_results.sample
   Document.create!(
     title: "ゲスト用サンプル書類#{i + 1}",
     user: guest_user,
