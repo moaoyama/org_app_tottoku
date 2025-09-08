@@ -52,8 +52,6 @@ categories = category_names.map do |name|
 end
 
 # GPTResults（AI判定結果）
-Document.delete_all
-GptResult.delete_all
 gpt_results_data = [
   ["紙で保管が必要", "紙で保管する必要があります"],
   ["データ保管でOK", "データとして保管すればOKです"],
@@ -68,17 +66,18 @@ end
 
 
 # サンプルドキュメント
-sample_doc = nil
 5.times do |i|
-  sample_doc = Document.find_or_create_by!(title: "ゲスト用サンプル書類#{i + 1}") do |doc|
-    doc.user = guest_user
-    doc.category = categories.sample
-    doc.gpt_result = gpt_results.sample
-    doc.result = doc.gpt_result.storage_decision
-    doc.reason = doc.gpt_result.reason
-    doc.memo = "テスト用の初期データ #{i + 1}"
-  end
+  result = gpt_results.sample
+  Document.create!(
+    title: "ゲスト用サンプル書類#{i + 1}",
+    user: guest_user,
+    category: categories.sample,
+    gpt_result: result,
+    result: result.storage_decision,
+    reason: result.reason,
+    memo: "テスト用の初期データ #{i + 1}"
+  )
 end
 
 puts "Seeds loaded successfully"
-puts "Users: #{User.count}, Categories: #{Category.count}, GPTResults: #{GptResult.count}, Sample Document persisted: #{sample_doc.persisted?}"
+puts "Users: #{User.count}, Categories: #{Category.count}, GPTResults: #{GptResult.count}, Documents: #{Document.count}"
