@@ -62,11 +62,10 @@ gpt_results_data = [
 
 gpt_results = gpt_results_data.map do |storage_decision, reason|
   GptResult.create!(
-    storage_decision: storage_decision
+    storage_decision: storage_decision,
     reason: reason
   )
 end
-
 
 # サンプルドキュメント
 5.times do |i|
