@@ -20,7 +20,7 @@ end
 
 # 一般ユーザーゲストを作成する
 guest_user = User.find_or_create_by!(email: "guest_user@example.com") do |user|
-  random_password = SecureRandom.urlsafe_base64
+  random_password = SecureRandom.urlsafe_base64.first(16)
   user.name = "ゲストユーザー"
   user.password = random_password
   user.password_confirmation = random_password
@@ -28,7 +28,7 @@ end
 
 # 管理者ゲストを作成する
 admin_guest_user = User.find_or_create_by!(email: "admin_guest_user@example.com") do |user|
-  random_password = SecureRandom.urlsafe_base64
+  random_password = SecureRandom.urlsafe_base64.first(16)
   user.name = "管理者ゲストユーザー"
   user.password = random_password
   user.password_confirmation = random_password
@@ -68,17 +68,17 @@ end
 
 
 # サンプルドキュメント
-sample_doc = Document.find_or_initialize_by(name: "サンプル書類")
-sample_doc.assign_attributes(
-  title: "サンプル書類タイトル",
-  user: admin_user,
-  category: Category.find_by(name: "仕事"),
-  gpt_result: GptResult.find_by(storage_decision: "処分してOK"),
-  result: "処分してOK",
-  reason: "テスト用の初期データ",
-  memo: "ここにメモを書けます"
-)
-sample_doc.save!
+sample_doc = nil
+5.times do |i|
+  sample_doc = Document.find_or_create_by!(title: "ゲスト用サンプル書類#{i + 1}") do |doc|
+    doc.user = guest_user
+    doc.category = categories.sample
+    doc.gpt_result = gpt_results.sample
+    doc.result = doc.gpt_result.storage_decision
+    doc.reason = doc.gpt_result.reason
+    doc.memo = "テスト用の初期データ #{i + 1}"
+  end
+end
 
 puts "Seeds loaded successfully"
 puts "Users: #{User.count}, Categories: #{Category.count}, GPTResults: #{GptResult.count}, Sample Document persisted: #{sample_doc.persisted?}"
