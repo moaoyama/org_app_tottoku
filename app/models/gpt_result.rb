@@ -1,5 +1,6 @@
 class GptResult < ApplicationRecord
   belongs_to :document, optional: true
+  has_many :documents, dependent: :destroy
 
   def clean_reason
     return nil if reason.blank?
