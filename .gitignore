@@ -55,3 +55,4 @@ REVISION
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+config/database.yml
