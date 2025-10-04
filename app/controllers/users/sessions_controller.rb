@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Users::SessionsController < Devise::SessionsController
   # 一般ユーザーゲストのログイン処理
   def guest_sign_in

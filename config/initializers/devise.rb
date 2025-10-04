@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   

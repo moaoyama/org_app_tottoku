@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 lock "~> 3.19.2"
 
 set :application, "tottoku"

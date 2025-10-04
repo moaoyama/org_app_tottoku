@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 worker_processes  2
 working_directory "/var/www/tottoku/current"
 stderr_path "log/unicorn.stderr.log"

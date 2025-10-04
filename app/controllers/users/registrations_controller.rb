@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Users::RegistrationsController < Devise::RegistrationsController
   # 新しいユーザー登録フォームを表示するアクション
   def new

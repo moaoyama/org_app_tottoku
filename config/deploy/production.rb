@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 server "56.155.70.195",
   user: "ec2-user",
   roles: %w{web db app},
