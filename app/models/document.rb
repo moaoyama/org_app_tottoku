@@ -2,21 +2,16 @@ class Document < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
   belongs_to :gpt_result, optional: true
-  # belongs_to :document, optional: true
-  # belongs_to :document_id, optional: true
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :user_id, presence: true
 
-  # app/models/document.rb
   has_many_attached :images
 
-  # オプションで文字数制限やカスタムバリデーションも追加可能
   validates :location, length: { maximum: 255 }
   validates :ai_decision, length: { maximum: 50 }, allow_blank: true
   validates :user_override, length: { maximum: 50 }, allow_blank: true
   validates :user_comment, length: { maximum: 500 }
-  # 定義書にないもの(0818現在)
   validates :name, length: { maximum: 255 }, allow_blank: true
   validates :memo, length: { maximum: 500 }, allow_blank: true
 
