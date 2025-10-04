@@ -1,4 +1,4 @@
-worker_processes  2   # 1
+worker_processes  2
 working_directory "/var/www/tottoku/current"
 stderr_path "log/unicorn.stderr.log"
 stdout_path "log/unicorn.stdout.log"
