@@ -49,7 +49,7 @@ gem 'rails_admin'
 gem 'sassc-rails'
 gem 'inline_svg'
 gem 'ruby-openai'
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails-i18n'
 gem 'devise'
 gem "aws-sdk-s3", require: false

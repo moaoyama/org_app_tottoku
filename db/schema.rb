@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_19_103657) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,8 +83,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_19_103657) do
   end
 
   create_table "gpt_results", force: :cascade do |t|
-    t.string "storage_decision"
-    t.text "reason"
+    t.string "result_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -104,10 +103,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_19_103657) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
