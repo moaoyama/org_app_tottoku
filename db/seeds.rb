@@ -53,33 +53,33 @@ categories = category_names.map do |name|
 end
 
 # GPTResults（AI判定結果）
-gpt_results_data = [
-  ["紙で保管が必要", "紙で保管する必要があります"],
-  ["データ保管でOK", "データとして保管すればOKです"],
-  ["処分してOK", "処分して問題ありません"]
-]
+# gpt_results_data = [
+#   ["紙で保管が必要", "紙で保管する必要があります"],
+#   ["データ保管でOK", "データとして保管すればOKです"],
+#   ["処分してOK", "処分して問題ありません"]
+# ]
 
-gpt_results = gpt_results_data.map do |storage_decision, reason|
-  GptResult.create!(
-    storage_decision: storage_decision,
-    reason: reason
-  )
-end
+# gpt_results = gpt_results_data.map do |storage_decision, reason|
+#   GptResult.create!(
+#     storage_decision: storage_decision,
+#     reason: reason
+#   )
+# end
 
 # サンプルドキュメント
-Document.destroy_all
-5.times do |i|
-  result = gpt_results.sample
-  Document.create!(
-    title: "ゲスト用サンプル書類#{i + 1}",
-    user: guest_user,
-    category: categories.sample,
-    gpt_result: result,
-    result: result.storage_decision,
-    reason: result.reason,
-    memo: "テスト用の初期データ #{i + 1}"
-  )
-end
+# Document.destroy_all
+# 5.times do |i|
+#  result = gpt_results.sample
+#  Document.create!(
+#    title: "ゲスト用サンプル書類#{i + 1}",
+#    user: guest_user,
+#    category: categories.sample,
+#    gpt_result: result,
+#    result: result.storage_decision,
+#    reason: result.reason,
+#    memo: "テスト用の初期データ #{i + 1}"
+#  )
+# end
 
 puts "Seeds loaded successfully"
 puts "Users: #{User.count}, Categories: #{Category.count}, GPTResults: #{GptResult.count}, Documents: #{Document.count}"

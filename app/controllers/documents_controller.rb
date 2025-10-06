@@ -18,8 +18,8 @@ class DocumentsController < ApplicationController
         redirect_to result_document_path(@document)
       rescue StandardError => e
         Rails.logger.error "OpenAI判定でエラー発生: #{e.message}" 
-        flash.now[:alert] = "OpenAI判定でエラーが発生しました"
-        render :new, status: :unprocessable_entity
+        flash[:alert] = "OpenAI判定でエラーが発生しました"
+        redirect_to home_path
       end
     else
       flash[:alert] = "書類名を入力してください" if @document.errors[:title].present?

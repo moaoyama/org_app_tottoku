@@ -83,3 +83,4 @@ group :test do
   gem "selenium-webdriver"
 end
 gem "cssbundling-rails"
+gem "devise-i18n", "~> 1.15"
