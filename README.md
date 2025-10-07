@@ -9,12 +9,25 @@
 
 ## 主な機能
 
+- 書類の保管判定(3段階)
+入力された書類名をもとに「原本保管」「データ保管」「破棄OK」のいずれかをAIが提示します。
+- 書類一覧の表示
+登録された書類の名前・判定・登録日時を一覧表示。
+見返しがしやすくなります。
+- 書類画像の追加・保存機能
+ユーザーがス画像フォルダから選択してアップロードすることで、書類名と書類画像を紐づけて保存できます。
+- ユーザー登録機能
+自分専用のアカウントを作成することで、書類の整理や保存ができるようになります。
+他の人と情報が混ざらず、自分のデータを安全に管理できます。
+- ログイン・ログアウト機能
+アカウントから安全にログアウトすることで、他人に自分のデータを見られる心配がなくなります。共有パソコンでも安心して使えます。
+
 ## 技術スタック
 
-* Ruby 3.3.0
-* Ruby on Rails 7.1.5.1
-* PostgreSQL 16.9
-* Devise
+- Ruby 3.3.0
+- Ruby on Rails 7.1.5.1
+- PostgreSQL 16.9
+- Devise
 
 ## 実行手順
 
@@ -29,7 +42,7 @@ rails server
 
 ## テーブル定義書
 
-[テーブル定義書](https://docs.google.com/spreadsheets/d/14RHf9ebWHiROU02kUgCNGh6alsyEY4iLPzAmOtALcbo/edit?usp=sharing)
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1EGYJfKLEOeP8bh_swWy5xRTqee-GMHumfzjqcUoorLg/edit?usp=sharing)
 
 ## ER図
 
