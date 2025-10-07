@@ -129,6 +129,8 @@ class DocumentsController < ApplicationController
 
   def set_document
     @document = Document.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to user_path(current_user), alert: "他のアカウントのデータを見ることはできません"
   end
 
   def document_params
