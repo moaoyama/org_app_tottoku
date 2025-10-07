@@ -2,6 +2,7 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_document, only: [:show, :edit, :update, :result, :delete_image]
+  before_action :authorize_user!, only: [:show, :edit, :update]
   
   def new
     @document = Document.new
@@ -129,8 +130,13 @@ class DocumentsController < ApplicationController
 
   def set_document
     @document = Document.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to user_path(current_user), alert: "他のアカウントのデータを見ることはできません"
+  end
+
+  def authorize_user!
+    unless @document.user == current_user
+      flash[:alert] = "他のアカウントのページにはアクセスできません"
+      redirect_to home_path(current_user) 
+    end
   end
 
   def document_params

@@ -26,6 +26,7 @@
   <div class="guest-box">
     <span id="guest-close" class="close">&times;</span>
     <p class="expiry-title">どちらでログインしますか？</p>
+    <p class="bodysm-s">アカウントを作成せずに利用することができます</p>
     <div class="guest-btns">
       <%= button_to '管理者ゲストでログイン', admin_guest_sign_in_path, method: :post, class: 'btn btn-secondary' %>
       <%= button_to '一般ゲストでログイン', guest_sign_in_path, method: :post, class: 'btn btn-primary' %>
