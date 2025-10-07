@@ -26,10 +26,6 @@ rails db:migrate
 rails server
 ```
 
-## カタログ設計
-
-[カタログ設計](https://docs.google.com/spreadsheets/d/14RHf9ebWHiROU02kUgCNGh6alsyEY4iLPzAmOtALcbo/edit?usp=sharing)
-
 ## テーブル定義書
 
 [テーブル定義書](https://docs.google.com/spreadsheets/d/14RHf9ebWHiROU02kUgCNGh6alsyEY4iLPzAmOtALcbo/edit?usp=sharing)
