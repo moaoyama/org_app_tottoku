@@ -27,9 +27,11 @@ Rails.application.routes.draw do
   resources :documents do
     member do
       get :result
-      patch :update_location, :update_user_comment, :update_judgement, :update_expiry
+      patch :update_location
+      patch :update_user_comment
+      patch :update_judgement
+      patch :update_expiry
       post :upload_image
-      get  :edit_image
       delete :delete_image
     end
   end

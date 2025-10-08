@@ -23,6 +23,22 @@ class Document < ApplicationRecord
   # カスタムバリデーション
   validate :ai_decision_must_exist_if_user_override_present
 
+  scope :recent, -> { order(created_at: :desc) }
+  
+  def update_expiry_date(new_expiry_param)
+    new_expiry = new_expiry_param.present? ? Time.parse(new_expiry_param) : nil
+   update(expires_at: new_expiry)
+  end
+
+  def attach_images(image_files)
+    image_files.each { |img| images.attach(img) } if image_files.present?
+  end
+
+  def remove_image_by_id(image_id)
+    image = images.find(image_id)
+    image.purge
+  end
+
   private
 
   # 例：ユーザーが上書きした場合、AI判定結果も必須
