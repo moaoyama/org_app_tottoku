@@ -46,8 +46,8 @@ rails server
 
 ## ER図
 
-![ER図](ER.png)
+![ER図](./docks/ER.png)
 
 ## 画面遷移図
 
-![画面遷移図](画面遷移図03.png)
+![画面遷移図](./docks/画面遷移図.png)
