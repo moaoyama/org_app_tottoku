@@ -9,10 +9,10 @@
 
 ## スクリーンショット
 
-![ログイン画面](./docs/A_login1.png)
-![ゲストログイン機能](./docs/A_login2-2-1.png)
-![書類名登録](./docs/B_result1.png)
-![判定結果](./docs/B_result3.png)
+[ログイン画面](./docs/A_login1.png)
+[ゲストログイン機能](./docs/A_login2-2-1.png)
+[書類名登録](./docs/B_result1.png)
+[判定結果](./docs/B_result3.png)
 
 ## 主な機能
 
