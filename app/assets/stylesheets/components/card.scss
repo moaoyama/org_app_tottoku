@@ -1,0 +1,13 @@
+.document-card {
+  width: 326px; /* カードの寸法 */
+  height: 120px; /* カードの寸法 */
+  background-color: #FFFFFF; /* カードの背景色 */
+  border-radius: 12px; /* 角の半径 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽い影 */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: left; /* テキストを左寄せ */
+  position: relative; /* 詳細を見るボタンの配置用 */
+  align-items: flex-start;
+}

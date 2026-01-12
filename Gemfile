@@ -48,10 +48,10 @@ gem "image_processing", "~> 1.2", require: ["image_processing/mini_magick"]
 gem 'rails_admin'
 gem 'sassc-rails'
 gem 'inline_svg'
-gem 'ruby-openai'
+# gem 'ruby-openai'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails-i18n'
-gem 'devise'
+# gem 'devise'
 gem "aws-sdk-s3", require: false
 gem 'unicorn'
 
@@ -75,6 +75,8 @@ group :development do
   gem 'capistrano-safe-deploy-to'
   gem 'capistrano-rbenv', '~> 2.2', require: false
   gem 'capistrano3-unicorn', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do

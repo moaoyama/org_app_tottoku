@@ -1,7 +1,7 @@
 <%= render "header" %>
 
 <main class="app-main">
-  <div class="subtitle">
+  <div class="page-info">
     <p class="subtitlemd">マイページ</p>
     <p class="bodysm-s">プロフィールを確認できます</p>
   </div>
@@ -18,21 +18,23 @@
       </div>
     <% end %>
 
-    <div class="form-group">
-      <%= form.label :name, "ユーザー名：" %>
-      <% if current_user.guest? %>
-        <%= form.text_field :name, class: 'form-control input-field', disabled: true %>
-        <p class="bodysm-s">※ゲストユーザーは名前を変更できません</p>
-      <% else %>
-        <%= form.text_field :name, class: 'form-control input-field' %>
-      <% end %>  
+    <div class="form-contain">
+      <div class="form-group">
+        <%= form.label :name, "ユーザー名：" %>
+        <% if current_user.guest? %>
+          <%= form.text_field :name, class: 'form-control input-field', disabled: true %>
+          <p class="bodysm-s">※ゲストユーザーは名前を変更できません</p>
+        <% else %>
+          <%= form.text_field :name, class: 'form-control input-field' %>
+        <% end %>  
+      </div>
+      
+      <p class="bodysm">
+        メールアドレス： <%= @user.email %>
+      </p>
     </div>
     
-    <p class="bodysm">
-      メールアドレス： <%= @user.email %>
-    </p>
-
-    <div class="btn-l btn-btm">
+    <div class="btn-btm">
       <%= form.submit "プロファイルを編集する", class: 'btn' %>
       <%= link_to "ホームに戻る", home_path, class: 'btn' %>
     </div>

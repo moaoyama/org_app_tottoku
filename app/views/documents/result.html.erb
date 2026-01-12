@@ -6,34 +6,36 @@
   <% end %>
 
   <div class="result">
-    <div class="subtitle">  
+    <div class="page-info">  
       <p class="subtitlemd">保管方法の提案</p>
       <p class="bodysm-s">書類名をもとに以下のように判断しました</p>
     </div>
-    <p class="bodysm">書類名：<%= @document.title %></p>
-    <p class="bodysm">判定結果：
-      <%= @document.ai_decision %>
-      <% case @document.ai_decision %>
-      <% when "紙で保管が必要" %>
-        <span class="badge badge-important">
-          <%= image_tag 'icons/important.svg', class: 'badge-icon' %>
-        </span>
-      <% when "データ保管でOK" %>
-        <span class="badge badge-folder">
-          <%= image_tag 'icons/folder.svg', class: 'badge-icon' %>
-        </span>
-      <% when "処分してOK" %>
-        <span class="badge badge-trash">
-          <%= image_tag 'icons/trash.svg', class: 'badge-icon' %>
-        </span>
-      <% else %>
-        <span class="badge badge-default">
-        </span>
-      <% end %>  
-    </p>
-    <p class="bodysm">
-      AIからのアドバイス：<%= @gpt_result&.reason&.gsub(/^\d+\.\s*/, '') || "判定結果がありません" %>
-    </p>
+    <div class="info">
+      <p class="bodysm">書類名：<%= @document.title %></p>
+      <p class="bodysm">判定結果：
+        <%= @document.ai_decision %>
+        <% case @document.ai_decision %>
+        <% when "紙で保管が必要" %>
+          <span class="badge badge-important">
+            <%= image_tag 'icons/important.svg', class: 'badge-icon' %>
+          </span>
+        <% when "データ保管でOK" %>
+          <span class="badge badge-folder">
+            <%= image_tag 'icons/folder.svg', class: 'badge-icon' %>
+          </span>
+        <% when "処分してOK" %>
+          <span class="badge badge-trash">
+            <%= image_tag 'icons/trash.svg', class: 'badge-icon' %>
+          </span>
+        <% else %>
+          <span class="badge badge-default">
+          </span>
+        <% end %>  
+      </p>
+      <p class="bodysm">
+        AIからのアドバイス：<%= @gpt_result&.reason&.gsub(/^\d+\.\s*/, '') || "判定結果がありません" %>
+      </p>
+    </div>
   </div>
 
   <div class="btn-l btn-btm">

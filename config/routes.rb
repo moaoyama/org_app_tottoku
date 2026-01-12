@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
   # Deviseのルート
-  devise_for :users, class_name: 'User', controllers: {
+  # devise_for :users, class_name: 'User',
+   controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }

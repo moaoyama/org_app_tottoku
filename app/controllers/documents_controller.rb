@@ -109,7 +109,7 @@ class DocumentsController < ApplicationController
   end
 
   def index
-    @documents = Document.recent
+    @documents = current_user.documents.recent
   end
 
   def destroy

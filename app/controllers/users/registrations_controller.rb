@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 class Users::RegistrationsController < Devise::RegistrationsController
-  # 新しいユーザー登録フォームを表示するアクション
-  def new
-    super
+  def after_sign_up_path_for(resource)
+    home_path(resource)
   end
 
-  # 新しいユーザー登録を作成するアクション
-  def create
-    super
+  def after_update_path_for(resource)
+    home_path(resource)
   end
 end

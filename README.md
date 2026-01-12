@@ -34,7 +34,13 @@
 - Ruby 3.3.0
 - Ruby on Rails 7.1.5.1
 - PostgreSQL 16.9
+
+過去に以下の技術を検討・実装していましたが、
+アプリの目的と規模をふまえ、現在は使用していません。
+
+- OpenAI API
 - Devise
+- Amazon S3
 
 ## 実行手順
 

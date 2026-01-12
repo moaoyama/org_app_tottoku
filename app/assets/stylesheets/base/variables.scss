@@ -1,0 +1,42 @@
+:root {
+  /* 色 */
+  --color-base: #F2F7FB;
+  --color-main: #7EBDE2;
+  --color-accent: #FFB6C1;
+  --color-black: #1f1f1f;
+  --color-gray: #ddd;
+  --color-white: #FFFFFF;
+  --color-err-msg: #ffdddd;
+  --color-text-msg: #166088;
+  --color-flash-msg: #D4EDF9;
+
+  /* 影 */
+  --box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+
+  /* フォント */
+  --font-base: 'Noto Sans JP', sans-serif;
+  --font-size-xl: 40px;
+  --font-size-base: 16px;
+  --font-size-md: 15px;
+  --font-size-sm: 14px;
+  --text-app-title: 24px;
+  --text-title-lg: 20px;
+  --text-title-md: 18px;
+
+  /* スペーシング */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+}
+
+/* バッジ用の色 */
+.badge-important { background-color: #F8D7DA; }
+.badge-folder { background-color: #D0E3FC; }
+.badge-trash { background-color: #E0E0E0; }
+.badge-red { background-color: #D93025; }
+.badge-blue { background-color: #1E88E5; }
+.badge-gray { background-color: #9E9E9E; }
+
+.delete-img-color { background-color: #AED6F1; }

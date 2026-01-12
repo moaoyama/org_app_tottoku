@@ -1,11 +1,11 @@
 <header class="app-header">
-  <a href="<%= root_path %>" class="app-title-link">
-    <p class="app-title">とっとく？</p>
+  <a href="<%= root_path %>" class="btn--return">
+    <p class="app-title--return">とっとく？</p>
   </a>
 </header>
 
 <main class="app-main" style="height: 100vh;, overflow-y: auto;">
-  <div class="registar">
+  <div class="page-info">
     <p class="subtitlemd">アカウントを作成</p>
     <p class="bodysm-s">必要な項目はすべて記入してください</p>
   </div>
@@ -22,7 +22,7 @@
   <% end %>
 
 <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), local: true) do |form| %>
-
+  <div class="form-contain">
     <div class="form-group">
       <%= form.label :name, "ユーザー名（必須）" %>
       <%= form.text_field :name, class: 'input-field', placeholder: 'ユーザー名を入力', autofocus: true %>
@@ -43,6 +43,7 @@
       <%= form.label :password_confirmation, "パスワード（確認）" %>
       <%= form.password_field :password_confirmation, class: 'input-field', placeholder: 'パスワードを再入力してください' %>
     </div>
+  </div>
 
     <div class="btn-l">
       <%= form.submit "登録してはじめる", class: 'btn' %>

@@ -2,28 +2,24 @@
 //* @import "rails_admin"; */
 /*
  *= require rails_admin
-*/
+*/ /* ? */
 
 body {
-  height: 100vh;
   margin: 0;
-  padding: 0;
   background-color: #F2F7FB;
-  overflow: hidden;
   font-family: 'Noto Sans JP', sans-serif;
-}
+} 
 
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-}
+  min-height: 100vh;
+} 
 
 main {
-  /* font-size: 16px; */
   margin: 0;
   /* text-align: center; */
-}
+} 
 
 .app-header {
   position: fixed;
@@ -37,175 +33,225 @@ main {
   margin-top: 0;
   z-index: 3;
   justify-content: space-between;
-}
+} 
 
 .header-left {
   display: flex;
   align-items: center;
-}
+} 
 .admin-link {
   color: #FFFFFF; /* 文字色を白に */
   text-decoration: none; /* 下線をなくす */
   padding-left: 16px; /* 「とっとく？」との間隔 */
-}
+} 
 
 /* 非表示 */
 .hidden {
   display: none;
-}
-
-.app-title-link {
-  text-decoration: none; /* 下線をなくす */
-  color: inherit; /* 親要素の文字色を継承 */
-  display: flex; /* Flexboxで中のpタグを中央寄せ */
-  align-items: center; /* 垂直方向の中央寄せ */
-  height: 100%; /* 親要素の高さに合わせる */
-}
-
-.app-title {
+} 
+.app-title{
   font-size: 20px;
   margin: 0;
   padding-left: 16px;
-  color: #FFFFFF;
-}
+  color: #FFFFFF; 
+} 
+.btn--return {
+  text-decoration: none; /* 下線をなくす */
+  display: flex; /* Flexboxで中のpタグを中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+  height: 100%; /* 親要素の高さに合わせる */
+  /* 追加251013 */
+  background-color: #D4EDF9;
+  color: #1f1f1f;
+  padding: 8px 16px;
+  margin-left: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+} 
+.btn--return:hover { /* 251013追加 */
+  cursor: pointer;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+} /* ? */
+.btn--return:active {/* 251013追加 */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+} /* ? */
+.app-title--return {
+  font-size: 20px;
+  margin: 0;/* 251013パディング消す */
+  color: inherit;
+} 
 
 .titlelg {
   font-size: 24px;
   font-weight: bold;
   margin-top: 40px;
   margin-bottom: 16px;
-}
+} 
 
-.subtitle {
+/*.subtitle {
+  flex-direction: column;
+  gap: 8px;
   margin-top: 32px;
   margin-bottom: 32px;
-}
+}*/
+.page-info {
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+} 
 
 .subtitlemd {
   font-size: 20px;
-}
-
-.subtitlemd04 {
-  font-size: 20px;
-  margin-top: 0;
-  margin-bottom: 32px;
-}
+} 
 
 .text-l {
   font-size: 16px;
   font-weight: bold;
-}
+} 
 
 .bodysm {
   font-size: 16px;
-  margin-bottom: 16px;
-}
+} 
 
 .bodysm-s {
   font-size: 14px;
-}
-
-.info .bodysm {
-  margin-bottom: 8px;
-}
+} 
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  gap: 8px;
+} 
 
 .app-main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 68px;
-  padding-bottom: 88px;
   box-sizing: border-box;
-  text-align: center; /* フォーム内のテキストは中央寄せ */
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
+  text-align: center; /* テキスト中央寄せ */
+  padding-top: 68px; 
+  padding-bottom: 68px;
+} 
 
 /* フォームグループ（ラベルと入力欄のセット） */
+.form-contain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+} 
 .form-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* ラベルを左寄せに */
   width: 320px; /* 入力欄の幅に合わせる */
-  margin-bottom: 24px; /* 各要素間の間隔 */
-}
+} 
 .form-group label {
   font-size: 16px; /* 文字の大きさ16px */
   margin-bottom: 8px; /* ラベルとフォームの間隔8px */
-}
+} 
 .input-field {
   width: 320px; /* 入力欄フォームの寸法320px */
   height: 44px; /* 入力欄フォームの寸法44px */
   padding: 8px 12px;
-  border: 1px solid #CCCCCC; /* ボーダー色をグレーに */
+  border: 1px solid #CCCCCC; /* */
   border-radius: 8px; /* 角の半径8px */
   box-sizing: border-box;
   font-size: 16px; /* 入力文字のサイズ */
-}
+} 
+
+/*
+.form-group-si {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  ラベルを左寄せに 
+  width: 320px;  入力欄の幅に合わせる
+} 
+.form-group-si label {
+  font-size: 16px;
+  margin-bottom: 8px;
+} 
+*/
 
 /* ==================================== */
 /* 保管方法の提案ページ固有のスタイル */
 /* ==================================== */
   .app-main .result {
     max-width: 320px;
-  }
+  } 
   .result .badge {
     display: inline-flex;
     align-items: center;
     padding: 4px 8px;
     border-radius: 12px; /* 丸みをつける */
-  }
-  
-  .badge-important { background-color: #F8D7DA; }
-  .badge-folder { background-color: 	#D0E3FC; }
-  .badge-trash { background-color: #E0E0E0; }
+  } 
+  .result {
+    flex-direction: column;
+  } 
+
+  .badge-important { background-color: #F8D7DA; } 
+  .badge-folder { background-color: 	#D0E3FC; } 
+  .badge-trash { background-color: #E0E0E0; } 
 /* ==================================== */
 /* アカウント作成ページ固有のスタイル */
 /* ==================================== */
-  .signup-form-container .form-group {
-    margin-bottom: 16px; /* アカウント作成フォームグループの間隔を16pxに上書き */
-  }
+  /*.signup-form-container .form-group {
+    margin-bottom: 16px; アカウント作成フォームグループの間隔を16pxに上書き 
+  */
 /* ==================================== */
 /* ログインページ固有のスタイル */
 /* ==================================== */
-  .registar .subtitlemd {
+  /*.registar .subtitlemd {
     margin-top: 32px;
     margin-bottom: 8px;
   }
   .registar .bodysm-s {
     margin-bottom: 24px;
   }
-
+  .registar {
+    flex-direction: column;
+  }*/
   .checkbox-group {
     display: flex; 
-  }
+  } 
   .checkbox-group .checkbox {
     align-items: center;
     width: 24px;
     height: 24px;
     margin-right: 8px;
-    border: 1px solid #CCCCCC;
-  }
+    border: 1px solid #CCCCCC;/* */
+  } 
   .checkbox-group bodysm {
     align-items: center;
-  }
+  } 
 /* ==================================== */
 .btn-l{
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-}
+} 
 
 .btn-btm {
   position: fixed;
+  flex-direction: column;
   bottom: 92px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   z-index: 1;
-}
+  gap: 24px;
+} 
 
 .btn{
   width: 280px;
@@ -222,36 +268,35 @@ main {
   background-color: #7EBDE2;
   color: #FFFFFF;
   border: none;
-}
+} 
 
 .btn-l .btn {
   margin-bottom: 24px;
-}
+} 
 
 .app-footer {
   height: 68px;
   background-color: #7EBDE2;
   color: #FFFFFF;
   text-align: center;
-  padding-top: 1vh;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-}
+} /* layput */
 
 .menu-icon-hum {
   color: #FFB6C1;
   width: 48px;
   height: 48px;
   padding-right: 16px;
-}
+} 
 
 .menu-icon {
   color: #FFB6C1;
   width: 48px;
   height: 48px;
-}
+} 
 
 /* ==================================== */
 /* 書類一覧ページ固有のスタイル */
@@ -263,7 +308,7 @@ main {
   justify-content: center;
   min-height: 200px; /* ある程度の高さを確保 */
   margin-bottom: 30px; /* ボタンとの間隔 */
-}
+} 
 
 .documents-list-grid {
   display: grid;
@@ -276,43 +321,43 @@ main {
   width: 100%;
   max-width: 360px; /* カード幅326px + 左右の余白 */
   margin: 0 auto 100px auto;
-}
+} 
 
 .document-card {
-  width: 326px; /* カードの寸法 */
-  height: 120px; /* カードの寸法 */
-  background-color: #FFFFFF; /* カードの背景色 */
-  border-radius: 12px; /* 角の半径 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽い影 */
+  width: 326px;
+  height: 120px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  text-align: left; /* テキストを左寄せ */
+  text-align: left;
   position: relative; /* 詳細を見るボタンの配置用 */
   align-items: flex-start;
-}
+} 
 
 .document-info-content {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* 文字列どうしの間隔16px */
+  gap: 16px; 
   padding: 12px;
   flex-grow: 1;
-}
+} 
 
 /* 「書類を追加する」固定ボタンのコンテナ */
   .fixed-add-button-container {
     position: fixed; /* 画面に固定 */
-    bottom: 84px; /* 下からの位置 */
-    left: 50%; /* 水平中央寄せの基準 */
-    transform: translateX(-50%); /* 自身の幅の半分だけ左にずらして完全に中央寄せ */
+    bottom: 84px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%; /* 親要素の幅に合わせる */
     display: flex;
-    justify-content: center; /* ボタンを中央に配置 */
-    padding: 0 20px; /* 左右のパディング */
+    justify-content: center;
+    padding: 0 20px;
     box-sizing: border-box;
-    z-index: 2; /* 他のコンテンツの上に表示 */
-  }
+    z-index: 2;
+  } 
 
   .fixed-add-button {
     /* main-action-buttonのスタイルを継承 */
@@ -321,23 +366,25 @@ main {
     height: 56px; /* 固定ボタンの高さ */
     background-color: #FFB6C1;
     color: #1f1f1f;
-  }
+  } 
 
-  .document-info-content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; /* 文字列どうしの間隔16px */
-  }
+/*
+.document-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+*/ 
 
-  .document-info-content .text-l {
-    font-size: 14px;
-  }
+.document-info-content .text-l {
+  font-size: 14px;
+} 
 
-  .document-card-actions {
-    position: absolute; /* ボタンをカード内に絶対配置 */
-    bottom: 16px; /* 下からの位置を調整 */
-    right: 12px; /* 右からの位置を調整 */
-  }
+.document-card-actions {
+  position: absolute; /* ボタンをカード内に絶対配置 */
+  bottom: 16px;
+  right: 12px;
+} 
 
   .detail-button {
     display: flex;
@@ -353,7 +400,7 @@ main {
     font-weight: bold;
     transition: background-color 0.3s ease;
     box-sizing: border-box;
-  }
+  } 
 
 /* ==================================== */
 /* タブ切りかえ */
@@ -362,6 +409,7 @@ main {
 .tabs {
   max-width: 320px;
   margin: 0 auto;
+  display: block;
 }
 
 /* ラジオボタンは非表示に */
@@ -375,8 +423,8 @@ main {
   padding: 10px 12px;
   font-size: 15px;
   cursor: pointer;
-  background-color: #eee;
-  border: 1px solid #ccc;
+  background-color: #ddd;/* */
+  border: 1px solid #ccc;/* */
   border-bottom: none;
   margin-right: -1px;
   font-weight: 600;
@@ -400,7 +448,7 @@ main {
 /* タブコンテンツは全て非表示に */
 .tab-content {
   display: none;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc;/* */
   padding: 20px;
   background-color: #fff;
   clear: both;
@@ -431,7 +479,7 @@ main {
   width: 128px;
   height: 44px;
   margin-top: 16px;
-}
+} 
 
 .btn-danger {
   width: 280px;
@@ -450,14 +498,14 @@ main {
   text-decoration: none;
   box-sizing: border-box;
   line-height: 44px;
-}
+} 
 
-.file-name-text {
+/*.file-name-text {
   font-size: 14px;
-  color: #555;
-  margin-bottom: 8px; /* ボタンとの間に間隔を設ける */
-  text-align: center; /* 中央揃え */
-}
+  color: #1f1f1f;
+  margin-bottom: 8px; ボタンとの間に間隔を設ける 
+  text-align: center;  中央揃え
+*/
 .btn-l .file-btn {
   margin-bottom: 4px;
 }
@@ -467,7 +515,7 @@ main {
 
   .tab-content p {
     text-align: left;
-  }
+  } 
   .tab-content .form-group, .tab-content .form-group-l {
     display: flex;
     flex-direction: column;
@@ -476,21 +524,21 @@ main {
   }
   .tab-content .input-field {
     max-width: 280px; /* 入力欄の最大幅 */
-  }
+  } 
 
   .form-group-l .input-field {
   width: 280px; /* 入力欄フォームの寸法320px */
   height: 96px;
   padding: 8px 12px;
-  border: 1px solid #CCCCCC; /* ボーダー色をグレーに */
+  border: 1px solid #CCCCCC; /* */
   border-radius: 8px; /* 角の半径8px */
   box-sizing: border-box;
   font-size: 16px; /* 入力文字のサイズ */
-  }
+  } 
 
   .tab-content .bodysm-s {
     margin-bottom: 24px;
-  }
+  } 
 
   .radio-group-wrapper {
     display: flex;
@@ -517,12 +565,12 @@ main {
     margin: 0 8px;
     width: 16px;
     height: 16px;
-  }
+  } 
   .radio-option p {
     margin-left: 8px;
     font-size: 16px;
     color: #1f1f1f;
-  }
+  } 
 
   #upload-form .btn {
     margin-bottom: 0;
@@ -545,7 +593,7 @@ main {
     width: 80px;
     height: 80px;
     object-fit: contain;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc;/* */
   }
 
   .delete-thumb-btn {
@@ -575,7 +623,7 @@ main {
   transition: left 0.3s ease;
   z-index: 3; /* メニューを最前面に表示 */
   padding: 1rem;
-}
+} 
 
 .hamburger-menu a {
   padding: 14px 16px;
@@ -586,17 +634,18 @@ main {
 
 .hamburger-menu.active {
   right: 0;
-}
+} 
 
 .menu-toggle {
   cursor: pointer;
   width: 24px;
   height: 24px;
   padding: 8px;
-}
+} 
 
 .side-menu-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   height: 68px;
   box-sizing: border-box;
@@ -604,12 +653,14 @@ main {
   color: #FFFFFF;
   margin: -1rem;
   padding: 1rem;
-}
+} 
 
+/*
 .side-menu-header p, .side-menu-header div {
   display: flex;
   align-items: center;
-}
+} 
+*/
 
 .menu-item {
   display: flex;
@@ -621,20 +672,20 @@ main {
   box-sizing: border-box;
   cursor: pointer;
   margin-top: 32px;
-}
+} 
 
 .menu-item .menu-icon {
   width: 24px;
   height: 24px;
   margin-right: 16px;
   color: #1F1F1F; /* アイコンの色 */
-}
+} 
 
 .menu-text-content {
   display: flex;
   flex-direction: column;
   color: #1F1F1F;
-}
+} 
 
 /* ==================================== */
 /* バッヂの色とアイコン */
@@ -645,7 +696,7 @@ main {
     height: 16px;
     border-radius: 50%;
     margin-left: 8px;
-  }
+  } 
   .badge-red { background-color: #D93025; }   /* 紙で保管が必要 */
   .badge-blue { background-color: #1E88E5; }  /* データ保管でOK */
   .badge-gray { background-color: #9E9E9E; }  /* 処分してOK */
@@ -654,7 +705,7 @@ main {
     width: 16px;
     height: 16px;
     color: #1f1f1f;
-  }
+  } 
 
 /* ==================================== */
 /* フラッシュメッセージ */
@@ -682,7 +733,7 @@ main {
 /* ==================================== */
 /* モーダル用スタイル */
 /* ==================================== */
-  .modal {
+  /*.modal {
     position: fixed;
     z-index: 1;
     padding-top: 60px;
@@ -690,21 +741,24 @@ main {
     width: 100%; height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.8);
-  }
+  }*/
   .modal-content {
     margin: auto;
     display: block;
     max-width: 90%;
     max-height: 80%;
-  }
+  } 
   .close {
     position: absolute;
-    top: 20px; right: 35px;
+    top: 68px; right: 35px;
     color: #fff;
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-  }
+  } 
+  .modal-content-box {
+    margin-top: 68px;
+  } 
 
 /* ==================================== */
 /* モーダル用（保管期限）スタイル */
@@ -722,16 +776,16 @@ main {
   z-index: 2;
   display: none;
   padding: 16px;
-}
+} 
 
-.expiry-modal-content {
+/*.expiry-modal-content {
   text-align: center;
   position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
+}*/
 
 .expiry-title {
   font-size: 18px;
@@ -744,11 +798,11 @@ main {
   margin-bottom: 8px;
   display: flex;
   align-items: center;
-}
+} 
 
-.expiry-submit {
+/*.expiry-submit {
   margin-top: auto;
-}
+}*/
 
 .expiry-modal .close {
   position: absolute;
@@ -757,10 +811,10 @@ main {
   font-size: 24px;
   cursor: pointer;
   color:#1F1F1F;
-}
-.expiry-text {
+} 
+/*.expiry-text {
   margin-left: 8px;
-}
+}*/
 
 /* ボタン */
 .expiry-btns {
@@ -769,26 +823,26 @@ main {
   gap: 12px;
   margin-top: 16px;
   justify-content: flex-between;
-}
+} 
 
 .expiry-btns .btn {
   width: 136px;
   height: 44px;
   cursor: pointer;
-}
+} 
 
 .cancel-btn {
-  background-color: #ccc;
+  background-color: #ddd;/* */
   border: none;
   border-radius: 8px;
-}
+} 
 
-.save-btn {
+/*.save-btn {
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 8px;
-}
+}*/
 /* ==================================== */
 /* モーダル用（保管期限）スタイル */
 /* ==================================== */  
@@ -805,7 +859,7 @@ main {
   z-index: 2;
   display: none;
   padding: 16px;
-}
+} 
 .guest-box {
   display: flex; /* Flexboxを有効にする */
   flex-direction: column; /* 要素を縦に並べる */
@@ -813,7 +867,7 @@ main {
   justify-content: center; /* 垂直方向の中央揃え */
   height: 100%; /* 親要素(guest-modal)の高さいっぱいを使う */
   position: relative; /* 子要素（閉じるボタン）の位置基準にする */
-}
+} 
 .guest-modal .close {
   position: absolute;
   top: -12px;
@@ -821,18 +875,18 @@ main {
   font-size: 24px;
   cursor: pointer;
   color:#1F1F1F;
-}
+} 
 .guest-btns {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px; /* ボタン間の間隔 */
-}
+} 
 .guest-btn {
   background-color: #fff;
   color: #7EBDE2;
   border: 1px solid #7EBDE2;
-}
+} 
 
 /* ==================================== */
 /* バリデーションエラーのメッセージ */
@@ -874,4 +928,4 @@ main {
   border: none;
   font-size: 16px;
   cursor: pointer;
-}
+} 

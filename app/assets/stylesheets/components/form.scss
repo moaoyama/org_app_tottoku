@@ -1,0 +1,33 @@
+.input-field {
+  width: 320px; /* 入力欄フォームの寸法320px */
+  height: 44px; /* 入力欄フォームの寸法44px */
+  padding: 8px 12px;
+  border: 1px solid #CCCCCC; /* */
+  border-radius: 8px; /* 角の半径8px */
+  box-sizing: border-box;
+  font-size: 16px; /* 入力文字のサイズ */
+}
+
+.checkbox-group {
+  display: flex; 
+}
+.checkbox-group .checkbox {
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  border: 1px solid #CCCCCC;/* */
+}
+.checkbox-group bodysm {
+  align-items: center;
+}
+
+.form-group-l .input-field {
+width: 280px; /* 入力欄フォームの寸法320px */
+height: 96px;
+padding: 8px 12px;
+border: 1px solid #CCCCCC; /* */
+border-radius: 8px; /* 角の半径8px */
+box-sizing: border-box;
+font-size: 16px; /* 入力文字のサイズ */
+}
