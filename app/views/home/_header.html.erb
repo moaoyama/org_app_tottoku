@@ -7,12 +7,10 @@
     <% end %>
   </div>
 
-  <!-- ハンバーガーアイコン -->
   <div id="menu-toggle">
     <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon menu-icon-hum' %>
   </div>
 
-  <!-- ドロップダウンメニュー -->
   <nav id="hamburger-menu" class="hamburger-menu hidden">
     <div class="side-menu-header">
       <p class="app-title">とっとく？</p>
@@ -30,7 +28,6 @@
         </p>
       </div>
     <% end %>
-
     
     <%= link_to home_path, class: "menu-item" do %>
       <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
@@ -40,9 +37,7 @@
           新しい書類を追加登録します
         </p>
       </div>
-    <% end %>
-    
-
+    <% end %>    
     
     <%= link_to documents_path, class: "menu-item" do %>
       <%= inline_svg_tag 'icons/list.svg', class: 'menu-icon' %>
@@ -52,8 +47,7 @@
           登録した書類を確認できます
         </p>
       </div>
-    <% end %>
-    
+    <% end %>    
 
     <%= link_to mypage_path, class: "menu-item" do %>
       <%= inline_svg_tag 'icons/mypage.svg', class: 'menu-icon' %>

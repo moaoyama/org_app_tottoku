@@ -55,3 +55,6 @@ REVISION
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Optional: local DB config if you keep it out of repo
+/config/database.yml

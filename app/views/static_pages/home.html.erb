@@ -9,12 +9,12 @@
   </p>
   <p class="bodysm">書類名を入力するとその書類を保存すべきか判断するアプリです</p>
 
-  <div class="btn-l btn-btm">
+  <div class="btn-btm">
     <div id="expiry-button" class="guest-btn btn">
       ためしてみる
     </div>
-    <%= link_to '新しく登録する', new_user_registration_path, class: 'btn btn-secondary' %>
-    <%= link_to 'ログインして使う', new_user_session_path, class: 'btn btn-primary' %>
+    <%= link_to '新しく登録する', new_user_registration_path, class: 'btn' %>
+    <%= link_to 'ログインして使う', new_user_session_path, class: 'btn' %>
   </div>
 </main>
 
@@ -26,6 +26,7 @@
   <div class="guest-box">
     <span id="guest-close" class="close">&times;</span>
     <p class="expiry-title">どちらでログインしますか？</p>
+    <p class="bodysm-s" style="margin-bottom: 16px">アカウントを作成せずに利用することができます</p>
     <div class="guest-btns">
       <%= button_to '管理者ゲストでログイン', admin_guest_sign_in_path, method: :post, class: 'btn btn-secondary' %>
       <%= button_to '一般ゲストでログイン', guest_sign_in_path, method: :post, class: 'btn btn-primary' %>

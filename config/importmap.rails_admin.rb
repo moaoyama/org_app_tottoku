@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 pin "rails_admin", preload: true
 pin "rails_admin/src/rails_admin/base", to: "https://ga.jspm.io/npm:rails_admin@3.3.0/src/rails_admin/base.js"
 pin "@hotwired/turbo", to: "https://ga.jspm.io/npm:@hotwired/turbo@7.3.0/dist/turbo.es2017-esm.js"

@@ -1,22 +1,18 @@
+# frozen_string_literal: true
 class Document < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
   belongs_to :gpt_result, optional: true
-  # belongs_to :document, optional: true
-  # belongs_to :document_id, optional: true
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :user_id, presence: true
 
-  # app/models/document.rb
   has_many_attached :images
 
-  # オプションで文字数制限やカスタムバリデーションも追加可能
   validates :location, length: { maximum: 255 }
   validates :ai_decision, length: { maximum: 50 }, allow_blank: true
   validates :user_override, length: { maximum: 50 }, allow_blank: true
   validates :user_comment, length: { maximum: 500 }
-  # 定義書にないもの(0818現在)
   validates :name, length: { maximum: 255 }, allow_blank: true
   validates :memo, length: { maximum: 500 }, allow_blank: true
 
@@ -26,6 +22,22 @@ class Document < ApplicationRecord
 
   # カスタムバリデーション
   validate :ai_decision_must_exist_if_user_override_present
+
+  scope :recent, -> { order(created_at: :desc) }
+  
+  def update_expiry_date(new_expiry_param)
+    new_expiry = new_expiry_param.present? ? Time.parse(new_expiry_param) : nil
+   update(expires_at: new_expiry)
+  end
+
+  def attach_images(image_files)
+    image_files.each { |img| images.attach(img) } if image_files.present?
+  end
+
+  def remove_image_by_id(image_id)
+    image = images.find(image_id)
+    image.purge
+  end
 
   private
 

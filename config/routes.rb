@@ -1,14 +1,16 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
   # Deviseのルート
-  devise_for :users, class_name: 'User', controllers: {
+  # devise_for :users, class_name: 'User',
+   controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
 
   # ゲストログイン
   devise_scope :user do
-    post 'guest_sign_in', to: 'users/sessions#guest_sign_in'
-    post 'admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in', as: :guest_sign_in
+    post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in', as: :admin_guest_sign_in
   end
 
   # 管理画面
@@ -26,9 +28,11 @@ Rails.application.routes.draw do
   resources :documents do
     member do
       get :result
-      patch :update_location, :update_user_comment, :update_judgement, :update_expiry
+      patch :update_location
+      patch :update_user_comment
+      patch :update_judgement
+      patch :update_expiry
       post :upload_image
-      get  :edit_image
       delete :delete_image
     end
   end

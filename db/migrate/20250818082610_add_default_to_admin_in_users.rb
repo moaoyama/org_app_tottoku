@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddDefaultToAdminInUsers < ActiveRecord::Migration[7.1]
   def up
     User.where(admin: nil).update_all(admin: false)

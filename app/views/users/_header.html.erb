@@ -7,12 +7,10 @@
     <% end %>
   </div>
 
-  <!-- ハンバーガーアイコン -->
   <div id="menu-toggle">
     <%= inline_svg_tag 'icons/menu.svg', class: 'menu-icon menu-icon-hum' %>
   </div>
 
-  <!-- ドロップダウンメニュー -->
   <nav id="hamburger-menu" class="hamburger-menu hidden">
     <div class="side-menu-header">
       <p class="app-title">とっとく？</p>
@@ -30,8 +28,6 @@
         </p>
       </div>
     <% end %>
-
-
    
     <%= link_to home_path, class: "menu-item" do %>
       <%= inline_svg_tag 'icons/add.svg', class: 'menu-icon' %>
@@ -60,7 +56,6 @@
         <p class="bodysm-s">プロフィールを確認できます</p>
       </div>
     <% end %>
-
 
     <%= link_to destroy_user_session_path, class: "menu-item", rel: "nofollow", data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } do %>
       <%= inline_svg_tag 'icons/logout.svg', class: 'menu-icon' %>

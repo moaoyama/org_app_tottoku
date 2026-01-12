@@ -1,0 +1,32 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  port: 5432
+  pool: 5
+
+development:
+  <<: *default
+  database: tottoku_development
+  username: tottoku
+  password: 'VjcDUJZHKWsi8kQcA62owwDhz2pBJunlexi'
+  host: 127.0.0.1
+  port: 5432
+
+
+test:
+  <<: *default
+  database: tottoku_test
+  username: tottoku
+  password: 'VjcDUJZHKWsi8kQcA62owwDhz2pBJunlexi'
+
+
+production:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: tottoku_production
+  pool: 5
+  username: tottoku
+  password: 'Mg1eIWOQcY48DdhGTN/BrxEvla/o7e/Z'
+  host: localhost

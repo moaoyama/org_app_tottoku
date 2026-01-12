@@ -1,0 +1,303 @@
+.app-title, .admin-link {
+  color: var(--color-white);
+  text-decoration: none;
+  padding-left: 16px;
+} 
+
+.app-title{
+  font-size: 20px;
+  margin: 0;
+} 
+
+.btn--return {
+  text-decoration: none;
+  display: flex; /* Flexboxで中のpタグを中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+  height: 100%; /* 親要素の高さに合わせる */
+  /* 追加251013 */
+  background-color: var(--color-flash-msg);
+  color: var(--color-black);
+  padding: 8px 16px;
+  margin-left: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+} 
+
+.app-title--return {
+  font-size: 20px;
+  margin: 0;/* 251013パディング消す */
+  color: inherit;
+} 
+
+.titlelg {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 16px;
+} 
+
+.page-info {
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+} 
+
+.form-contain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+} 
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ラベルを左寄せに */
+  width: 320px; /* 入力欄の幅に合わせる */
+} 
+
+.form-group label {
+  font-size: 16px;
+  margin-bottom: 8px;
+} 
+
+.input-field {
+  width: 320px;
+  height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #ddd; /* */
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+} 
+
+/*
+.form-group-si {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 320px; 入力欄の幅に合わせる 
+} 
+.form-group-si label {
+  font-size: 16px; 
+  margin-bottom: 8px;
+*/
+
+.result .badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+} 
+
+.result {
+  flex-direction: column;
+} 
+
+.badge-important { background-color: #F8D7DA; } 
+.badge-folder { background-color: 	#D0E3FC; } 
+.badge-trash { background-color: #E0E0E0; } 
+
+.checkbox-group {
+  display: flex; 
+} 
+
+.checkbox-group .checkbox {
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  border: 1px solid #ddd;/* */
+} 
+
+.checkbox-group bodysm {
+  align-items: center;
+} 
+
+.btn-l{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+} 
+
+.btn-btm {
+  position: fixed;
+  flex-direction: column;
+  bottom: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+  gap: 24px;
+} 
+
+.btn{
+  width: 280px;
+  height: 56px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  border: none;
+} 
+
+.btn-l .btn {
+  margin-bottom: 24px;
+} 
+
+.menu-icon-hum {
+  color: var(--color-accent);
+  width: 48px;
+  height: 48px;
+  padding-right: 16px;
+} 
+
+.menu-icon {
+  color: var(--color-accent);
+  width: 48px;
+  height: 48px;
+} 
+
+.no-documents-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px; /* ある程度の高さを確保 */
+  margin-bottom: 30px; /* ボタンとの間隔 */
+} 
+
+.document-card {
+  width: 326px;
+  height: 120px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影 */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: left;
+  position: relative; /* 詳細を見るボタンの配置用 */
+  align-items: flex-start;
+} 
+
+.document-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px;
+  flex-grow: 1;
+} 
+
+/* 「書類を追加する」固定ボタンのコンテナ */
+.fixed-add-button-container {
+  position: fixed; /* 画面に固定 */
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* 親要素の幅に合わせる */
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 2; /* 他のコンテンツの上に表示 */
+} 
+
+.fixed-add-button {
+  /* main-action-buttonのスタイルを継承 */
+  /* 必要であれば、ここで固定ボタンに特有のスタイルを上書き */
+  width: 280px;
+  height: 56px;
+  background-color: var(--color-accent);
+  color: var(--color-black);
+}
+
+/*
+.document-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+} 
+*/
+
+.document-card-actions {
+  position: absolute; /* ボタンをカード内に絶対配置 */
+  bottom: 16px;
+  right: 12px;
+} 
+
+.detail-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 32px;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+} 
+
+.btn-danger {
+  width: 280px;
+  height: 44px;
+  background-color: var(--color-accent); 
+  color: var(--color-black);
+  margin-top: 16px;
+  display: flex; /* ブロック要素かつFlexboxコンテナにする */
+  align-items: center; /* 垂直方向の中央寄せ */
+  justify-content: center; /* 水平方向の中央寄せ (テキスト用) */
+  margin-left: auto; /* ボタン自体を水平中央寄せ */
+  margin-right: auto; /* ボタン自体を水平中央寄せ */
+  border-radius: 8px; 
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  box-sizing: border-box;
+  line-height: 44px;
+} 
+
+.tab-content .input-field {
+  max-width: 280px; /* 入力欄の最大幅 */
+} 
+
+.form-group-l .input-field {
+width: 280px; /* 入力欄フォームの寸法320px */
+height: 96px;
+padding: 8px 12px;
+border: 1px solid #ddd; /* */
+border-radius: 8px;
+box-sizing: border-box;
+font-size: 16px;
+}
+
+.badge {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-left: 8px;
+} 
+.badge-red { background-color: #D93025; } 
+.badge-blue { background-color: #1E88E5; } 
+.badge-gray { background-color: #9E9E9E; } 
+
+.badge-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-black);
+}

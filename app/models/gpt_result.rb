@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GptResult < ApplicationRecord
   belongs_to :document, optional: true
   has_many :documents, dependent: :destroy

@@ -1,0 +1,175 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+} /* Flexbox */
+
+main {
+  margin: 0;
+  /* text-align: center; */
+} 
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  height: 68px; /* 共通変数 */
+  width: 100%;
+  background-color: var(--color-main);
+  margin-top: 0;
+  z-index: 3;
+  justify-content: space-between;
+} 
+
+.header-left {
+  display: flex;
+  align-items: center;
+} 
+
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  gap: 8px;
+} /* Flexbox */
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  text-align: center; /* テキスト中央寄せ */
+  padding-top: 68px; 
+  padding-bottom: 68px;
+}  /* Flexbox */
+
+.app-footer {
+  height: 68px; /* 共通変数 */
+  background-color: var(--color-main);
+  color: var(--color-white);
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+} 
+
+.documents-list-grid {
+  /* display: grid; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 理想のレイアウトに合わせて、1列表示で中央寄せ */
+  grid-template-columns: minmax(326px, 1fr); /* 最小326px、最大で利用可能な幅 */
+  gap: 16px;
+  width: 100%;
+  max-width: 360px; /* カード幅326px + 左右の余白 */
+  margin: 0 auto 100px auto;
+} /* Flexbox */
+
+.hamburger-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 312px; /* 共通変数 */
+  height: 100vh;
+  background-color: var(--color-base);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease;
+  z-index: 3; /* メニューを最前面に表示 */
+  padding: 1rem;
+} 
+
+.hamburger-menu a {
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--color-black);
+  border-bottom: 1px solid #1F1F1F;
+}
+
+.hamburger-menu.active {
+  right: 0;
+} 
+
+.menu-toggle {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+} 
+
+.side-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px; /* 共通変数 */
+  box-sizing: border-box;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  margin: -1rem;
+  padding: 1rem;
+} 
+
+/*.side-menu-header p, .side-menu-header div {
+  display: flex;
+  align-items: center;
+}   階層整理
+*/
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  width: 312px; /* 共通変数 */
+  height: 72px;
+  text-decoration: none;
+  padding: 0 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 32px;
+} 
+
+.menu-item .menu-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  color: var(--color-black); 
+}  /* 階層整理 */
+
+.menu-text-content {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-black); 
+}  /* Flexbox */
+
+/* ============================================== */
+/* 共通変数 */
+$header-footer-height: 68px;
+$side-menu-width: 312px;
+
+/* 共通クラス */
+/* Flexbox */
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} /* 未実装 */
+
+.icon-sm {
+  width: 24px;
+  height: 24px;
+  color: var(--color-black); 
+} /* 未実装 */
+
+/*.side-menu-header-content {
+  display: flex;
+  align-items: center;
+}
+*/

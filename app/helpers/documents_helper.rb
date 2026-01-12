@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module DocumentsHelper
   def document_decision_badge(decision)
     case decision

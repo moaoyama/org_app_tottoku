@@ -1,11 +1,11 @@
 // app/javascript/application.js
 
 // Import mapで定義したモジュールを読み込む
-import "@hotwired/turbo-rails"
-import "controllers"
-import "@rails/ujs" // @rails/ujsを読み込む
-import "custom/modal" // modal.js を読み込む
-import "hamburger_toggle" // hamburger_toggle.jsを読み込む
+import "@hotwired/turbo-rails";
+import "controllers";
+import "@rails/ujs"; // @rails/ujsを読み込む
+import "custom/modal"; // modal.js を読み込む
+import "hamburger_toggle"; // hamburger_toggle.jsを読み込む
 import { openGuestModal, closeGuestModal } from "custom/modal";
 import { resizeAndUpload } from "custom/image_upload";
 

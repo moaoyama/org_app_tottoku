@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class OpenaiJudgementService
   def self.judge_and_save(document)
     client = OpenAI::Client.new
